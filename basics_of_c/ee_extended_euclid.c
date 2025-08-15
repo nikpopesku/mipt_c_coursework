@@ -1,21 +1,26 @@
 #include <assert.h>
 #include <stdio.h>
 
-unsigned long long gcd(long long x, long long y)
+unsigned long long ee_gcd(long long x, long long y, long long remainder[], long long coefficient[])
 {
     if (x < 0) x = -x;
     if (y < 0) y = -y;
+    long long index = 0;
 
     while (y != x)
     {
         if (y > x)
         {
-            y -= x;
+            coefficient[index] = y / x;
+            y = y - x * coefficient[index];
+            remainder[index] = y;
         }
         else
         {
-            x -= y;
+            coefficient[index] = x / y;
+            remainder[index] = x - y * coefficient[index];
         }
+        ++index;
     }
 
     return y;
@@ -27,7 +32,11 @@ int main()
 
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
-    const long long g = gcd(x, y);
+
+    long long remainder[1000];
+    long long coefficient[1000];
+
+    const long long g = ee_gcd(x, y, remainder, coefficient);
     printf("%llu\n", g);
     return 0;
 }

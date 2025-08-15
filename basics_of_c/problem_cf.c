@@ -24,7 +24,7 @@ int main()
 
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
-    long long response[100];
+    long long response[1000];
     long long index = calc(x, y, response);
 
     for (long long i = 0; i <= index; ++i)

@@ -23,11 +23,11 @@ unsigned long long gcd(long long x, long long y)
 
 int main()
 {
-    long long x = 0, y = 0, g;
+    long long x = 0, y = 0;
 
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
-    g = gcd(x, y);
+    const long long g = gcd(x, y);
     printf("%llu\n", g);
     return 0;
 }

@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-long long calc(long long x, long long y, long long response[])
+long long calc(long long x, long long y)
 {
     long long index = -1;
 
@@ -24,8 +24,7 @@ int main()
 
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
-    long long response[1000];
-    const long long index = calc(x, y, response);
+    const long long index = calc(x, y);
 
     for (long long i = 0; i <= index; ++i)
     {

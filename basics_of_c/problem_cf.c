@@ -8,7 +8,7 @@ long long calc(long long x, long long y, long long response[])
     while (x % y != 0)
     {
         response[++index] = x / y;
-        const int tmp = response[index] > 0 ? x - response[index] * y : x;
+        const long long tmp = response[index] > 0 ? x - response[index] * y : x;
         x = y;
         y = tmp;
     }
@@ -25,7 +25,7 @@ int main()
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
     long long response[1000];
-    long long index = calc(x, y, response);
+    const long long index = calc(x, y, response);
 
     for (long long i = 0; i <= index; ++i)
     {

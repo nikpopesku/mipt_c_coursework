@@ -1,6 +1,5 @@
 #include <assert.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 unsigned long long gcd(unsigned long long x, unsigned long long y) {
     unsigned long long q;
@@ -15,9 +14,8 @@ unsigned long long gcd(unsigned long long x, unsigned long long y) {
 
 int main() {
     unsigned long long x = 0, y = 0, g;
-    int res;
 
-    res = scanf("%llu %llu", &x, &y);
+    int res = scanf("%llu %llu", &x, &y);
     assert(res == 2);
     g = gcd(x, y);
     printf("%llu\n", g);

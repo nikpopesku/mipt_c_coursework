@@ -9,7 +9,7 @@ int de_solution(int coef[1000][4])
     while (coef[index - 2][0] % coef[index - 1][0] != 0)
     {
         coef[index][0] = coef[index - 2][0] % coef[index - 1][0];
-        coef[index][1] = coef[index - 2] / coef[index - 1];
+        coef[index][1] = coef[index - 2][0] / coef[index - 1][0];
         coef[index][2] = coef[index - 2][2] - coef[index][1] * coef[index - 1][2];
         coef[index][3] = coef[index - 2][3] - coef[index][1] * coef[index - 1][3];
         ++index;

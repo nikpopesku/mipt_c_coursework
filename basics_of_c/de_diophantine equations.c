@@ -50,8 +50,9 @@ int main()
         return 0;
     }
 
-    const int x = a < 0 ? -coef[index][2] : coef[index][2];
-    const int y = b < 0 ? -coef[index][3] : coef[index][3];
+    const int val = coef[index][1] > 0 ? c / coef[index][1] : c;
+    const int x = a < 0 ? -coef[index][2] * val : coef[index][2] * val;
+    const int y = b < 0 ? -coef[index][3] * val : coef[index][3] * val;
 
 
     printf("%d %d", x, y);

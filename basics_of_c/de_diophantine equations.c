@@ -36,7 +36,7 @@ int main()
 
     const int index = de_solution(coef);
 
-    if (coef[index][1] % c != 0)
+    if (c % coef[index][1] != 0)
     {
         printf("NONE");
 

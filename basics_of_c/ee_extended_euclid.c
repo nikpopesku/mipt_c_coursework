@@ -13,7 +13,6 @@ long long ee_gcd(long long x, long long y, long long koef[1000][4])
             coefficient[index] = y / x;
             y = y - x * coefficient[index];
             remainder[index] = y;
-
         }
         else
         {
@@ -44,8 +43,12 @@ int main()
         y = tmp;
     }
 
-    koef[0][0] = x; koef[0][2]= 1; koef[0][3] = 0;
-    koef[1][0] = y; koef[1][2] = 0; koef[1][3] = 1;
+    koef[0][0] = x;
+    koef[0][2] = 1;
+    koef[0][3] = 0;
+    koef[1][0] = y;
+    koef[1][2] = 0;
+    koef[1][3] = 1;
 
     const long long g = ee_gcd(x, y, koef);
 

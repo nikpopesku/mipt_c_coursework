@@ -34,9 +34,16 @@ int main()
     coef[1][2] = 0;
     coef[1][3] = 1;
 
+    if (abs(a) == abs(b) && c % abs(a) != 0)
+    {
+        printf("NONE");
+
+        return 0;
+    }
+
     const int index = de_solution(coef);
 
-    if (c % coef[index][1] != 0)
+    if (coef[index][1] != 0 && c % coef[index][1] != 0)
     {
         printf("NONE");
 

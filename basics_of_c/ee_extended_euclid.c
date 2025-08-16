@@ -41,8 +41,7 @@ int main()
     koef[1][2] = 0;
     koef[1][3] = 1;
 
-    long long index = ee_gcd(koef);
+    const long long index = ee_gcd(koef);
 
-    printf("%llu\n", g);
-    return 0;
+    printf("%lld %lld %lld", koef[index][2], koef[index][3], koef[index][0]);
 }

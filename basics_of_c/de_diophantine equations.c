@@ -22,8 +22,8 @@ int main()
 {
     int a, b, c;
 
-    const int res = scanf("%d %d %d", &a, &b, %c);
-    assert(res == 2);
+    const int res = scanf("%d %d %d", &a, &b, &c);
+    assert(res == 3);
 
     int coef[1000][4];
 
@@ -43,6 +43,9 @@ int main()
         return 0;
     }
 
+    const int x = a < 0 ? -coef[index][2] : coef[index][2];
+    const int y = b < 0 ? -coef[index][3] : coef[index][3];
 
-    // printf("%lld %lld %lld", a, b, gcd);
+
+    printf("%d %d", x, y);
 }

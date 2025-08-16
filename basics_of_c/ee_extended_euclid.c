@@ -26,8 +26,6 @@ int main()
     assert(res == 2);
 
     long long koef[1000][4];
-    if (x < 0) x = -x;
-    if (y < 0) y = -y;
     if (x < y)
     {
         const long long tmp = x;

@@ -3,18 +3,18 @@
 
 long long ee_gcd(long long koef[1000][4])
 {
-    long long index = 1;
+    long long index = 2;
 
     while (koef[index - 2][0] % koef[index - 1][0] != 0)
     {
-        ++index;
         koef[index][0] = koef[index - 2][0] % koef[index - 1][0];
         koef[index][1] = koef[index - 2][0] / koef[index - 1][0];
         koef[index][2] = koef[index - 2][2] - koef[index][1] * koef[index - 1][2];
         koef[index][3] = koef[index - 2][3] - koef[index][1] * koef[index - 1][3];
+        ++index;
     }
 
-    return index;
+    return index - 1;
 }
 
 int main()

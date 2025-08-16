@@ -21,17 +21,23 @@ int main()
 {
     long long x = 0, y = 0;
     int swapped = 0;
+    int minus = 0;
 
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
 
     long long koef[1000][4];
-    if (x < y)
+    if (x < y && (x > 0 || y > 0))
     {
         const long long tmp = x;
         x = y;
         y = tmp;
         swapped = 1;
+    }
+
+    if (x < 0 && y < 0)
+    {
+        minus = 1;
     }
 
     koef[0][0] = x;
@@ -42,8 +48,11 @@ int main()
     koef[1][3] = 1;
 
     const long long index = ee_gcd(koef);
-    const long long a = swapped ? koef[index][3] : koef[index][2];
-    const long long b = swapped ? koef[index][2] : koef[index][3];
+    long long a = swapped ? koef[index][3] : koef[index][2];
+    long long b = swapped ? koef[index][2] : koef[index][3];
+    a = minus ? -a : a;
+    b = minus ? -b : b;
+    long long gcd = minus ? -koef[index][0] : koef[index][0];
 
-    printf("%lld %lld %lld", a, b, koef[index][0]);
+    printf("%lld %lld %lld", a, b, gcd);
 }

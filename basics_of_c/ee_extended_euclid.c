@@ -1,29 +1,18 @@
 #include <assert.h>
 #include <stdio.h>
 
-long long ee_gcd(long long x, long long y, long long koef[1000][4])
+void ee_gcd(long long koef[1000][4])
 {
-    long long index = 0;
+    long long index = 2;
 
-    while (y != x)
+    while (koef[index - 2][0] % koef[index - 1][0] != 0)
     {
-        if (y > x)
-        {
-            numerator[index] = y;
-            coefficient[index] = y / x;
-            y = y - x * coefficient[index];
-            remainder[index] = y;
-        }
-        else
-        {
-            numerator[index] = x;
-            coefficient[index] = x / y;
-            remainder[index] = x - y * coefficient[index];
-        }
+        koef[index][0] = koef[index - 2][0] % koef[index - 1][0];
+        koef[index][1] = koef[index - 2][0] / koef[index - 1][0];
+        koef[index][2] = koef[index - 2][2] - koef[index][1] * koef[index - 1][2];
+        koef[index][3] = koef[index - 2][3] - koef[index][1] * koef[index - 1][3];
         ++index;
     }
-
-    return index;
 }
 
 int main()
@@ -50,7 +39,7 @@ int main()
     koef[1][2] = 0;
     koef[1][3] = 1;
 
-    const long long g = ee_gcd(x, y, koef);
+    const long long g = ee_gcd(koef);
 
     printf("%llu\n", g);
     return 0;

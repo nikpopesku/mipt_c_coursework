@@ -3,8 +3,6 @@
 
 long long ee_gcd(long long x, long long y, long long koef[1000][4])
 {
-    if (x < 0) x = -x;
-    if (y < 0) y = -y;
     long long index = 0;
 
     while (y != x)
@@ -37,9 +35,11 @@ int main()
     assert(res == 2);
 
     long long koef[1000][4];
+    if (x < 0) x = -x;
+    if (y < 0) y = -y;
     if (x < y)
     {
-        long long tmp = x;
+        const long long tmp = x;
         x = y;
         y = tmp;
     }

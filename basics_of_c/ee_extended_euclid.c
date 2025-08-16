@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-long long ee_gcd(long long x, long long y, long long remainder[], long long coefficient[], long long numerator[])
+long long ee_gcd(long long x, long long y, long long koef[1000][4])
 {
     if (x < 0) x = -x;
     if (y < 0) y = -y;
@@ -36,11 +36,18 @@ int main()
     const int res = scanf("%lld %lld", &x, &y);
     assert(res == 2);
 
-    long long remainder[1000];
-    long long coefficient[1000];
-    long long numerator[1000];
+    long long koef[1000][4];
+    if (x < y)
+    {
+        long long tmp = x;
+        x = y;
+        y = tmp;
+    }
 
-    const long long g = ee_gcd(x, y, remainder, coefficient, numerator);
+    koef[0][0] = x; koef[0][2]= 1; koef[0][3] = 0;
+    koef[1][0] = y; koef[1][2] = 0; koef[1][3] = 1;
+
+    const long long g = ee_gcd(x, y, koef);
 
     printf("%llu\n", g);
     return 0;

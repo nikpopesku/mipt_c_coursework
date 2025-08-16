@@ -39,7 +39,7 @@ int main()
     koef[1][2] = 0;
     koef[1][3] = 1;
 
-    const long long g = ee_gcd(koef);
+    ee_gcd(koef);
 
     printf("%llu\n", g);
     return 0;

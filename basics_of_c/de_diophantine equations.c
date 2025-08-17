@@ -50,7 +50,7 @@ int main()
         return 0;
     }
 
-    const int val = coef[index][1] > 0 ? c / coef[index][1] : c;
+    const int val = coef[index][0] > 0 ? c / coef[index][0] : c;
     const int x = a < 0 ? -coef[index][2] * val : coef[index][2] * val;
     const int y = b < 0 ? -coef[index][3] * val : coef[index][3] * val;
 

@@ -1,32 +1,39 @@
 #include <assert.h>
 #include <stdio.h>
-#include <stdlib.h>
-
-int de_solution(int coef[1000][4])
-{
-    int index = 2;
-
-    while (coef[index - 2][0] % coef[index - 1][0] != 0)
-    {
-        coef[index][0] = coef[index - 2][0] % coef[index - 1][0];
-        coef[index][1] = coef[index - 2][0] / coef[index - 1][0];
-        coef[index][2] = coef[index - 2][2] - coef[index][1] * coef[index - 1][2];
-        coef[index][3] = coef[index - 2][3] - coef[index][1] * coef[index - 1][3];
-        ++index;
-    }
-
-    return index - 1;
-}
 
 int main()
 {
     unsigned int x, y;
 
-    const int res = scanf("%d %d %d", &x, &y);
+    const int res = scanf("%u %u", &x, &y);
     assert(res == 2);
+    int response[100];
+    int index = 0;
+    unsigned int current_y = y;
 
 
-    const int index = de_solution(coef);
+    while (x >= 0)
+    {
+        if (x / current_y < y)
+        {
+            response[index] = x / current_y;
+            x = x % current_y;
+            current_y = current_y / y;
+            ++index;
+            if (current_y == 0)
+            {
+                break;
+            }
 
-    printf("%d %d", x, y);
+        }
+        else
+        {
+            current_y *= y;
+        }
+    }
+
+    for (int i = 0; i < index; ++i)
+    {
+        printf("%u", response[i]);
+    }
 }

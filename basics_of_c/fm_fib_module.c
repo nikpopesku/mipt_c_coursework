@@ -1,9 +1,30 @@
 #include <assert.h>
 #include <stdio.h>
 
-int solve(const int a, const int b, const int n)
+int solve(const int x, const int m)
 {
-    return 6;
+    if (x == 0)
+    {
+        return 0;
+    }
+
+    if (x == 1)
+    {
+        return 1 % m;
+    }
+
+    int last = 0;
+    int penultimate = 1 % m;
+    int current = 0;
+
+    for (int i = 2; i <= x; ++i)
+    {
+        current = (last + penultimate) % m;
+        last = penultimate;
+        penultimate = current;
+    }
+
+    return current;
 }
 
 int main()
@@ -13,7 +34,7 @@ int main()
     const int res = scanf("%u %u", &x, &m);
     assert(res == 2);
 
-    const int response = solve(a, b, n);
+    const int response = solve(x, m);
     printf("%d", response);
 
     return 0;

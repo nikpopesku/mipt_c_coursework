@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-int solve(int a, int b, int n)
+int solve(const int a, const int b, const int n)
 {
     int response;
 

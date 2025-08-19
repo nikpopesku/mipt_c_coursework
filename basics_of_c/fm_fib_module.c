@@ -8,10 +8,10 @@ int solve(const int a, const int b, const int n)
 
 int main()
 {
-    int a, b, n;
+    unsigned int x, m;
 
-    const int res = scanf("%d %d %d", &a, &b, &n);
-    assert(res == 3);
+    const int res = scanf("%u %u", &x, &m);
+    assert(res == 2);
 
     const int response = solve(a, b, n);
     printf("%d", response);

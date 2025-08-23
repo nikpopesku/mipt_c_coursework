@@ -7,9 +7,10 @@ void solve(const int x, const int m)
     int penultimate = 1 % m;
     int value = 0;
     int fib_response = 0;
+    int pisano_response = 0;
     int counter = 1;
 
-    while ((counter <= x) || !(value == 1 && last == 0))
+    while (counter <= x || !(value == 1 && last == 0))
     {
         value = (last + penultimate) % m;
         last = penultimate;
@@ -18,9 +19,13 @@ void solve(const int x, const int m)
         {
             fib_response = value;
         }
+        if (value == 1 && last == 0 && pisano_response == 0)
+        {
+            pisano_response = counter;
+        }
     }
 
-    printf("%d %d", fib_response, counter - 1);
+    printf("%d %d", fib_response, pisano_response - 1);
 }
 
 int main()

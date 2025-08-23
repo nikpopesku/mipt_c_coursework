@@ -8,18 +8,17 @@ void solve(const int x, const int m)
     int value = 0;
     int fib_response = 0;
     int counter = 2;
-    int i = 2;
 
-    while (i <= x)
+    while (counter <= x)
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
-        if (i == x)
+        if (counter == x)
         {
             fib_response = value;
         }
-        ++i;
+        ++counter;
     }
 
     printf("%d %d", fib_response, counter - 2);

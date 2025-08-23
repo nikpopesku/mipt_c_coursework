@@ -5,20 +5,44 @@ void solve(const int long long x, const int long long m)
 {
     int long long pisano_period = 0;
     int long long counter = 1;
-    int long long fib[1000000];
-    fib[0] = 0;
-    fib[1] = 1 % m;
-    fib[2] = 0;
+    int long long last = 0;
+    int long long penultimate = 1 % m;
+    int long long value = 0;
+    int long long fib_response = 0;
 
     do
     {
-        fib[++counter] = (fib[counter] + fib[counter - 1]) % m;
+        ++counter;
+        value = (penultimate + last) % m;
+        last = penultimate;
+        penultimate = value;
     }
-    while (fib[counter] != 1 || fib[counter - 1] != 0);
+    while (penultimate != 1 || last != 0);
 
     pisano_period = counter - 1;
 
-    printf("%d %d", fib[x % pisano_period], pisano_period);
+    if (x % pisano_period == 0)
+    {
+        fib_response = 0;
+    }
+    else if (x % pisano_period == 1)
+    {
+        fib_response = 1;
+    }
+    else
+    {
+        for (int long long i = 2; i <= x % pisano_period; ++i)
+        {
+            value = (penultimate + last) % m;
+            last = penultimate;
+            penultimate = value;
+        }
+
+        fib_response = value;
+    }
+
+
+    printf("%lld %lld", fib_response, pisano_period);
 }
 
 int main()

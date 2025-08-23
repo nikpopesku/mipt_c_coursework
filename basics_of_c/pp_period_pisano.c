@@ -5,20 +5,23 @@ void solve(const int x, const int m)
 {
     int first_value = 0 % m;
     int second_value = 1 % m;
-    int pisano_response = 0;
     int fib_response = 0;
     int value = 0;
+    int counter = 2;
 
     do
     {
         value = (first_value + second_value) % m;
         first_value = second_value;
         second_value = value;
-        ++pisano_response;
+        if (++counter == x)
+        {
+            fib_response = value;
+        }
     }
-    while (!(second_value == 1 && first_value == 0));
+    while (!(second_value == 1 && first_value == 0) || counter < x);
 
-    printf("%d %d", fib_response, pisano_response);
+    printf("%d %d", fib_response, counter - 2);
 }
 
 int main()

@@ -7,25 +7,25 @@ void solve(const int x, const int m)
     int penultimate = 1 % m;
     int value = 0;
     int fib_response = 0;
-    int pisano_response = 0;
+    int pisano_period = 0;
     int counter = 1;
 
-    while (counter <= x || !(value == 1 && last == 0))
+    while (!(value == 1 && last == 0))
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
-        if (++counter == x)
+        if (value == 1 && last == 0 && pisano_period == 0)
         {
-            fib_response = value;
-        }
-        if (value == 1 && last == 0 && pisano_response == 0)
-        {
-            pisano_response = counter;
+            pisano_period = counter;
         }
     }
 
-    printf("%d %d", fib_response, pisano_response - 1);
+    --pisano_period;
+
+    // for (int i= x / pisano_period; i < )
+
+    printf("%d %d", fib_response, pisano_period);
 }
 
 int main()

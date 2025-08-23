@@ -3,23 +3,24 @@
 
 void solve(const int x, const int m)
 {
-    int first_value = 0 % m;
-    int second_value = 1 % m;
-    int fib_response = 0;
+    int last = 0 % m;
+    int penultimate = 1 % m;
     int value = 0;
+    int fib_response = 0;
     int counter = 2;
+    int i = 2;
 
-    do
+    while (i <= x)
     {
-        value = (first_value + second_value) % m;
-        first_value = second_value;
-        second_value = value;
-        if (++counter == x)
+        value = (last + penultimate) % m;
+        last = penultimate;
+        penultimate = value;
+        if (i == x)
         {
             fib_response = value;
         }
+        ++i;
     }
-    while (!(second_value == 1 && first_value == 0) || counter < x);
 
     printf("%d %d", fib_response, counter - 2);
 }

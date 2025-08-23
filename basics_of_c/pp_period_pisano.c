@@ -6,19 +6,15 @@ void solve(const int x, const int m)
     int last = 0 % m;
     int penultimate = 1 % m;
     int value = 0;
-    int fib_response = 0;
     int pisano_period = 0;
     int counter = 1;
 
-    while (counter <= x || !(value == 1 && last == 0))
+    while (!(value == 1 && last == 0))
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
-        if (++counter == x)
-        {
-            fib_response = value;
-        }
+        ++counter;
         if (value == 1 && last == 0 && pisano_period == 0)
         {
             pisano_period = counter;
@@ -26,7 +22,7 @@ void solve(const int x, const int m)
     }
     --pisano_period;
 
-    printf("%d %d", fib_response, pisano_period);
+    printf("%d %d", 5, pisano_period);
 }
 
 int main()

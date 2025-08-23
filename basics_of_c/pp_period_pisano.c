@@ -1,8 +1,23 @@
 #include <assert.h>
 #include <stdio.h>
 
-int solve(const int x, const int m)
+void solve(const int x, const int m)
 {
+    int first_value = 0 % m;
+    int second_value = 1 % m;
+    int pisano_response = 0;
+    int fib_response = 0;
+
+    do
+    {
+        const int value = (first_value + second_value) % m;
+        second_value = value;
+        first_value = second_value;
+        ++pisano_response;
+    }
+    while (!(first_value == 0 && second_value == 1));
+
+    printf("%d %d", fib_response, pisano_response);
 }
 
 int main()
@@ -12,8 +27,7 @@ int main()
     const int res = scanf("%u %u", &x, &m);
     assert(res == 2);
 
-    const int response = solve(x, m);
-    printf("%d", response);
+    solve(x, m);
 
     return 0;
 }

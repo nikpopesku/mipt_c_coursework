@@ -19,7 +19,7 @@ void solve(const int x, const int m)
         penultimate = value;
         ++counter;
         fib[counter] = value;
-        if (value == 1 && last == 0 && pisano_period == 0)
+        if (value == 1 && last == 0)
         {
             pisano_period = counter;
         }

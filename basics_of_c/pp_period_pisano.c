@@ -3,23 +3,19 @@
 
 void solve(const int x, const int m)
 {
-    int last = 0 % m;
-    int penultimate = 1 % m;
-    int value = 0;
     int pisano_period = 0;
     int counter = 1;
     int fib[100000];
     fib[0] = 0;
-    fib[1] = 1;
+    fib[1] = 1 % m;
+    fib[2] = 0;
 
-    while (value != 1 || last != 0)
+    do
     {
-        value = (last + penultimate) % m;
-        last = penultimate;
-        penultimate = value;
-        ++counter;
-        fib[counter] = value;
+        fib[++counter] = (fib[counter] + fib[counter - 1]) % m;
     }
+    while (fib[counter] != 1 || fib[counter - 1] != 0);
+
     pisano_period = counter - 1;
 
     printf("%d %d", fib[x % pisano_period], pisano_period);

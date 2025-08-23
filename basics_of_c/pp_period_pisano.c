@@ -7,18 +7,17 @@ void solve(const int x, const int m)
     int penultimate = 1 % m;
     int value = 0;
     int fib_response = 0;
-    int counter = 2;
+    int counter = 1;
 
     while (counter <= x)
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
-        if (counter == x)
+        if (++counter == x)
         {
             fib_response = value;
         }
-        ++counter;
     }
 
     printf("%d %d", fib_response, counter - 2);

@@ -9,7 +9,7 @@ void solve(const int x, const int m)
     int fib_response = 0;
     int counter = 1;
 
-    while (counter <= x)
+    while ((counter <= x) || !(value == 1 && last == 0))
     {
         value = (last + penultimate) % m;
         last = penultimate;
@@ -20,7 +20,7 @@ void solve(const int x, const int m)
         }
     }
 
-    printf("%d %d", fib_response, counter - 2);
+    printf("%d %d", fib_response, counter - 1);
 }
 
 int main()

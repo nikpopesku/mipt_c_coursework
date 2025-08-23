@@ -12,18 +12,18 @@ void solve(const int x, const int m)
     do
     {
         value = (first_value + second_value) % m;
-        second_value = value;
         first_value = second_value;
+        second_value = value;
         ++pisano_response;
     }
-    while (!(value == 1 && second_value == 0));
+    while (!(second_value == 1 && first_value == 0));
 
     printf("%d %d", fib_response, pisano_response);
 }
 
 int main()
 {
-    int x, m;
+    int x = 0, m = 0;
 
     const int res = scanf("%d %d", &x, &m);
     assert(res == 2);

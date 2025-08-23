@@ -1,11 +1,11 @@
 #include <assert.h>
 #include <stdio.h>
 
-void solve(const int x, const int m)
+void solve(const int long long x, const int long long m)
 {
-    int pisano_period = 0;
-    int counter = 1;
-    int fib[100000];
+    int long long pisano_period = 0;
+    int long long counter = 1;
+    int long long fib[1000000];
     fib[0] = 0;
     fib[1] = 1 % m;
     fib[2] = 0;
@@ -23,9 +23,9 @@ void solve(const int x, const int m)
 
 int main()
 {
-    int x = 0, m = 0;
+    int long long x = 0, m = 0;
 
-    const int res = scanf("%d %d", &x, &m);
+    const int res = scanf("%lld %lld", &x, &m);
     assert(res == 2);
 
     solve(x, m);

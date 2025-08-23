@@ -10,20 +10,21 @@ void solve(const int x, const int m)
     int pisano_period = 0;
     int counter = 1;
 
-    while (!(value == 1 && last == 0))
+    while (counter <= x || !(value == 1 && last == 0))
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
+        if (++counter == x)
+        {
+            fib_response = value;
+        }
         if (value == 1 && last == 0 && pisano_period == 0)
         {
             pisano_period = counter;
         }
     }
-
     --pisano_period;
-
-    // for (int i= x / pisano_period; i < )
 
     printf("%d %d", fib_response, pisano_period);
 }

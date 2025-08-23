@@ -12,19 +12,15 @@ void solve(const int x, const int m)
     fib[0] = 0;
     fib[1] = 1;
 
-    while (!(value == 1 && last == 0))
+    while (value != 1 || last != 0)
     {
         value = (last + penultimate) % m;
         last = penultimate;
         penultimate = value;
         ++counter;
         fib[counter] = value;
-        if (value == 1 && last == 0)
-        {
-            pisano_period = counter;
-        }
     }
-    --pisano_period;
+    pisano_period = counter - 1;
 
     printf("%d %d", fib[x % pisano_period], pisano_period);
 }

@@ -52,12 +52,7 @@ int main()
     const int res = scanf("%d %d %d %d %d %d", &x00, &x01, &x10, &x11, &n, &m);
     assert(res == 6);
 
-    x00 = x00 % m;
-    x01 = x01 % m;
-    x10 = x10 % m;
-    x11 = x11 % m;
-
-    const Matrix response = solve(x00, x01, x10, x11, n, m);
+    const Matrix response = solve(x00 % m, x01 % m, x10 % m, x11 % m, n, m);
 
     printf("%d %d %d %d", response.x00, response.x01, response.x10, response.x11);
 

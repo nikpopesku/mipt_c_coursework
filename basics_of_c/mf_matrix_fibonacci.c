@@ -27,9 +27,9 @@ Matrix solve(const int x00, const int x01, const int x10, const int x11, const i
 
         Matrix response;
         response.x00 = value.x00 * value.x00 + value.x01 * value.x10;
-        response.x10 = x10;
-        response.x01 = x01;
-        response.x11 = x11;
+        response.x01 = value.x00 * value.x01 + value.x01 * value.x11;
+        response.x10 = value.x10 * value.x00 + value.x11 * value.x10;
+        response.x11 = value.x10 * value.x01 + value.x11 * value.x11;
 
         return response;
     }

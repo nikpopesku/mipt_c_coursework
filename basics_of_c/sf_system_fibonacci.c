@@ -1,57 +1,51 @@
 #include <assert.h>
 #include <stdio.h>
 
-void solve(const int long long x, const int long long m)
+void solve(int x)
 {
-    int long long pisano_period = 0;
-    int long long counter = 1;
-    int long long last = 0;
-    int long long penultimate = 1 % m;
-    int long long value = 0;
-    int long long fib_response = 0;
+    int f[10000];
+    int coef[10000];
+    f[0] = 0;
+    f[1] = 1;
+    int counter = 1;
+    int max_counter = 1;
+    coef[0] = 0;
+    coef[1] = 0;
 
-    do
+    while (f[counter] < x)
     {
-        ++counter;
-        value = (penultimate + last) % m;
-        last = penultimate;
-        penultimate = value;
-    }
-    while (penultimate != 1 || last != 0);
-
-    pisano_period = counter - 1;
-
-    if (x % pisano_period == 0)
-    {
-        fib_response = 0;
-    }
-    else if (x % pisano_period == 1)
-    {
-        fib_response = 1;
-    }
-    else
-    {
-        for (int long long i = 2; i <= x % pisano_period; ++i)
-        {
-            value = (penultimate + last) % m;
-            last = penultimate;
-            penultimate = value;
-        }
-
-        fib_response = value;
+        f[++counter] = f[counter - 1] + f[counter - 2];
+        coef[counter] = 0;
     }
 
-    printf("%lld %lld", fib_response, pisano_period);
+    if (f[counter] > x)
+    {
+        --counter;
+    }
+
+    max_counter = counter;
+
+    while (x > 0)
+    {
+        x -= f[counter];
+        coef[counter] = 1;
+        counter -= 2;
+    }
+
+    for (int i = 0; i <= max_counter; ++i)
+    {
+        printf("%d", coef[i]);
+    }
 }
 
 int main()
 {
-    int long long x = 0, m = 0;
+    int x = 0;
 
-    const int res = scanf("%lld %lld", &x, &m);
-    assert(res == 2);
+    const int res = scanf("%d", &x);
+    assert(res == 1);
 
-    solve(x, m);
+    solve(x);
 
     return 0;
 }

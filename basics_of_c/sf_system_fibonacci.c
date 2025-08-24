@@ -33,7 +33,8 @@ void solve(int long long x)
             x -= f[counter];
             coef[counter] = 1;
             counter -= 2;
-        } else
+        }
+        else
         {
             --counter;
         }

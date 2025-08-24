@@ -5,7 +5,7 @@ void solve(int x)
 {
     int f[10000];
     int coef[10000];
-    f[0] = 0;
+    f[0] = 1;
     f[1] = 1;
     int counter = 1;
     int max_counter = 1;
@@ -14,7 +14,8 @@ void solve(int x)
 
     while (f[counter] < x)
     {
-        f[++counter] = f[counter - 1] + f[counter - 2];
+        ++counter;
+        f[counter] = f[counter - 1] + f[counter - 2];
         coef[counter] = 0;
     }
 

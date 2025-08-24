@@ -8,7 +8,6 @@ void solve(int long long x)
     f[0] = 1;
     f[1] = 1;
     int counter = 1;
-    int max_counter;
     coef[0] = 0;
     coef[1] = 0;
 
@@ -24,7 +23,7 @@ void solve(int long long x)
         --counter;
     }
 
-    max_counter = counter;
+    const int max_counter = counter;
 
     while (x > 0)
     {

@@ -1,9 +1,9 @@
 #include <assert.h>
 #include <stdio.h>
 
-void solve(int long long x)
+void solve(int x)
 {
-    int long long f[10000];
+    int f[10000];
     int coef[10000];
     f[0] = 1;
     f[1] = 1;
@@ -47,9 +47,9 @@ void solve(int long long x)
 
 int main()
 {
-    int long long x = 0;
+    int x = 0;
 
-    const int res = scanf("%lld", &x);
+    const int res = scanf("%d", &x);
     assert(res == 1);
 
     solve(x);

@@ -33,7 +33,7 @@ void solve(int x)
         counter -= 2;
     }
 
-    for (int i = 0; i <= max_counter; ++i)
+    for (int i = max_counter; i >= 1; --i)
     {
         printf("%d", coef[i]);
     }

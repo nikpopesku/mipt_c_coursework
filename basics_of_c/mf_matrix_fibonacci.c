@@ -14,10 +14,10 @@ Matrix solve(const int x00, const int x01, const int x10, const int x11, const i
     if (n == 1)
     {
         Matrix response;
-        response.x00 = x00 % m;
-        response.x10 = x10 % m;
-        response.x01 = x01 % m;
-        response.x11 = x11 % m;
+        response.x00 = x00;
+        response.x10 = x10;
+        response.x01 = x01;
+        response.x11 = x11;
 
         return response;
     }

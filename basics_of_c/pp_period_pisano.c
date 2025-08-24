@@ -41,7 +41,6 @@ void solve(const int long long x, const int long long m)
         fib_response = value;
     }
 
-
     printf("%lld %lld", fib_response, pisano_period);
 }
 

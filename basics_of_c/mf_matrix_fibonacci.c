@@ -1,30 +1,48 @@
 #include <assert.h>
 #include <stdio.h>
 
-void solve(int* x00, int* x01, int* x10, int* x11, const int n, const int m)
+typedef struct
+{
+    int x00;
+    int x01;
+    int x10;
+    int x11;
+} Matrix;
+
+Matrix solve(const int x00, const int x01, const int x10, const int x11, const int n, const int m)
 {
     if (n == 1)
     {
-        return;
-    }
+        Matrix response;
+        response.x00 = x00;
+        response.x10 = x10;
+        response.x01 = x01;
+        response.x11 = x11;
 
+        return response;
+    }
     if (n % 2 == 0)
     {
-        solve(x00, x01, x10, x11, n / 2, m);
-    }
-    else
-    {
-        solve(x00, x01, x10, x11, n - 1, m);
-    }
-    const int updated_x00 = ((*x00) * (*x00) % m + (*x01) * (*x10) % m) % m;
-    const int updated_x01 = ((*x00) * (*x01) % m + (*x01) * (*x11) % m) % m;
-    const int updated_x10 = ((*x10) * (*x00) % m + (*x11) * (*x10) % m) % m;
-    const int updated_x11 = ((*x10) * (*x01) % m + (*x11) * (*x11) % m) % m;
+        const Matrix value = solve(x00, x01, x10, x11, n / 2, m);
 
-    *x00 = updated_x00;
-    *x01 = updated_x01;
-    *x10 = updated_x10;
-    *x11 = updated_x11;
+        Matrix response;
+        response.x00 = value.x00 * value.x00 + value.x01 * value.x10;
+        response.x10 = x10;
+        response.x01 = x01;
+        response.x11 = x11;
+
+        return response;
+    }
+
+    const Matrix value = solve(x00, x01, x10, x11, n - 1, m);
+
+    Matrix response;
+    response.x00 = value.x00 * value.x00 + value.x01 * value.x10;
+    response.x10 = x10;
+    response.x01 = x01;
+    response.x11 = x11;
+
+    return response;
 }
 
 int main()
@@ -39,9 +57,9 @@ int main()
     x10 = x10 % m;
     x11 = x11 % m;
 
-    solve(&x00, &x01, &x10, &x11, n, m);
+    const Matrix response = solve(x00, x01, x10, x11, n, m);
 
-    printf("%d %d %d %d", x00, x01, x10, x11);
+    printf("%d %d %d %d", response.x00, response.x01, response.x10, response.x11);
 
     return 0;
 }

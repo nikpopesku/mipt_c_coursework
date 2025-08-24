@@ -28,9 +28,15 @@ void solve(int long long x)
 
     while (x > 0)
     {
-        x -= f[counter];
-        coef[counter] = 1;
-        counter -= 2;
+        if (f[counter] <= x)
+        {
+            x -= f[counter];
+            coef[counter] = 1;
+            counter -= 2;
+        } else
+        {
+            --counter;
+        }
     }
 
     for (int i = max_counter; i >= 1; --i)

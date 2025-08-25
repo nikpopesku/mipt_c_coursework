@@ -3,30 +3,42 @@
 
 void factorial_system(int total, int factorial_array[1000])
 {
-    int index = 0;
-    int step = 1;
-    int factorial = 1;
+    int f[10000];
+    int coef[10000];
+    f[0] = 1;
+    f[1] = 1;
+    int counter = 1;
+    coef[0] = 0;
+    coef[1] = 0;
 
-    while (total >= 0)
+    while (f[counter] < total)
     {
-        if (total / factorial <= step)
+        ++counter;
+        f[counter] = f[counter - 1] + f[counter - 2];
+        coef[counter] = 0;
+    }
+
+    if (f[counter] > total)
+    {
+        --counter;
+    }
+
+    const int max_counter = counter;
+
+    while (total > 0)
+    {
+        if (f[counter] <= total)
         {
-            factorial_array[index] = total / factorial;
-            total = total % factorial;
-            factorial /= step;
-            step -= 1;
-            ++index;
-            if (step == 0)
-            {
-                break;
-            }
+            total -= f[counter];
+            coef[counter] = 1;
+            counter -= 2;
         }
         else
         {
-            factorial *= step + 1;
-            step += 1;
+            --counter;
         }
     }
+
 }
 
 int next_turn(const int total, const int possible)

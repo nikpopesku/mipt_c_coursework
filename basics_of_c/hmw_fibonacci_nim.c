@@ -3,7 +3,6 @@
 
 int fibonacci_system(int total, int fibo[10000], int coef[10000])
 {
-
     fibo[0] = 1;
     fibo[1] = 1;
     int counter = 1;

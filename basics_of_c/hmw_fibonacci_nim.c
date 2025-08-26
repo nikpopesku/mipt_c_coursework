@@ -1,10 +1,9 @@
 #include <assert.h>
 #include <stdio.h>
 
-void factorial_system(int total, int factorial_array[1000])
+int fibonacci_system(int total, int coef[10000])
 {
     int f[10000];
-    int coef[10000];
     f[0] = 1;
     f[1] = 1;
     int counter = 1;
@@ -39,17 +38,17 @@ void factorial_system(int total, int factorial_array[1000])
         }
     }
 
+    return max_counter;
 }
 
 int next_turn(const int total, const int possible)
 {
-    int factorial[1000];
-    for (int i = 0; i < 1000; ++i) factorial[i] = 0;
-    factorial_system(total, factorial);
+    int coef[10000];
+    int max_counter = fibonacci_system(total, coef);
 
-    for (int i = 0; i < 1000; ++i)
+    for (int i = 0; i < max_counter; ++i)
     {
-        if (factorial[i] == 1)
+        if (coef[i] == 1)
         {
             if (i <= possible)
             {

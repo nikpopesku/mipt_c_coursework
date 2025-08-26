@@ -50,7 +50,7 @@ int next_turn(const int total, const int possible)
     {
         if (coef[i] == 1)
         {
-            if (i <= possible)
+            if (fibo[i] <= possible)
             {
                 return fibo[i];
             }

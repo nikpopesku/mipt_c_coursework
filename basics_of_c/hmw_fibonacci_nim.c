@@ -1,23 +1,23 @@
 #include <assert.h>
 #include <stdio.h>
 
-int fibonacci_system(int total, int coef[10000])
+int fibonacci_system(int total, int fibo[10000], int coef[10000])
 {
-    int f[10000];
-    f[0] = 1;
-    f[1] = 1;
+
+    fibo[0] = 1;
+    fibo[1] = 1;
     int counter = 1;
     coef[0] = 0;
     coef[1] = 0;
 
-    while (f[counter] < total)
+    while (fibo[counter] < total)
     {
         ++counter;
-        f[counter] = f[counter - 1] + f[counter - 2];
+        fibo[counter] = fibo[counter - 1] + fibo[counter - 2];
         coef[counter] = 0;
     }
 
-    if (f[counter] > total)
+    if (fibo[counter] > total)
     {
         --counter;
     }
@@ -26,9 +26,9 @@ int fibonacci_system(int total, int coef[10000])
 
     while (total > 0)
     {
-        if (f[counter] <= total)
+        if (fibo[counter] <= total)
         {
-            total -= f[counter];
+            total -= fibo[counter];
             coef[counter] = 1;
             counter -= 2;
         }
@@ -43,8 +43,9 @@ int fibonacci_system(int total, int coef[10000])
 
 int next_turn(const int total, const int possible)
 {
+    int fibo[10000];
     int coef[10000];
-    int max_counter = fibonacci_system(total, coef);
+    int max_counter = fibonacci_system(total, fibo, coef);
 
     for (int i = 0; i < max_counter; ++i)
     {
@@ -52,7 +53,7 @@ int next_turn(const int total, const int possible)
         {
             if (i <= possible)
             {
-                return i;
+                return fibo[i];
             }
 
             return 1;

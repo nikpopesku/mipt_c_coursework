@@ -34,7 +34,7 @@ int main()
 {
     int long long N = 0;
 
-    const int res = scanf("%lld %lld", &N);
+    const int res = scanf("%lld", &N);
     assert(res == 1);
 
     const int long long number = solve(N);

@@ -30,10 +30,10 @@ unsigned int solve(const unsigned int n)
     sieve_t s = init_sieve(n + 1);
     assert(s.sieve != NULL && s.size > 0);
 
-    for (unsigned int i = 2; i < n + 1; ++i)
+    for (unsigned int i = 2; i <= n + 1; ++i)
     {
         unsigned int index = i * i;
-        while (index < n + 1)
+        while (index <= n + 1)
         {
             if (s.sieve[index] == 0)
             {
@@ -60,12 +60,6 @@ unsigned int solve(const unsigned int n)
     return response;
 }
 
-
-unsigned is_prime(const sieve_t s, unsigned n)
-{
-    assert(n < s.size);
-    return s.sieve[n] == 1 ? 0 : 1;
-}
 
 int main()
 {

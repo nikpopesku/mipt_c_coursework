@@ -74,9 +74,9 @@ int main()
     const int res = scanf("%lld", &n);
     assert(res == 1);
 
-    const int long long number = solve(n);
+    const unsigned int  number = solve(n);
 
-    printf("%lld", number);
+    printf("%u", number);
 
     return 0;
 }

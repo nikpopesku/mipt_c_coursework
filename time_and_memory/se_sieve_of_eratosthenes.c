@@ -30,9 +30,6 @@ unsigned int solve(const unsigned int n)
     sieve_t s = init_sieve(n + 1);
     assert(s.sieve != NULL && s.size > 0);
 
-    s.sieve[2] = 1;
-
-
     for (unsigned int i = 2; i < n + 1; ++i)
     {
         unsigned int index = i * i;
@@ -52,7 +49,7 @@ unsigned int solve(const unsigned int n)
 
     for (unsigned int i = 2; i < n + 1; ++i)
     {
-        if (s.sieve[i])
+        if (s.sieve[i] == 0)
         {
             ++response;
         }

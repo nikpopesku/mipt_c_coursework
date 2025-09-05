@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct sieve_t {
+struct sieve_t
+{
     unsigned size;
-    unsigned char *sieve;
+    unsigned char* sieve;
 };
 
 int long long solve(const int long long n)
@@ -15,16 +16,17 @@ int long long solve(const int long long n)
 
 sieve_t init_sieve(const int long long n)
 {
-
 }
 
-void free_sieve(struct sieve_t *s) {
+void free_sieve(struct sieve_t* s)
+{
     free(s->sieve);
     s->sieve = 0;
     s->size = 0;
 }
 
-unsigned is_prime(struct sieve_t s, unsigned n) {
+unsigned is_prime(struct sieve_t s, unsigned n)
+{
     assert(n < s.size);
     return (s.sieve[n] == 1) ? 0 : 1;
 }

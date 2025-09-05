@@ -27,10 +27,22 @@ void free_sieve(sieve_t* s)
 
 unsigned int solve(const unsigned int n)
 {
-    sieve_t s = init_sieve(n);
+    sieve_t s = init_sieve(n + 1);
     assert(s.sieve != NULL && s.size > 0);
 
+    unsigned int response = 0;
+
+    for (unsigned int i = 2; i < n + 1; ++i)
+    {
+        if (s.sieve[i])
+        {
+            ++response;
+        }
+    }
+
     free_sieve(&s);
+
+    return response;
 }
 
 

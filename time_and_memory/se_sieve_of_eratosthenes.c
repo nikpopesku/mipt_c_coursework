@@ -72,7 +72,7 @@ int main()
 
     const int long long number = solve(n);
 
-    printf("%u", number);
+    printf("%lld", number);
 
     return 0;
 }

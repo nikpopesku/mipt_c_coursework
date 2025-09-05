@@ -8,12 +8,6 @@ typedef struct
     unsigned char* sieve;
 } sieve_t;
 
-int long long solve(const unsigned int n)
-{
-    sieve_t s = init_sieve(100);
-    assert(s.sieve != NULL && s.size > 0);
-}
-
 sieve_t init_sieve(const unsigned int n)
 {
     unsigned char* a = calloc(n, sizeof(unsigned char));
@@ -31,6 +25,15 @@ void free_sieve(sieve_t* s)
     s->size = 0;
 }
 
+unsigned int solve(const unsigned int n)
+{
+    sieve_t s = init_sieve(n);
+    assert(s.sieve != NULL && s.size > 0);
+
+    free_sieve(&s);
+}
+
+
 unsigned is_prime(const sieve_t s, unsigned n)
 {
     assert(n < s.size);
@@ -39,7 +42,7 @@ unsigned is_prime(const sieve_t s, unsigned n)
 
 int main()
 {
-    int long long n = 0;
+    unsigned int n = 0;
 
     const int res = scanf("%lld", &n);
     assert(res == 1);

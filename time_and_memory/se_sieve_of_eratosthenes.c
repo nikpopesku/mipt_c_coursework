@@ -8,7 +8,7 @@ typedef struct
     unsigned char* sieve;
 } sieve_t;
 
-sieve_t init_sieve(const unsigned int n)
+sieve_t init_sieve(const int long long n)
 {
     unsigned char* a = calloc(n, sizeof(unsigned char));
     sieve_t sieve;
@@ -25,14 +25,14 @@ void free_sieve(sieve_t* s)
     s->size = 0;
 }
 
-unsigned int solve(const unsigned int n)
+int long long solve(const int long long n)
 {
     sieve_t s = init_sieve(n + 1);
     assert(s.sieve != NULL && s.size > 0);
 
-    for (unsigned int i = 2; i <= n + 1; ++i)
+    for (int long long i = 2; i <= n + 1; ++i)
     {
-        unsigned int index = i * i;
+        int long long index = i * i;
         while (index <= n + 1)
         {
             if (s.sieve[index] == 0)
@@ -45,9 +45,9 @@ unsigned int solve(const unsigned int n)
     }
 
 
-    unsigned int response = 0;
+    int long long response = 0;
 
-    for (unsigned int i = 2; i < n + 1; ++i)
+    for (int long long i = 2; i < n + 1; ++i)
     {
         if (s.sieve[i] == 0)
         {
@@ -63,12 +63,12 @@ unsigned int solve(const unsigned int n)
 
 int main()
 {
-    unsigned int n = 0;
+    int long long n = 0;
 
     const int res = scanf("%lld", &n);
     assert(res == 1);
 
-    const unsigned int  number = solve(n);
+    const int long long  number = solve(n);
 
     printf("%u", number);
 

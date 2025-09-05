@@ -32,6 +32,8 @@ int long long solve(const int long long n)
 
     for (int long long i = 2; i <= n + 1; ++i)
     {
+        if (s.sieve[i] == 1) continue;
+
         int long long index = i * i;
         while (index <= n + 1)
         {

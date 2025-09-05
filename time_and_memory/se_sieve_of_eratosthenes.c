@@ -4,7 +4,7 @@
 
 typedef struct
 {
-    unsigned size;
+    int long long size;
     unsigned char* sieve;
 } sieve_t;
 
@@ -68,7 +68,7 @@ int main()
     const int res = scanf("%lld", &n);
     assert(res == 1);
 
-    const int long long  number = solve(n);
+    const int long long number = solve(n);
 
     printf("%u", number);
 

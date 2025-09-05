@@ -2,33 +2,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct sieve_t
+typedef struct
 {
     unsigned size;
     unsigned char* sieve;
-};
+} sieve_t;
 
-int long long solve(const int long long n)
+int long long solve(const unsigned int n)
 {
-    struct sieve_t s = init_sieve(100);
+    sieve_t s = init_sieve(100);
     assert(s.sieve != NULL && s.size > 0);
 }
 
-sieve_t init_sieve(const int long long n)
+sieve_t init_sieve(const unsigned int n)
 {
+    unsigned char* a = calloc(n, sizeof(unsigned char));
+    sieve_t sieve;
+    sieve.size = n;
+    sieve.sieve = a;
+
+    return sieve;
 }
 
-void free_sieve(struct sieve_t* s)
+void free_sieve(sieve_t* s)
 {
     free(s->sieve);
     s->sieve = 0;
     s->size = 0;
 }
 
-unsigned is_prime(struct sieve_t s, unsigned n)
+unsigned is_prime(const sieve_t s, unsigned n)
 {
     assert(n < s.size);
-    return (s.sieve[n] == 1) ? 0 : 1;
+    return s.sieve[n] == 1 ? 0 : 1;
 }
 
 int main()

@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-void construct_sieve(sieve_t* sv, int N)
+void construct_sieve(sieve_t* sv, const int N)
 {
     const int value = log2(N);
     sv->n = N * (value + log2(value));
@@ -13,14 +13,27 @@ void construct_sieve(sieve_t* sv, int N)
     sv->s = a;
 }
 
-void fill_sieve(sieve_t* sv)
+void fill_sieve(const sieve_t* sv)
 {
+    for (int i = 2; i < sv->n; ++i)
+    {
+        if (sv->s[i] == 0)
+        {
+            int index = sv->s[i] * sv->s[i];
+
+            while (index <= sv->n)
+            {
+                sv->s[index] = 1;
+                index += sv->s[i];
+            }
+        }
+    }
 }
 
 
-int nth_prime(sieve_t* sv, int N)
+int nth_prime(const sieve_t* sv, const int N)
 {
-    return N + 4;
+    return sv->s[N];
 }
 
 void free_sieve(sieve_t* s)

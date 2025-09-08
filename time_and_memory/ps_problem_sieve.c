@@ -2,9 +2,14 @@
 #include <stdio.h>
 #include <assert.h>
 
-int solve(int n)
+void fill_sieve(sieve_t* sv)
 {
-    return n + 2;
+}
+
+
+int nth_prime(sieve_t* sv, int N)
+{
+    return N + 4;
 }
 
 int main()
@@ -14,7 +19,9 @@ int main()
     const int res = scanf("%d", &n);
     assert(res == 1);
 
-    const int number = solve(n);
+    sieve_t sieve;
+    fill_sieve(&sieve);
+    const int number = nth_prime(&sieve, n);
 
     printf("%d", number);
 

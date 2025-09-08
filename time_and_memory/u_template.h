@@ -1,0 +1,16 @@
+#pragma once
+
+typedef struct
+{
+    int x, y;
+} point_t;
+
+typedef struct
+{
+    point_t pts[3];
+} triangle_t;
+
+typedef struct {
+    int n;
+    char *s;
+} sieve_t;

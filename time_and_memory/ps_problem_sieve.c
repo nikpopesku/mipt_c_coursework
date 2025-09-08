@@ -7,10 +7,9 @@
 
 void construct_sieve(sieve_t* sv, int N)
 {
-    int value = log2(N);
-    int length = N * (value + log2(value));
-    sv->n = length;
-    char* a = calloc(length, sizeof(char));
+    const int value = log2(N);
+    sv->n = N * (value + log2(value));
+    char* a = calloc(sv->n, sizeof(char));
     sv->s = a;
 }
 

@@ -1,6 +1,6 @@
 #include "u_template.h"
 
-void fill_sieve(sieve_t* sv)
+void fill_sieve(struct sieve_t* sv)
 {
     for (int i = 2; i <= sv->n; ++i)
     {
@@ -18,7 +18,7 @@ void fill_sieve(sieve_t* sv)
 }
 
 
-int nth_prime(sieve_t* sv, int N)
+int nth_prime(struct sieve_t* sv, int N)
 {
     int counter = 0;
     for (int i = 2; i <= sv->n; ++i)

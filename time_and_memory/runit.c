@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "ps_problem_sieve.c"
 
-void construct_sieve(sieve_t* sv, const int N)
+void construct_sieve(struct sieve_t* sv, const int N)
 {
     const int value = log2(N);
     sv->n = N * (value + log2(value));
@@ -15,7 +15,7 @@ void construct_sieve(sieve_t* sv, const int N)
 }
 
 
-void free_sieve(sieve_t* s)
+void free_sieve(struct sieve_t* s)
 {
     free(s->s);
     s->s = 0;
@@ -29,7 +29,7 @@ int main()
     const int res = scanf("%d", &n);
     assert(res == 1);
 
-    sieve_t sieve;
+    struct sieve_t sieve;
     construct_sieve(&sieve, n);
     fill_sieve(&sieve);
     const int number = nth_prime(&sieve, n);

@@ -10,7 +10,7 @@ typedef struct
     point_t pts[3];
 } triangle_t;
 
-typedef struct {
+struct sieve_t {
     int n;
-    char *s;
-} sieve_t;
+    unsigned char *s;
+};

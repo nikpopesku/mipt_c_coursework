@@ -2,13 +2,13 @@
 
 void fill_sieve(struct sieve_t* sv)
 {
-    for (int i = 2; i <= sv->n; ++i)
+    for (int i = 2; i < sv->n; ++i)
     {
         if (sv->s[i] == 0)
         {
             int index = i * i;
 
-            while (index <= sv->n)
+            while (index < sv->n)
             {
                 sv->s[index] = 1;
                 index += i;
@@ -21,7 +21,7 @@ void fill_sieve(struct sieve_t* sv)
 int nth_prime(struct sieve_t* sv, int N)
 {
     int counter = 0;
-    for (int i = 2; i <= sv->n; ++i)
+    for (int i = 2; i < sv->n; ++i)
     {
         if (sv->s[i] == 0) ++counter;
 

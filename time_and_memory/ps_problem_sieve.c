@@ -33,7 +33,18 @@ void fill_sieve(const sieve_t* sv)
 
 int nth_prime(const sieve_t* sv, const int N)
 {
-    return sv->s[N];
+    int counter = 0;
+    for (int i = 2; i <= sv->n; ++i)
+    {
+        if (sv->s[i] == 0) ++counter;
+
+        if (counter == N)
+        {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 void free_sieve(sieve_t* s)

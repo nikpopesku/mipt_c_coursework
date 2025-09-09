@@ -15,16 +15,16 @@ void construct_sieve(sieve_t* sv, const int N)
 
 void fill_sieve(const sieve_t* sv)
 {
-    for (int i = 2; i < sv->n; ++i)
+    for (int i = 2; i <= sv->n; ++i)
     {
         if (sv->s[i] == 0)
         {
-            int index = sv->s[i] * sv->s[i];
+            int index = i * i;
 
             while (index <= sv->n)
             {
                 sv->s[index] = 1;
-                index += sv->s[i];
+                index += i;
             }
         }
     }
@@ -51,6 +51,7 @@ int main()
     assert(res == 1);
 
     sieve_t sieve;
+    construct_sieve(&sieve, n);
     fill_sieve(&sieve);
     const int number = nth_prime(&sieve, n);
 

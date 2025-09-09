@@ -11,6 +11,6 @@ typedef struct
 } triangle_t;
 
 struct sieve_t {
-    int long long n;
+    int n;
     char *s;
 };

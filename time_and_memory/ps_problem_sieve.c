@@ -13,7 +13,7 @@ void construct_sieve(sieve_t* sv, const int N)
     sv->s = a;
 }
 
-void fill_sieve(const sieve_t* sv)
+void fill_sieve(sieve_t* sv)
 {
     for (int i = 2; i <= sv->n; ++i)
     {
@@ -31,7 +31,7 @@ void fill_sieve(const sieve_t* sv)
 }
 
 
-int nth_prime(const sieve_t* sv, const int N)
+int nth_prime(sieve_t* sv, int N)
 {
     int counter = 0;
     for (int i = 2; i <= sv->n; ++i)

@@ -12,5 +12,5 @@ typedef struct
 
 struct sieve_t {
     int n;
-    unsigned char *s;
+    char *s;
 };

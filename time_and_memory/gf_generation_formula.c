@@ -54,10 +54,9 @@ void solve(const int N)
     {
         if (sieve.s[b] == 0)
         {
-            int current_max_length = 0;
-
             for (int a = -N + 1; a < N; ++a)
             {
+                int current_max_length = 0;
                 int n = 0;
                 while (1)
                 {

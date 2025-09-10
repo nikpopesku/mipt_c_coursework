@@ -62,7 +62,7 @@ void solve(const int N)
                 {
                     const int value = n * n + a * n + b;
 
-                    if (sieve.s[value] == 0)
+                    if (value > 0 && sieve.s[value] == 0)
                     {
                         ++current_max_length;
                     }

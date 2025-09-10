@@ -22,7 +22,7 @@ void fill_sieve(const struct sieve_t* sieve)
     {
         if (sieve->s[i] == 0)
         {
-            int long long index = sieve->s[i] * sieve->s[i];
+            int long long index = i * i;
 
             while (index < sieve->n)
             {
@@ -56,6 +56,10 @@ void solve(const int N)
         {
             for (int a = -N + 1; a < N; ++a)
             {
+                if (a == -1 && b == 41)
+                {
+                    int xxx = 5;
+                }
                 int current_max_length = 0;
                 int n = 0;
                 while (1)

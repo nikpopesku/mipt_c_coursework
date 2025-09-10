@@ -17,10 +17,38 @@ void construct_sieve(struct sieve_t* sieve)
     sieve->s = a;
 }
 
+void fill_sieve(const struct sieve_t* sieve)
+{
+    for (int i = 2; i < sieve->n; ++i)
+    {
+        if (sieve->s[i] == 0)
+        {
+            int long long index = sieve->s[i] * sieve->s[i];
+
+            while (index < sieve->n)
+            {
+                sieve->s[index] = 1;
+
+                index += i;
+            }
+        }
+    }
+}
+
+void free_sieve(struct sieve_t* sieve)
+{
+    free(sieve->s);
+    sieve->s = 0;
+    sieve->n = 0;
+}
+
 void solve(int N)
 {
     struct sieve_t sieve;
-    construct_sieve(sieve);
+    construct_sieve(&sieve);
+    fill_sieve(&sieve);
+
+    free_sieve(&sieve);
 }
 
 int main()

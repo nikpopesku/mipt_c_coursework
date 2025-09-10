@@ -69,18 +69,18 @@ void solve(const int N)
                     }
                     else
                     {
+                        if (current_max_length > absolute_max_length)
+                        {
+                            absolute_a = a;
+                            absolute_b = b;
+                            absolute_max_length = current_max_length;
+                        }
+
                         break;
                     }
 
                     ++n;
                 }
-            }
-
-            if (current_max_length > absolute_max_length)
-            {
-                absolute_a = a;
-                absolute_b = b;
-                absolute_max_length = current_max_length;
             }
         }
     }
@@ -98,8 +98,6 @@ int main()
     assert(res == 1);
 
     solve(N);
-
-    printf("%d %d %d", a, b, max_sequence_length);
 
     return 0;
 }

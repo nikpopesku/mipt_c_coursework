@@ -11,14 +11,14 @@ struct sieve_t
 
 void construct_sieve(struct sieve_t* sieve)
 {
-    sieve->n = 10000;
+    sieve->n = 1000000;
     char* a = calloc(sieve->n, sizeof(char));
     sieve->s = a;
 }
 
 void fill_sieve(const struct sieve_t* sieve)
 {
-    for (int i = 2; i < sieve->n; ++i)
+    for (int long long i = 2; i < sieve->n; ++i)
     {
         if (sieve->s[i] == 0)
         {
@@ -56,10 +56,6 @@ void solve(const int N)
         {
             for (int a = -N + 1; a < N; ++a)
             {
-                if (a == -1 && b == 41)
-                {
-                    int xxx = 5;
-                }
                 int current_max_length = 0;
                 int n = 0;
                 while (1)

@@ -32,11 +32,33 @@ void fill_sieve(const struct sieve_t* sieve)
     }
 }
 
-bool is_circular_prime(int prime)
+int is_circular_prime(const struct sieve_t sieve, const int prime)
 {
+    int degree = 10;
+
+    while (prime / degree > 0)
+    {
+        degree *= 10;
+    }
+
+    degree /= 10;
+    int number;
+
+    do
+    {
+        number = prime % 10 * degree + prime / 10;
+
+        if (sieve.s[number] == 1)
+        {
+            return 0;
+        }
+    }
+    while (number != prime);
+
+    return 1;
 }
 
-int solve(const int N)
+int solve(const struct sieve_t sieve, const int N)
 {
     int up = N, down = N, counter = 0;
 
@@ -47,7 +69,7 @@ int solve(const int N)
         {
             ++up;
 
-            if (is_circular_prime(up))
+            if (sieve.s[up] == 0 && is_circular_prime(sieve, up))
             {
                 break;
             }
@@ -57,7 +79,7 @@ int solve(const int N)
         {
             --down;
 
-            if (is_circular_prime(down))
+            if (sieve.s[down] == 0 && is_circular_prime(sieve, down))
             {
                 break;
             }
@@ -85,7 +107,7 @@ int main()
     construct_sieve(&sieve);
     fill_sieve(&sieve);
 
-    const int response = solve(N);
+    const int response = solve(sieve, N);
 
     printf("%d", response);
 

@@ -21,7 +21,7 @@ void fill_sieve(const struct sieve_t* sieve)
     {
         if (sieve->s[i] == 0)
         {
-            int index = i * i;
+            int long long index = i * i;
 
             while (index < sieve->n)
             {

@@ -42,11 +42,11 @@ int is_circular_prime(const struct sieve_t sieve, const int prime)
     }
 
     degree /= 10;
-    int number;
+    int number = prime;
 
     do
     {
-        number = prime % 10 * degree + prime / 10;
+        number = number % 10 * degree + number / 10;
 
         if (sieve.s[number] == 1)
         {
@@ -60,7 +60,7 @@ int is_circular_prime(const struct sieve_t sieve, const int prime)
 
 int solve(const struct sieve_t sieve, const int N)
 {
-    int up = N, down = N, number = 0;
+    int up = N - 1, down = N, number = 0;
 
     while (up < 10000000 || down > 0)
     {

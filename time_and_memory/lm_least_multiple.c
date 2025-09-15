@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct sieve_t {
+struct sieve_t
+{
     int n;
     char* s;
 };
@@ -33,7 +34,13 @@ void fill_sieve(const struct sieve_t* sieve)
 
 int long long solve(const int N)
 {
+}
 
+void free_sieve(struct sieve_t* sieve)
+{
+    free(sieve->s);
+    sieve->s = 0;
+    sieve->n = 0;
 }
 
 int main()
@@ -47,6 +54,8 @@ int main()
     fill_sieve(&sieve);
 
     const int response = solve(N);
+
+    free_sieve(&sieve);
 
     printf("%d", response);
 

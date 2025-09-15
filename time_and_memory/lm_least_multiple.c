@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-int gcd(const int a, const int b)
+int long long gcd(const int long long a, const int long long b)
 {
     if (a == b) return a;
 
@@ -18,7 +18,7 @@ int long long solve(const int N)
 {
     int long long response = 2;
 
-    for (int i = 3; i <= N; ++i)
+    for (int long long i = 3; i <= N; ++i)
     {
         response = i * response / gcd(i, response);
     }

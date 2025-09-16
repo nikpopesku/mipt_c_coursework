@@ -4,13 +4,13 @@
 
 void solve(int long long N)
 {
-    int msb = 0, lsb = 0, counter = 0;
+    int msb = -1, lsb = -1, counter = 0;
 
     while (N > 0)
     {
         if (N & 1)
         {
-            if (lsb == 0)
+            if (lsb == -1)
             {
                 lsb = counter;
             }
@@ -22,7 +22,7 @@ void solve(int long long N)
         ++counter;
     }
 
-    if (msb == 0 && lsb == 0)
+    if (msb == -1 && lsb == -1)
     {
         printf("NO\n");
     }

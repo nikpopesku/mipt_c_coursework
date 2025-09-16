@@ -2,19 +2,43 @@
 #include <stdio.h>
 
 
-void solve(int long long N)
+void solve(char a[100000], const int k, const int N)
 {
+    if (k * 8 < N)
+    {
+        const char value = 1 << N % 8;
+        a[N / 8] = a[N / 8] | value;
+    }
+
+    for (int i = 0; i < k; ++i)
+    {
+        printf("%c ", a[i]);
+    }
 }
 
 
 int main()
 {
-    int long long N = 0;
+    int k = 0, N = 0;
+    unsigned char number;
+    unsigned char a[100000];
 
-    const int res = scanf("%lld", &N);
+    int res = scanf("%d", &k);
     assert(res == 1);
 
-    solve(N);
+    for (int i = 0; i < k; ++i)
+    {
+        res = scanf("%c", &number);
+        assert(res == 1);
+        a[i] = number;
+    }
+
+
+    res = scanf("%d", &N);
+    assert(res == 1);
+
+
+    solve(a, k, N);
 
     return 0;
 }

@@ -4,11 +4,11 @@
 
 void solve(unsigned char a[100000], const int k, const int N)
 {
-    if (k * 8 < N)
+    if (N < k * 8)
     {
         unsigned char value = 1;
         value = value << N % 8;
-        a[N / 8] = a[N / 8] | value;
+        a[N / 8] = a[N / 8] ^ value;
     }
 
     for (int i = 0; i < k; ++i)

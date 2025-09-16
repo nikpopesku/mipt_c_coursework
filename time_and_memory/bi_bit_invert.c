@@ -2,17 +2,18 @@
 #include <stdio.h>
 
 
-void solve(char a[100000], const int k, const int N)
+void solve(unsigned char a[100000], const int k, const int N)
 {
     if (k * 8 < N)
     {
-        const char value = 1 << N % 8;
+        unsigned char value = 1;
+        value = value << N % 8;
         a[N / 8] = a[N / 8] | value;
     }
 
     for (int i = 0; i < k; ++i)
     {
-        printf("%c ", a[i]);
+        printf("%hhu ", a[i]);
     }
 }
 
@@ -28,7 +29,7 @@ int main()
 
     for (int i = 0; i < k; ++i)
     {
-        res = scanf("%c", &number);
+        res = scanf("%hhu", &number);
         assert(res == 1);
         a[i] = number;
     }

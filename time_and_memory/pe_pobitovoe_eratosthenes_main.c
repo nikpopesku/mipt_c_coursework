@@ -10,6 +10,29 @@ void construct_sieve(static struct sieve_t* sv)
     sv->s = a;
 }
 
+int nth_prime(const struct sieve_t sv, const int N)
+{
+    int counter = 0;
+    for (int long long i = 2; i < sv.n; ++i)
+    {
+        if (sv.s[i] == 0) ++counter;
+
+        if (counter == N)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+void free_sieve(struct sieve_t* sv)
+{
+    free(sv->s);
+    sv->s = 0;
+    sv->n = 0;
+}
+
 
 int main()
 {
@@ -21,6 +44,9 @@ int main()
     struct sieve_t sieve;
     construct_sieve(&sieve);
     fill_sieve(&sieve);
+    nth_prime(sieve, 10);
+
+    free_sieve(&sieve);
 
     return 0;
 }

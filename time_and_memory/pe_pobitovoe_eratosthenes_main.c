@@ -19,8 +19,8 @@ int main()
     assert(res == 1);
 
     struct sieve_t sieve;
-    construct_sieve(sieve);
-    fill_sieve(sieve);
+    construct_sieve(&sieve);
+    fill_sieve(&sieve);
 
     return 0;
 }

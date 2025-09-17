@@ -3,9 +3,11 @@
 
 void fill_sieve(const struct sieve_t* sv)
 {
-    for (int long long i = 0; i * i < sv->n * 8; ++i)
+    sv->s[0] = sv->s[0] | 3;
+
+    for (int long long i = 2; i * i < sv->n * 8; ++i)
     {
-        if (sv->s[i] == 0)
+        if (sv->s[(i - 2) / 8] == 0)
         {
             for (int long long index = i * i; index < sv->n * 8; index += i)
             {

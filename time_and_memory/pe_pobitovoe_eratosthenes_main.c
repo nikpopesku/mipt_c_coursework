@@ -48,10 +48,9 @@ int main()
     construct_sieve(&sieve);
     fill_sieve(&sieve);
     const int long long response = nth_prime(sieve, N);
-    printf("%d", is_prime(&sieve, 228));
-    printf("%d", is_prime(&sieve, 229));
-
-    printf("%lld", response);
+    printf("%lld\n", response);
+    printf("%d\n", is_prime(&sieve, 6));
+    printf("%d\n", is_prime(&sieve, 229));
 
     free_sieve(&sieve);
 

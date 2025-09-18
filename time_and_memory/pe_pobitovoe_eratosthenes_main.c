@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "pe_pobitovoe_eratosthenes.c"
 
-void construct_sieve(static struct sieve_t* sv)
+void construct_sieve(struct sieve_t* sv)
 {
     sv->n = 1000000;
     unsigned char* a = calloc(sv->n, sizeof(unsigned char));

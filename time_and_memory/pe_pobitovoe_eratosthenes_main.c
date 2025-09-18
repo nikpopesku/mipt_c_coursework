@@ -10,7 +10,7 @@ void construct_sieve(struct sieve_t* sv)
     sv->s = a;
 }
 
-int long long nth_prime(const struct sieve_t sv, const int N)
+int long long nth_prime(const struct sieve_t sv, const int long long N)
 {
     int counter = 0;
     for (int long long i = 2; i < sv.n * 8; ++i)
@@ -47,7 +47,9 @@ int main()
     struct sieve_t sieve;
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    const int long long response = nth_prime(sieve, 10);
+    const int long long response = nth_prime(sieve, N);
+    printf("%d", is_prime(&sieve, 228));
+    printf("%d", is_prime(&sieve, 229));
 
     printf("%lld", response);
 

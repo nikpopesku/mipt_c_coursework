@@ -16,7 +16,13 @@ typedef struct
 // };
 
 
+// struct sieve_t {
+//     int n;
+//     unsigned char *s;
+// };
+
 struct sieve_t {
     int n;
-    unsigned char *s;
+    unsigned char *mod1;
+    unsigned char *mod5;
 };

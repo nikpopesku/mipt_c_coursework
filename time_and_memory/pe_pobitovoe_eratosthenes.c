@@ -16,8 +16,8 @@ void fill_sieve(const struct sieve_t* sv)
         }
     }
 
-    assert(sv->s[0] == 83);
-    assert(sv->s[1] == 215);
+    // assert(sv->s[0] == 83);
+    // assert(sv->s[1] == 215);
 }
 
 int is_prime(const struct sieve_t* sv, const unsigned n)

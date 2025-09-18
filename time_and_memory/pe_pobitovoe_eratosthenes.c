@@ -22,5 +22,5 @@ void fill_sieve(const struct sieve_t* sv)
 
 int is_prime(const struct sieve_t* sv, const unsigned n)
 {
-    return sv->s[n / 8] & 1 << (n % 8) == 0;
+    return (sv->s[n / 8] & 1 << (n % 8)) == 0;
 }

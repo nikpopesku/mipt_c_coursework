@@ -73,9 +73,11 @@ int main()
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    const int long long answer = nth_prime(sieve, n);
 
-    printf("%lld\n", answer);
+    for (int i = 1; i <= n; ++i) {
+        const int long long answer = nth_prime(sieve, i);
+        printf("%lld ", answer);
+    }
 
     free_sieve(&sieve);
 

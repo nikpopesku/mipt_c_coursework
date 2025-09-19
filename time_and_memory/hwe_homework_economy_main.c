@@ -59,8 +59,8 @@ void free_sieve(struct sieve_t* sieve)
     free(sieve->mod1);
     free(sieve->mod5);
     sieve->n = 0;
-    sieve->mod1 = 0;
-    sieve->mod5 = 0;
+    sieve->mod1 = nullptr;
+    sieve->mod5 = nullptr;
 }
 
 
@@ -68,15 +68,18 @@ int main()
 {
     struct sieve_t sieve;
     int n;
-    const int response = scanf("%d", &n);
-    assert(response == 1);
+    // const int response = scanf("%d", &n);
+    // assert(response == 1);
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    const int answer = nth_prime(sieve, n);
+    // const int answer = nth_prime(sieve, n);
+    // printf("%d\n", answer);
 
-    printf("%d\n", answer);
-    printf("%d\n", is_prime(&sieve, 49));
+    for (int i = 1; i <= 50; ++i) {
+        printf("%lld ", nth_prime(sieve, i));
+    }
+
 
     free_sieve(&sieve);
 

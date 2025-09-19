@@ -25,4 +25,21 @@ void fill_sieve(const struct sieve_t* sv)
     }
 }
 
-int is_prime(struct sieve_t* sv, unsigned n);
+int is_prime(const struct sieve_t* sv, unsigned n)
+{
+    if (n >= 1 && (n - 1) % 6 == 0)
+    {
+        const int val = (n - 1) / 6;
+
+        return (sv->mod1[val / 8] & 1 << val % 8) == 0 ? 1 : 0;
+    }
+
+    if (n >= 5 && (n - 5) % 6 == 0)
+    {
+        const int val = (n - 5) / 6;
+
+        return (sv->mod1[val / 8] & 1 << val % 8) == 0 ? 1 : 0;
+    }
+
+    return 0;
+}

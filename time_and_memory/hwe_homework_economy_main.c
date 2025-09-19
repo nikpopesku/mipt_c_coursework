@@ -13,6 +13,46 @@ void construct_sieve(struct sieve_t* sieve)
     sieve->mod5 = mod5;
 }
 
+int long long nth_prime(const struct sieve_t sv, int long long N)
+{
+    if (N == 1)
+    {
+        return 2;
+    }
+
+    if (N == 2)
+    {
+        return 3;
+    }
+
+    N -= 2;
+    int counter = 0;
+
+    for (int i = 0; i < sv.n * 8; ++i)
+    {
+        if ((sv.mod1[i / 8] & 1 << (i % 8)) == 0)
+        {
+            ++counter;
+        }
+
+        if (counter == N)
+        {
+            return 6 * i + 1;
+        }
+
+        if ((sv.mod5[i / 8] & 1 << (i % 8)) == 0)
+        {
+            ++counter;
+        }
+
+        if (counter == N)
+        {
+            return 6 * i + 5;
+        }
+    }
+
+    return -1;
+}
 
 void free_sieve(struct sieve_t* sieve)
 {
@@ -33,6 +73,9 @@ int main()
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
+    int answer = nth_prime(sieve, n);
+
+    printf("%d", answer);
 
     free_sieve(&sieve);
 

@@ -8,7 +8,7 @@ void fill_sieve(const struct sieve_t *sv) {
         if ((sv->mod1[i / 8] & 1 << i % 8) == 0) {
             const int val0 = 6 * i + 1;
             for (int index = val0 + 6; index < sv->n * 8; index += 6) {
-                if (index % 2 == 0 || index % 3 == 0 || index % 4 == 0 || index % 5 == 0 || index % val0 == 0) {
+                if (index % 2 == 0 || index % 3 == 0 || index % 5 == 0 || index % val0 == 0) {
                     const int val = (index - 1) / 6;
                     sv->mod1[val / 8] = sv->mod1[val / 8] | 1 << (val % 8);
                 }
@@ -17,7 +17,7 @@ void fill_sieve(const struct sieve_t *sv) {
         if ((sv->mod5[i / 8] & 1 << i % 8) == 0) {
             const int val0 = 6 * i + 5;
             for (int index = val0 + 6; index < sv->n * 8; index += 6) {
-                if (index % 2 == 0 || index % 3 == 0 || index % 4 == 0 || index % 5 == 0 || index % val0 == 0) {
+                if (index % 2 == 0 || index % 3 == 0 || index % 5 == 0 || index % val0 == 0) {
                     const int val = (index - 5) / 6;
                     sv->mod5[val / 8] = sv->mod5[val / 8] | 1 << (val % 8);
                 }

@@ -1,5 +1,5 @@
 #include "u_template.h"
-// #include <assert.h>
+#include <assert.h>
 
 
 void fill_sieve(const struct sieve_t *sv) {
@@ -34,11 +34,18 @@ void fill_sieve(const struct sieve_t *sv) {
         }
     }
 
-    // assert(sv->mod1[0] == 17);
-    // assert(sv->mod5[0] == 32);
+    assert(sv->mod1[0] == 17);
+    assert(sv->mod5[0] == 32);
 }
 
 int is_prime(const struct sieve_t *sv, const unsigned n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 2 || n == 3) {
+        return 1;
+    }
+
     if (n >= 1 && (n - 1) % 6 == 0) {
         const int val = (n - 1) / 6;
 
@@ -48,7 +55,7 @@ int is_prime(const struct sieve_t *sv, const unsigned n) {
     if (n >= 5 && (n - 5) % 6 == 0) {
         const int val = (n - 5) / 6;
 
-        return (sv->mod1[val / 8] & 1 << (val % 8)) == 0 ? 1 : 0;
+        return (sv->mod5[val / 8] & 1 << (val % 8)) == 0 ? 1 : 0;
     }
 
     return 0;

@@ -37,7 +37,7 @@ void fill_sieve(const struct sieve_t *sv) {
     // assert(sv->mod5[0] == 32);
 }
 
-int is_prime(const struct sieve_t *sv, unsigned n) {
+int is_prime(const struct sieve_t *sv, const unsigned n) {
     if (n >= 1 && (n - 1) % 6 == 0) {
         const int val = (n - 1) / 6;
 

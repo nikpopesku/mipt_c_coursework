@@ -73,7 +73,7 @@ int main()
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    int answer = nth_prime(sieve, n);
+    const int answer = nth_prime(sieve, n);
 
     printf("%d", answer);
 

@@ -68,18 +68,14 @@ int main()
 {
     struct sieve_t sieve;
     int n;
-    // const int response = scanf("%d", &n);
-    // assert(response == 1);
+    const int response = scanf("%d", &n);
+    assert(response == 1);
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    // const int answer = nth_prime(sieve, n);
-    // printf("%d\n", answer);
+    const int answer = nth_prime(sieve, n);
 
-    for (int i = 1; i <= 50; ++i) {
-        printf("%lld ", nth_prime(sieve, i));
-    }
-
+    printf("%d\n", answer);
 
     free_sieve(&sieve);
 

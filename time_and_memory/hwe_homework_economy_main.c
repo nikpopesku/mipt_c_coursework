@@ -7,9 +7,10 @@
 void construct_sieve(struct sieve_t* sieve)
 {
     sieve->n = 1000000;
-    unsigned char* a = calloc(sieve->n, sizeof(unsigned char));
-    sieve->mod1 = a;
-    sieve->mod5 = a;
+    unsigned char* mod1 = calloc(sieve->n, sizeof(unsigned char));
+    unsigned char* mod5 = calloc(sieve->n, sizeof(unsigned char));
+    sieve->mod1 = mod1;
+    sieve->mod5 = mod5;
 }
 
 

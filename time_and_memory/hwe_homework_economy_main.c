@@ -28,7 +28,7 @@ int long long nth_prime(const struct sieve_t sv, int long long N)
     N -= 2;
     int counter = 0;
 
-    for (int i = 0; i < sv.n * 8; ++i)
+    for (int long long i = 0; i < sv.n * 8; ++i)
     {
         if ((sv.mod1[i / 8] & 1 << (i % 8)) == 0)
         {
@@ -73,9 +73,9 @@ int main()
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
-    const int answer = nth_prime(sieve, n);
+    const int long long answer = nth_prime(sieve, n);
 
-    printf("%d\n", answer);
+    printf("%lld\n", answer);
 
     free_sieve(&sieve);
 

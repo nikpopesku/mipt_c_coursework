@@ -24,7 +24,7 @@ void fill_sieve(const struct sieve_t* sv)
             {
                 if (index % 2 == 0 || index % 3 == 0 || index % 4 == 0 || index % 5 == 0)
                 {
-                    const int val = (index - 1) / 6;
+                    const int val = (index - 5) / 6;
                     sv->mod5[val / 8] = sv->mod5[val / 8] | 1 << (val % 8);
                 }
             }

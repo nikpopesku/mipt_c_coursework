@@ -75,7 +75,8 @@ int main()
     fill_sieve(&sieve);
     const int answer = nth_prime(sieve, n);
 
-    printf("%d", answer);
+    printf("%d\n", answer);
+    printf("%d\n", is_prime(&sieve, 49));
 
     free_sieve(&sieve);
 

@@ -6,7 +6,7 @@
 
 void construct_sieve(struct sieve_t* sieve)
 {
-    sieve->n = 1;
+    sieve->n = 1000000;
     unsigned char* mod1 = calloc(sieve->n, sizeof(unsigned char));
     unsigned char* mod5 = calloc(sieve->n, sizeof(unsigned char));
     sieve->mod1 = mod1;
@@ -73,11 +73,12 @@ int main()
 
     construct_sieve(&sieve);
     fill_sieve(&sieve);
+    printf("%lld\n", nth_prime(sieve, n));
 
-    for (int i = 0; i <= n; ++i) {
-        const int answer = is_prime(&sieve, i);
-        printf("%d %d\n", i, answer);
-    }
+    // for (int i = 1; i <= n; ++i) {
+    //     const int answer = is_prime(&sieve, i);
+    //     printf("%d %d\n", i, answer);
+    // }
 
     free_sieve(&sieve);
 

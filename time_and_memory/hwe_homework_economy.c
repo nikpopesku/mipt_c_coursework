@@ -5,7 +5,7 @@
 void fill_sieve(const struct sieve_t *sv) {
     sv->mod1[0] = 1;
 
-    for (int i = 0; 4 * i * i < sv->n * 8; ++i) {
+    for (int i = 0; 6 * i * i < sv->n * 8; ++i) {
         if ((sv->mod1[i / 8] & 1 << (i % 8)) == 0) {
             const int long long val0 = 6 * i + 1;
             for (int long long index = val0 * val0; index < sv->n * 8 * 6; index += val0) {

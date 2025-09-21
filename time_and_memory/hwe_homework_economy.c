@@ -1,14 +1,15 @@
 #include "u_template.h"
 #include <assert.h>
+#include <math.h>
 
 
 void fill_sieve(const struct sieve_t* sv)
 {
     sv->mod1[0] = 1;
     const long long limit = sv->n * 8;
-    const long long i_limit = (long long)limit / 6.0;
+    const long long i_limit = (long long)sqrt(limit / 6.0);
 
-    for (int i = 0; i * i < i_limit; ++i)
+    for (int i = 0; i < i_limit; ++i)
     {
         if ((sv->mod1[i / 8] & 1 << (i % 8)) == 0)
         {

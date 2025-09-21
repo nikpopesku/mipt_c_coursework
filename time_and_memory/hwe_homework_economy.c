@@ -13,39 +13,39 @@ void fill_sieve(const struct sieve_t* sv)
     {
         if ((sv->mod1[i / 8] & 1 << (i % 8)) == 0)
         {
-            const int long long n6k1 = 6 * i + 1;
+            const int long long p1 = 6 * i + 1;
 
-            for (int long long index = n6k1 * n6k1; index < limit * 6; index += n6k1)
+            // Mark multiples of p1 that are of the form 6j+1.
+            // These result from p1 * (6k+1), starting with k=i.
+            // The starting index in the bit array is k' = 6*i*i + 2*i.
+            for (long long k = 6 * i * i + 2 * i; k < limit; k += p1)
             {
-                if ((index - 1) % 6 == 0)
-                {
-                    const int val = (index - 1) / 6;
-                    sv->mod1[val / 8] |= 1 << (val % 8);
-                }
-                else if ((index - 5) % 6 == 0)
-                {
-                    const int val = (index - 5) / 6;
-                    sv->mod5[val / 8] |= 1 << (val % 8);
-                }
+                sv->mod1[k / 8] |= (1 << (k % 8));
+            }
+
+            // Mark multiples of p1 that are of the form 6j+5.
+            // These result from p1 * (6k+5), starting with k=i.
+            // The starting index is k' = 6*i*i + 6*i.
+            for (long long k = 6 * i * i + 6 * i; k < limit; k += p1)
+            {
+                sv->mod5[k / 8] |= (1 << (k % 8));
             }
         }
         if ((sv->mod5[i / 8] & 1 << (i % 8)) == 0)
         {
-            const int long long n6k5 = 6 * i + 5;
+            const int long long p5 = 6 * i + 5;
 
-            for (int long long index = n6k5 * n6k5; index <= limit * 6; index += n6k5)
-            {
-                if ((index - 5) % 6 == 0)
-                {
-                    const int val = (index - 5) / 6;
-                    sv->mod5[val / 8] |= 1 << (val % 8);
-                }
-                else if ((index - 1) % 6 == 0)
-                {
-                    const int val = (index - 1) / 6;
-                    sv->mod1[val / 8] |= 1 << (val % 8);
-                }
-            }
+            // Mark multiples of p5 that are of the form 6j+1.
+            // These result from p5 * (6k+5), starting with k=i.
+            // The starting index is k' = 6*i*i + 10*i + 4.
+            for (long long k = 6 * i * i + 10 * i + 4; k < limit; k += p5)
+                sv->mod1[k / 8] |= (1 << (k % 8));
+
+            // Mark multiples of p5 that are of the form 6j+5.
+            // These result from p5 * (6k+1), starting with k=i+1.
+            // The starting index is k' = 6*i*i + 12*i + 5.
+            for (long long k = 6 * i * i + 12 * i + 5; k < limit; k += p5)
+                sv->mod5[k / 8] |= (1 << (k % 8));
         }
     }
 

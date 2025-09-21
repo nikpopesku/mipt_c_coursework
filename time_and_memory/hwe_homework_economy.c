@@ -1,6 +1,5 @@
 #include "u_template.h"
 #include <assert.h>
-#include <math.h>
 
 
 void fill_sieve(const struct sieve_t* sv)

@@ -29,7 +29,7 @@ void fill_sieve(const struct sieve_t* sv)
         if ((sv->mod5[i / 8] & 1 << (i % 8)) == 0)
         {
             const int long long val0 = 6 * i + 5;
-            for (int long long index = val0 * val0; index <= limit; index += val0)
+            for (int long long index = val0 * val0; index <= limit * 6; index += val0)
             {
                 if ((index - 5) % 6 == 0)
                 {

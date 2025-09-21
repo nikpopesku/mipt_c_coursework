@@ -6,13 +6,15 @@ void fill_sieve(const struct sieve_t* sv)
 {
     sv->mod1[0] = 1;
     const long long limit = sv->n * 8;
+    const long long i_limit = (long long)limit / 6.0;
 
-    for (int i = 0; 6 * i * i < limit; ++i)
+    for (int i = 0; i * i < i_limit; ++i)
     {
         if ((sv->mod1[i / 8] & 1 << (i % 8)) == 0)
         {
-            const int long long val0 = 6 * i + 1;
-            for (int long long index = val0 * val0; index < limit * 6; index += val0)
+            const int long long n6k1 = 6 * i + 1;
+
+            for (int long long index = n6k1 * n6k1; index < limit * 6; index += n6k1)
             {
                 if ((index - 1) % 6 == 0)
                 {
@@ -28,8 +30,9 @@ void fill_sieve(const struct sieve_t* sv)
         }
         if ((sv->mod5[i / 8] & 1 << (i % 8)) == 0)
         {
-            const int long long val0 = 6 * i + 5;
-            for (int long long index = val0 * val0; index <= limit * 6; index += val0)
+            const int long long n6k5 = 6 * i + 5;
+
+            for (int long long index = n6k5 * n6k5; index <= limit * 6; index += n6k5)
             {
                 if ((index - 5) % 6 == 0)
                 {

@@ -7,14 +7,14 @@
 void construct_sieve(struct sieve_t* sieve)
 {
     sieve->n = 30000000;
-    unsigned char* mod1 = calloc(sieve->n, sizeof(unsigned char));
-    unsigned char* mod5 = calloc(sieve->n, sizeof(unsigned char));
-    sieve->mod1 = mod1;
-    sieve->mod5 = mod5;
+    sieve->mod1 = calloc(sieve->n, sizeof(unsigned char));
+    sieve->mod5 = calloc(sieve->n, sizeof(unsigned char));
 }
 
 int long long nth_prime(const struct sieve_t sv, int long long N)
 {
+    int counter = 0;
+
     if (N == 1)
     {
         return 2;
@@ -26,7 +26,6 @@ int long long nth_prime(const struct sieve_t sv, int long long N)
     }
 
     N -= 2;
-    int counter = 0;
 
     for (int long long i = 0; i < sv.n * 8; ++i)
     {

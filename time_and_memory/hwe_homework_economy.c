@@ -5,9 +5,10 @@
 
 void fill_sieve(const struct sieve_t* sv)
 {
-    sv->mod1[0] = 1;
     const long long limit = sv->n * 8;
     const long long i_limit = (long long)sqrt(limit / 6.0);
+
+    sv->mod1[0] = 1;
 
     for (int i = 0; i < i_limit; ++i)
     {

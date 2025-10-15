@@ -1,7 +1,20 @@
 #include <assert.h>
 #include <stdio.h>
 
-unsigned long long gcd(unsigned long long a, unsigned long long b) {
+unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
+    if (a == b) {
+        return a;
+    }
+
+    if (a > b) {
+        if (a % b == 0) {
+            return b;
+        }
+
+        return gcd(a % b, b);
+    }
+
+    return gcd(b, a);
 }
 
 unsigned long long solve(const int k, const int n) {

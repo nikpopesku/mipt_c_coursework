@@ -2,6 +2,8 @@
 #include <math.h>
 #include <stdio.h>
 
+constexpr unsigned long long MAX = 1ULL << 60;
+
 unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     if (a == b) {
         return a;
@@ -53,13 +55,13 @@ unsigned long long solve(const int k, const int n) {
     unsigned long long a2 = k;
     unsigned long long max_prime = 0;
 
-    while (a2 >= a1) {
+    while (a2 < MAX) {
         const unsigned long long temp = a2;
         a2 = k * a1 + n * a0;
         a0 = a1;
         a1 = temp;
 
-        if (a2 < temp) {
+        if (a2 >= MAX) {
             break;
         }
 

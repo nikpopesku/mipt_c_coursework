@@ -37,9 +37,10 @@ int has_divisor(const unsigned long long number) {
         }
 
         // if (number == 37 && i == 7) {
-        //     int xxx = 5;
+        //     unsigned long long xxx = calc_power(i, number - 1, number);
+        //     int ttt = 6;
         // }
-        if (calc_power(i, number, number) != 1) {
+        if (calc_power(i, number - 1, number) != 1) {
             return 1;
         }
     }

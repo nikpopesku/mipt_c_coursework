@@ -7,7 +7,11 @@ unsigned long long gcd(unsigned long long a, unsigned long long b) {
     }
 
     if (a > b) {
-        return gcd(a - b, b);
+        if (a % b == 0) {
+            return b;
+        }
+
+        return gcd(a % b, b);
     }
 
     return gcd(b, a);

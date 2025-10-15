@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <math.h>
 #include <stdio.h>
 
 unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
@@ -17,16 +18,16 @@ unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     return gcd(b, a);
 }
 
-unsigned long long calc_power(const unsigned long long a, const unsigned long long p) {
-    if (p == 0) {
+unsigned long long calc_power(const unsigned long long a, const unsigned long long power, const unsigned long long p) {
+    if (power == 0) {
         return a;
     }
 
-    if (p % 2 == 1) {
-        return (a % p) * calc_power(a, p - 1) % p;
+    if (power % 2 == 1) {
+        return (a % p) * calc_power(a, power - 1, p) % p;
     }
 
-    return gcd(((a % p) * (a % p)) % p, p / 2);
+    return calc_power(((a % p) * (a % p)) % power, power / 2, p);
 }
 
 int has_divisor(const unsigned long long number) {
@@ -35,7 +36,10 @@ int has_divisor(const unsigned long long number) {
             return 1;
         }
 
-        if (calc_power(i, number) != 1) {
+        // if (number == 37 && i == 7) {
+        //     int xxx = 5;
+        // }
+        if (calc_power(i, number, number) != 1) {
             return 1;
         }
     }

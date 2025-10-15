@@ -24,7 +24,7 @@ unsigned long long calc_power(const unsigned long long a, const unsigned long lo
     }
 
     if (power % 2 == 1) {
-        return (a % p) * calc_power(a, power - 1, p) % p;
+        return ((a % p) * calc_power(a, power - 1, p) % p) % p;
     }
 
     return calc_power(((a % p) * (a % p)) % p, power / 2, p);

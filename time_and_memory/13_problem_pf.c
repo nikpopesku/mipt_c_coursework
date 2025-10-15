@@ -17,6 +17,16 @@ unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     return gcd(b, a);
 }
 
+int has_divisor(const unsigned long long number) {
+    for (unsigned long long i = 7; i < number; ++i) {
+        if (gcd(number, i) != 1) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 unsigned long long solve(const int k, const int n) {
     unsigned long long a0 = 0, a1 = 1;
     unsigned long long a2 = k;
@@ -50,11 +60,11 @@ unsigned long long solve(const int k, const int n) {
             continue;
         }
 
-        for (unsigned long long i = 7; i < a2; ++i) {
-            if (gcd(a2, i) != 1) {
-                continue;
-            }
+        if (has_divisor(a2) == 1) {
+            continue;
         }
+
+        max_prime = a2;
     }
 
     return max_prime;

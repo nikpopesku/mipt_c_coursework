@@ -1,20 +1,29 @@
 #include <assert.h>
 #include <stdio.h>
 
-int gcd(unsigned long long a, unsigned long long b) {
+unsigned long long gcd(unsigned long long a, unsigned long long b) {
     if (a == b) {
         return a;
     }
 
     if (a > b) {
-        return gcd(a - b, b)
+        return gcd(a - b, b);
     }
 
     return gcd(b, a);
 }
 
 int solve(unsigned long long P) {
-    return 4;
+    if (P % 2 == 0 || P % 3 == 0 || P % 5 == 0) {
+        return 0;
+    }
+    for (unsigned long long i = 7; i * i < P; ++i) {
+        if (gcd(P, i) != 1) {
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 int main() {

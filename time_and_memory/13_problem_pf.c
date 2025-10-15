@@ -1,7 +1,19 @@
 #include <assert.h>
 #include <stdio.h>
 
-unsigned long long solve(int k, int n) {
+unsigned long long solve(const int k, const int n) {
+    unsigned long long a0 = 0, a1 = 1;
+    unsigned long long a2 = k;
+
+    while (a2 >= a1) {
+        const unsigned long long temp = a2;
+        a2 = k * a1 + n * a0;
+        a0 = a1;
+        a1 = temp;
+
+
+    }
+
     return 0;
 }
 

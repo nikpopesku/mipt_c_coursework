@@ -15,7 +15,7 @@ int main()
 
     const int answer = solve(P);
 
-    printf("%lld", answer);
+    printf("%d", answer);
 
     return 0;
 }

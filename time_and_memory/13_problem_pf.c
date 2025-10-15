@@ -20,7 +20,7 @@ unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
 
 unsigned long long calc_power(const unsigned long long a, const unsigned long long power, const unsigned long long p) {
     if (power == 0) {
-        return a;
+        return 1;
     }
 
     if (power % 2 == 1) {

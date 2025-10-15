@@ -17,9 +17,25 @@ unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     return gcd(b, a);
 }
 
+unsigned long long calc_power(const unsigned long long a, const unsigned long long p) {
+    if (p == 0) {
+        return a;
+    }
+
+    if (p % 2 == 1) {
+        return (a % p) * calc_power(a, p - 1) % p;
+    }
+
+    return gcd(((a % p) * (a % p)) % p, p / 2);
+}
+
 int has_divisor(const unsigned long long number) {
     for (unsigned long long i = 7; i < number; ++i) {
         if (gcd(number, i) != 1) {
+            return 1;
+        }
+
+        if (calc_power(i, number) != 1) {
             return 1;
         }
     }
@@ -37,6 +53,10 @@ unsigned long long solve(const int k, const int n) {
         a2 = k * a1 + n * a0;
         a0 = a1;
         a1 = temp;
+
+        if (a2 < temp) {
+            break;
+        }
 
         if (a2 == 2 && max_prime == 0) {
             max_prime = 2;

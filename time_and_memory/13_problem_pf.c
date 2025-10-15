@@ -27,7 +27,7 @@ unsigned long long calc_power(const unsigned long long a, const unsigned long lo
         return (a % p) * calc_power(a, power - 1, p) % p;
     }
 
-    return calc_power(((a % p) * (a % p)) % power, power / 2, p);
+    return calc_power(((a % p) * (a % p)) % p, power / 2, p);
 }
 
 int has_divisor(const unsigned long long number) {

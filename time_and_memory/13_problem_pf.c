@@ -96,7 +96,6 @@ int miller_rabin_test(const unsigned long long n, const unsigned long long a)
 
 int is_prime(unsigned long long n)
 {
-    unsigned long long witnesses[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
     if (n <= 1) return 0;
     if (n == 2 || n == 3) return 1;
     if (n % 2 == 0) return 0;
@@ -106,6 +105,7 @@ int is_prime(unsigned long long n)
 
     for (int i = 0; i < 12; i++)
     {
+        const unsigned long long witnesses[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
         if (n == witnesses[i]) return 1;
         if (n < witnesses[i]) break;
         if (!miller_rabin_test(n, witnesses[i]))
@@ -124,7 +124,7 @@ unsigned long long solve(const int k, const int n)
 
     while (1)
     {
-        unsigned long long a2 = k * a1 + n * a0;
+        const unsigned long long a2 = k * a1 + n * a0;
 
         if (a2 >= MAX)
         {

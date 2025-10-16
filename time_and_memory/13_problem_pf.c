@@ -33,15 +33,11 @@ unsigned long long calc_power(const unsigned long long a, const unsigned long lo
 }
 
 int has_divisor(const unsigned long long number) {
-    for (unsigned long long i = 7; i < number; ++i) {
+    for (unsigned long long i = 7; i * i < number; i += 2) {
         if (gcd(number, i) != 1) {
             return 1;
         }
 
-        // if (number == 37 && i == 7) {
-        //     unsigned long long xxx = calc_power(i, number - 1, number);
-        //     int ttt = 6;
-        // }
         if (calc_power(i, number - 1, number) != 1) {
             return 1;
         }
@@ -51,15 +47,15 @@ int has_divisor(const unsigned long long number) {
 }
 
 unsigned long long solve(const int k, const int n) {
-    unsigned long long a0 = 0, a1 = 1;
+    unsigned long long a1 = 1;
     unsigned long long a2 = k;
     unsigned long long max_prime = 0;
 
     while (a2 < MAX) {
         const unsigned long long temp = a2;
-        a2 = k * a1 + n * a0;
-        a0 = a1;
+        a2 = k * a2 + n * a1;
         a1 = temp;
+        // printf("%llu\n", a2);
 
         if (a2 >= MAX) {
             break;

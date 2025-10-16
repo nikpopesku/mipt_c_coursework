@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 
-constexpr unsigned long long MAX = 1ULL << 60;
+unsigned long long MAX = 1ULL << 60;
 
 unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     if (a == b) {
@@ -99,11 +99,12 @@ unsigned long long solve(const int k, const int n) {
 
 int main() {
     int k, n;
+    unsigned long long answer;
 
     const int res = scanf("%d %d", &k, &n);
     assert(res == 2);
 
-    const unsigned long long answer = solve(k, n);
+    answer = solve(k, n);
 
     printf("%llu", answer);
 

@@ -4,13 +4,17 @@
 
 unsigned long long MAX = 1ULL << 60;
 
-unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
-    if (a == b) {
+unsigned long long gcd(const unsigned long long a, const unsigned long long b)
+{
+    if (a == b)
+    {
         return a;
     }
 
-    if (a > b) {
-        if (a % b == 0) {
+    if (a > b)
+    {
+        if (a % b == 0)
+        {
             return b;
         }
 
@@ -20,25 +24,32 @@ unsigned long long gcd(const unsigned long long a, const unsigned long long b) {
     return gcd(b, a);
 }
 
-unsigned long long calc_power(const unsigned long long a, const unsigned long long power, const unsigned long long p) {
-    if (power == 0) {
+unsigned long long calc_power(const unsigned long long a, const unsigned long long power, const unsigned long long p)
+{
+    if (power == 0)
+    {
         return 1;
     }
 
-    if (power % 2 == 1) {
+    if (power % 2 == 1)
+    {
         return ((a % p) * calc_power(a, power - 1, p) % p) % p;
     }
 
     return calc_power(((a % p) * (a % p)) % p, power / 2, p);
 }
 
-int has_divisor(const unsigned long long number) {
-    for (unsigned long long i = 7; i * i < number; i += 2) {
-        if (gcd(number, i) != 1) {
+int has_divisor(const unsigned long long number)
+{
+    for (unsigned long long i = 7; i * i < number; i += 2)
+    {
+        if (gcd(number, i) != 1)
+        {
             return 1;
         }
 
-        if (calc_power(i, number - 1, number) != 1) {
+        if (calc_power(i, number - 1, number) != 1)
+        {
             return 1;
         }
     }
@@ -46,44 +57,52 @@ int has_divisor(const unsigned long long number) {
     return 0;
 }
 
-unsigned long long solve(const int k, const int n) {
+unsigned long long solve(const int k, const int n)
+{
     unsigned long long a1 = 1;
     unsigned long long a2 = k;
     unsigned long long max_prime = 0;
 
-    while (a2 < MAX) {
+    while (a2 < MAX)
+    {
         const unsigned long long temp = a2;
         a2 = k * a2 + n * a1;
         a1 = temp;
         // printf("%llu\n", a2);
 
-        if (a2 >= MAX) {
+        if (a2 >= MAX)
+        {
             break;
         }
 
-        if (a2 == 2 && max_prime == 0) {
+        if (a2 == 2 && max_prime == 0)
+        {
             max_prime = 2;
 
             continue;
         }
 
-        if (a2 == 3 && max_prime == 0) {
+        if (a2 == 3 && max_prime == 0)
+        {
             max_prime = 3;
 
             continue;
         }
 
-        if (a2 == 5 && max_prime == 0) {
+        if (a2 == 5 && max_prime == 0)
+        {
             max_prime = 5;
 
             continue;
         }
 
-        if (a2 % 2 == 0 || a2 % 3 == 0 || a2 % 5 == 0) {
+        if (a2 % 2 == 0 || a2 % 3 == 0 || a2 % 5 == 0)
+        {
             continue;
         }
 
-        if (has_divisor(a2) == 1) {
+        if (has_divisor(a2) == 1)
+        {
             continue;
         }
 
@@ -93,7 +112,8 @@ unsigned long long solve(const int k, const int n) {
     return max_prime;
 }
 
-int main() {
+int main()
+{
     int k, n;
     unsigned long long answer;
 

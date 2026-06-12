@@ -30,5 +30,7 @@ int main() {
 
     printf("%d %d", mn, mx);
 
+    free(arr);
+
     return 0;
 }

@@ -1,9 +1,9 @@
 #include <assert.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
-{
+int main() {
     int sz;
     const int res = scanf("%d", &sz);
     assert(res == 1);
@@ -16,16 +16,15 @@ int main()
         return 0;
     }
 
-    int val;
-
-    for (int i = 0; i < sz; ++i) {
-        scanf("%d", &val);
-        if (val > mx) {
-            mx = val;
+    int *arr = malloc(sz * sizeof(int));
+    for (int i = 0; i < sz; i++) {
+        scanf("%d", &arr[i]);
+        if (arr[i] > mx) {
+            mx = arr[i];
         }
 
-        if (val < mn) {
-            mn = val;
+        if (arr[i] < mn) {
+            mn = arr[i];
         }
     }
 

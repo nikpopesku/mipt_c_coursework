@@ -13,6 +13,11 @@ int main() {
     int sz;
     scanf("%d", &sz);
 
+    if (sz == 0) {
+        printf("0");
+        return 0;
+    }
+
     int *arr = malloc(sz * sizeof(int));
 
     for (int i = 0; i < sz; ++i) {
@@ -20,7 +25,7 @@ int main() {
     }
 
     for (int i = sz - 1; i >= 1; --i) {
-        const int j = myrand() % i;
+        const int j = myrand() % (i + 1);
         const int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;

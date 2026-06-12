@@ -6,7 +6,7 @@
 int myrand() {
     static unsigned long int seed = 1;
     seed = seed * 1103515245 + 12345;
-    return (unsigned int)(seed / 65536) % 32768;
+    return (unsigned int) (seed / 65536) % 32768;
 }
 
 int main() {
@@ -20,7 +20,7 @@ int main() {
     }
 
     for (int i = sz - 1; i >= 1; --i) {
-        const int j = myrand();
+        const int j = myrand() % i;
         const int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;

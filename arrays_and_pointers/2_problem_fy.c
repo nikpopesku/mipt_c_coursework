@@ -19,6 +19,13 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
+    for (int i = sz - 1; i >= 1; --i) {
+        const int j = myrand();
+        const int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
     for (int i = 0; i < sz; ++i) {
         printf("%d ", arr[i]);
     }

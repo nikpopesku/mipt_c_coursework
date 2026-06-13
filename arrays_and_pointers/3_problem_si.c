@@ -1,8 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int moveright(int *arr, int key, int last) {
-    // TODO: ваш код здесь
+int moveright(int *arr, const int key, const int last) {
+    for (int i = last - 1; i >= 0; --i) {
+        if (arr[i] > key) {
+            arr[i+i] = arr[i];
+        } else {
+            return i;
+        }
+    }
+
+    return 0;
 }
 
 void inssort(int *arr, int len) {
@@ -22,6 +30,12 @@ int main() {
 
     for (int i = 0; i < sz; ++i) {
         scanf("%d", &arr[i]);
+    }
+
+    inssort(arr, sz);
+
+    for (int i = 0; i < sz; ++i) {
+        printf("%d ", arr[i]);
     }
 
     free(arr);

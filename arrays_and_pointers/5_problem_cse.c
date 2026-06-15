@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <limits.h>
 
 typedef int (*cmp_t)(void const *lhs, void const *rhs);
 
@@ -23,13 +24,13 @@ int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     rhs += nsorted * eltsize;
     int elem = *((int const *) rhs);
 
-    int delta = nsorted > 0 ? elem - lhs_elem : elem;
+    int delta = nsorted > 0 ? INT_MAX : elem;
     int new_pos = nsorted;
 
     for (int i = nsorted; i < numelts; ++i) {
         rhs = parr + i * eltsize;
         elem = *((int const *) rhs);
-        if (nsorted > 0 && cmp(lhs, rhs) == 0 && elem - lhs_elem < delta) {
+        if (nsorted > 0 && cmp(rhs, lhs) == 0 && elem - lhs_elem < delta) {
             delta = elem - lhs_elem;
             new_pos = i;
         } else if (nsorted == 0 && elem < delta) {
@@ -39,8 +40,8 @@ int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     }
 
     if (new_pos != nsorted) {
-        char *a = (char *)parr + nsorted * eltsize;
-        char *b = (char *)parr + new_pos * eltsize;
+        char *a = (char *) parr + nsorted * eltsize;
+        char *b = (char *) parr + new_pos * eltsize;
         char temp[eltsize];
         memcpy(temp, a, eltsize);
         memcpy(a, b, eltsize);

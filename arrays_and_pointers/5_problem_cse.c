@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 typedef int (*cmp_t)(void const *lhs, void const *rhs);
@@ -15,7 +16,7 @@ int cmp(void const *lhs, void const *rhs) {
 
 int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     const char *lhs = parr;
-    lhs += nsorted ? nsorted - 1 * eltsize : 0;
+    lhs += nsorted ? (nsorted - 1) * eltsize : 0;
     const int lhs_elem = *((int const *) lhs);
 
     char *rhs = parr;
@@ -38,9 +39,12 @@ int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     }
 
     if (new_pos != nsorted) {
-        int temp = parr[nsorted];
-        parr[nsorted] = parr[new_pos];
-        parr[new_pos] = temp;
+        char *a = (char *)parr + nsorted * eltsize;
+        char *b = (char *)parr + new_pos * eltsize;
+        char temp[eltsize];
+        memcpy(temp, a, eltsize);
+        memcpy(a, b, eltsize);
+        memcpy(b, temp, eltsize);
     }
 
     return 0;
@@ -64,7 +68,7 @@ int main() {
         printf("%d ", arr[i]);
     }
 
-    selstep(arr, 1, sz, pos, cmp);
+    selstep(arr, sizeof(int), sz, pos, cmp);
 
     free(arr);
 

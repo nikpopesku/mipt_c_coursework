@@ -5,8 +5,8 @@
 typedef int (*cmp_t)(void const *lhs, void const *rhs);
 
 int cmp(void const *lhs, void const *rhs) {
-    const int a = *((int const *)lhs);
-    const int b = *((int const *)rhs);
+    const int a = *((int const *) lhs);
+    const int b = *((int const *) rhs);
 
     if (a < b) return 1;
 

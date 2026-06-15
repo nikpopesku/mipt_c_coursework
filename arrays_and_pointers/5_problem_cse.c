@@ -2,16 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int (*cmp_t)(void const * lhs, void const * rhs);
+typedef int (*cmp_t)(void const *lhs, void const *rhs);
 
-int cmp(void const * lhs, void const * rhs) {
+int cmp(void const *lhs, void const *rhs) {
     if (lhs > rhs) return 1;
 
     return 0;
 }
 
-int selstep(void * parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
-
+int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     return 0;
 }
 

@@ -14,27 +14,29 @@ int cmp(void const *lhs, void const *rhs) {
 }
 
 int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
-    char *elem_ptr = parr;
-    char *previous_elem_ptr = parr;
-    elem_ptr += nsorted * eltsize;
-    previous_elem_ptr += nsorted ? nsorted - 1 * eltsize : 0;
-    int previous_elem = *((int const *) previous_elem_ptr);
+    char *lhs = parr;
+    lhs += nsorted ? nsorted - 1 * eltsize : 0;
+    int lhs_elem = *((int const *) lhs);
 
-    int delta = nsorted > 0 ? elem - previous_elem : elem;
+    char *elem_ptr = parr;
+    elem_ptr += nsorted * eltsize;
+
+
+
+    int delta = nsorted > 0 ? elem - lhs_elem : elem;
     int new_pos = nsorted;
 
     for (int i = nsorted; i < numelts; ++i) {
-        char *lhs = parr;
         char *rhs = parr;
         if (nsorted > 0) {
             lhs += (nsorted - 1) * eltsize;
         }
         rhs += i * eltsize;
         const int elem = *((int const *) rhs);
-        if (nsorted > 0 && cmp(lhs, rhs) == 0 && elem - previous_elem < delta) {
-            delta = elem - previous_elem;
-        } else if (nsorted == 0 && previous_elem < delta) {
-            delta = previous_elem;
+        if (nsorted > 0 && cmp(lhs, rhs) == 0 && elem - lhs_elem < delta) {
+            delta = elem - lhs_elem;
+        } else if (nsorted == 0 && elem < delta) {
+            delta = elem;
         }
     }
 

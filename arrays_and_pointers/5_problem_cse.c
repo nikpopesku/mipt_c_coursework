@@ -18,17 +18,23 @@ int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     char *previous_elem_ptr = parr;
     elem_ptr += nsorted * eltsize;
     previous_elem_ptr += nsorted ? nsorted - 1 * eltsize : 0;
-    int elem = *((int const *) elem_ptr);
     int previous_elem = *((int const *) previous_elem_ptr);
 
     int delta = nsorted > 0 ? elem - previous_elem : elem;
     int new_pos = nsorted;
 
     for (int i = nsorted; i < numelts; ++i) {
-        if (nsorted > 0 && cmp(parr[nsorted - 1], parr[i]) == 0 && parr[i] - parr[nsorted - 1] < delta) {
-            delta = parr[i] - parr[nsorted - 1];
-        } else if (nsorted == 0 && parr[i] < delta) {
-            delta = parr[i];
+        char *lhs = parr;
+        char *rhs = parr;
+        if (nsorted > 0) {
+            lhs += (nsorted - 1) * eltsize;
+        }
+        rhs += i * eltsize;
+        const int elem = *((int const *) rhs);
+        if (nsorted > 0 && cmp(lhs, rhs) == 0 && elem - previous_elem < delta) {
+            delta = elem - previous_elem;
+        } else if (nsorted == 0 && previous_elem < delta) {
+            delta = previous_elem;
         }
     }
 

@@ -14,7 +14,14 @@ int cmp(void const *lhs, void const *rhs) {
 }
 
 int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
-    int delta = nsorted > 0 ? parr[nsorted] - parr[nsorted - 1] : parr[0];
+    char *elem_ptr = parr;
+    char *previous_elem_ptr = parr;
+    elem_ptr += nsorted * eltsize;
+    previous_elem_ptr += nsorted ? nsorted - 1 * eltsize : 0;
+    int elem = *((int const *) elem_ptr);
+    int previous_elem = *((int const *) previous_elem_ptr);
+
+    int delta = nsorted > 0 ? elem - previous_elem : elem;
     int new_pos = nsorted;
 
     for (int i = nsorted; i < numelts; ++i) {

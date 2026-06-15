@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <limits.h>
 
 typedef int (*cmp_t)(void const *lhs, void const *rhs);
 
@@ -17,36 +16,29 @@ int cmp(void const *lhs, void const *rhs) {
 
 int selstep(void *parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
     const char *lhs;
-    int lhs_elem;
-    char *rhs;
-    int elem;
-    int delta;
-    int new_pos;
-    int i;
+    char *cur;
     char *a;
     char *b;
     char temp[eltsize];
+    int new_pos;
+    int found;
+    int i;
 
-    lhs = (char *)parr + (nsorted ? (nsorted - 1) * eltsize : 0);
-    lhs_elem = *((int const *) lhs);
-    rhs = (char *)parr + nsorted * eltsize;
-    elem = *((int const *) rhs);
-    delta = nsorted > 0 ? INT_MAX : elem;
+    lhs = (char *)parr + (nsorted > 0 ? (nsorted - 1) * eltsize : 0);
     new_pos = nsorted;
+    found = 0;
 
     for (i = nsorted; i < numelts; ++i) {
-        rhs = (char *)parr + i * eltsize;
-        elem = *((int const *) rhs);
-        if (nsorted > 0 && cmp(rhs, lhs) == 0 && elem - lhs_elem < delta) {
-            delta = elem - lhs_elem;
+        cur = (char *)parr + i * eltsize;
+        if (nsorted > 0 && cmp(cur, lhs) == 1)
+            continue;
+        if (!found || cmp(cur, (char *)parr + new_pos * eltsize) == 1) {
             new_pos = i;
-        } else if (nsorted == 0 && elem < delta) {
-            delta = elem;
-            new_pos = i;
+            found = 1;
         }
     }
 
-    if (new_pos != nsorted) {
+    if (found && new_pos != nsorted) {
         a = (char *)parr + nsorted * eltsize;
         b = (char *)parr + new_pos * eltsize;
         memcpy(temp, a, eltsize);

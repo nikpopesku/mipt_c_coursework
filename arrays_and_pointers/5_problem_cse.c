@@ -27,6 +27,8 @@ int main() {
         printf("%d ", arr[i]);
     }
 
+    //selstep(arr, 1, sz, pos, cmp)
+
     free(arr);
 
     return 0;

@@ -4,6 +4,12 @@
 
 typedef int (*cmp_t)(void const * lhs, void const * rhs);
 
+int cmp(void const * lhs, void const * rhs) {
+    if (lhs > rhs) return 1;
+
+    return 0;
+}
+
 int selstep(void * parr, int eltsize, int numelts, int nsorted, cmp_t cmp) {
 
     return 0;
@@ -27,7 +33,7 @@ int main() {
         printf("%d ", arr[i]);
     }
 
-    //selstep(arr, 1, sz, pos, cmp)
+    selstep(arr, 1, sz, pos, cmp);
 
     free(arr);
 

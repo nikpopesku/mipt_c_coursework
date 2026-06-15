@@ -5,10 +5,20 @@
 int main() {
     int sz;
 
-    const int res = scanf("%d", &sz);
+    int res = scanf("%d", &sz);
     assert(res == 1);
 
     int *arr = calloc(sz, sizeof(int));
+
+    for (int i = 0; i < sz; ++i) {
+        res = scanf("%d", &arr[i]);
+        assert(res == 1);
+    }
+
+    int pos;
+    res = scanf("%d", &pos);
+    assert(res == 1);
+
 
     free(arr);
     return 0;

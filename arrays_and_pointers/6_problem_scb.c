@@ -9,7 +9,6 @@ int cmp(void const *lhs, void const *rhs) {
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) {
-
 }
 
 int main() {
@@ -17,11 +16,15 @@ int main() {
     const int res = scanf("%d", &sz);
     assert(res == 1);
 
-    int* arr = calloc(sz, sizeof(int));
+    int *arr = calloc(sz, sizeof(int));
     for (int i = 0; i < sz; ++i) {
         const int res2 = scanf("%d", &arr[i]);
         assert(res2 == 1);
     }
+
+    const void * key = arr + 3;
+
+    cbsearch(key, arr, sz, sizeof(int), cmp);
 
     free(arr);
     return 0;

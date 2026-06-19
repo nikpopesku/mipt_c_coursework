@@ -20,8 +20,8 @@ void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) 
     void * rhs = base + (num - 1) * size;
 
     while (lhs < rhs) {
-        void * m = lhs + (rhs - lhs) / 2;
-        int val = cmp(m, key);
+        void * m = lhs + (rhs - lhs) * size / 2;
+        const int val = cmp(m, key);
 
         if (val == 0) {
             return m;

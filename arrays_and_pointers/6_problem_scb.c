@@ -6,6 +6,13 @@
 typedef int (*cmp_t)(const void *lhs, const void *rhs);
 
 int cmp(void const *lhs, void const *rhs) {
+    const int a = *(int const *) lhs;
+    const int b = *(int const *) rhs;
+
+    if (a < b) return -1;
+    if (a > b) return 1;
+
+    return 0;
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) {
@@ -22,7 +29,7 @@ int main() {
         assert(res2 == 1);
     }
 
-    const void * key = arr + 3;
+    const void *key = arr + 3;
 
     cbsearch(key, arr, sz, sizeof(int), cmp);
 

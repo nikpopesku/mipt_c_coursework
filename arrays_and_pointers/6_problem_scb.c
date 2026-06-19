@@ -14,12 +14,13 @@ void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) 
 
 int main() {
     int sz;
-    int res = scanf("%d", &sz);
+    const int res = scanf("%d", &sz);
     assert(res == 1);
 
     int* arr = calloc(sz, sizeof(int));
     for (int i = 0; i < sz; ++i) {
-        scanf("%d", &arr[i]);
+        const int res2 = scanf("%d", &arr[i]);
+        assert(res2 == 1);
     }
 
     free(arr);

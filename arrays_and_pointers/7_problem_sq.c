@@ -3,7 +3,23 @@
 #include <stdlib.h>
 
 unsigned partition(int *arr, unsigned low, unsigned high) {
-    return 5;
+    int * lhs = arr + low + 1;
+    int * rhs = arr + high;
+
+    while (*lhs <= arr[0] && lhs < rhs) {
+        lhs += 1;
+    }
+
+    while (*rhs > arr[0]) {
+        rhs -= 1;
+    }
+
+
+    const int temp = arr[0];
+    arr[0] = *(lhs + 1);
+    *(lhs + 1) = temp;
+
+    return low + (lhs - (arr + low));
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {
@@ -31,6 +47,11 @@ int main() {
     }
 
     my_qsort(arr, sz);
+
+    for (i = 0; i < sz; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 
     free(arr);
 

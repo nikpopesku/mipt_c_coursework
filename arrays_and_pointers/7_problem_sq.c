@@ -6,20 +6,20 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
     int *lhs = arr + low + 1;
     int *rhs = arr + high;
 
-    while (*lhs <= arr[0] && lhs < rhs) {
-        lhs += 1;
-    }
+    while (lhs < rhs ) {
+        while (*lhs < arr[0]) lhs += 1;
+        while (*rhs >= arr[0]) rhs -= 1;
 
-    while (*rhs > arr[0]) {
-        rhs -= 1;
+        const int temp = *lhs;
+        *lhs = *rhs;
+        *rhs = temp;
     }
-
 
     const int temp = arr[0];
-    arr[0] = *(lhs + 1);
-    *(lhs + 1) = temp;
+    arr[0] = *lhs;
+    *lhs = temp;
 
-    return low + (lhs - (arr + low));
+    return lhs - arr;
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {

@@ -23,7 +23,7 @@ int main() {
     int res = scanf("%d", &sz);
     assert(res == 1);
 
-    int* arr = calloc(sz, sizeof(int));
+    int *arr = calloc(sz, sizeof(int));
 
     for (i = 0; i < sz; ++i) {
         res = scanf("%d", &arr[i]);

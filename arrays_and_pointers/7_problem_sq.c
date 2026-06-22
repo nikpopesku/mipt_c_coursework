@@ -13,13 +13,15 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
         const int temp = *lhs;
         *lhs = *rhs;
         *rhs = temp;
+        rhs -= 1;
+        lhs += 1;
     }
 
     const int temp = arr[0];
-    arr[0] = *lhs;
-    *lhs = temp;
+    arr[0] = *(lhs - 1);
+    *(lhs - 1) = temp;
 
-    return lhs - arr;
+    return lhs - 1 - arr;
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {

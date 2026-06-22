@@ -27,6 +27,7 @@ int main() {
         assert(res == 1);
     }
 
+    free(arr);
 
     return 0;
 }

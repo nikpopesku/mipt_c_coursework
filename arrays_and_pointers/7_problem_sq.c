@@ -13,7 +13,7 @@ void qsort_impl(int *arr, unsigned low, unsigned high) {
     qsort_impl(arr, pi + 1, high);
 }
 
-void qsort(int *arr, unsigned len) {
+void my_qsort(int *arr, unsigned len) {
     qsort_impl(arr, 0u, len - 1);
 }
 
@@ -30,7 +30,7 @@ int main() {
         assert(res == 1);
     }
 
-    qsort(arr, sz);
+    my_qsort(arr, sz);
 
     free(arr);
 

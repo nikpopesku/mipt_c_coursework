@@ -13,17 +13,22 @@ void printit(int *arr, unsigned sz) {
 }
 
 unsigned partition(int *arr, unsigned low, unsigned high) {
+    int *lhs;
+    int *rhs;
+    int *pivot_pos;
+    int temp;
+
     if (low == high) return low;
 
-    int *lhs = arr + low + 1;
-    int *rhs = arr + high;
+    lhs = arr + low + 1;
+    rhs = arr + high;
 
     while (lhs < rhs) {
         while (lhs < rhs && *lhs <= arr[low]) lhs += 1;
         while (*rhs > arr[low]) rhs -= 1;
 
         if (lhs < rhs) {
-            const int temp = *lhs;
+            temp = *lhs;
             *lhs = *rhs;
             *rhs = temp;
             rhs -= 1;
@@ -31,8 +36,8 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
         }
     }
 
-    int *pivot_pos = (*rhs <= arr[low]) ? rhs : (lhs - 1);
-    const int temp = arr[low];
+    pivot_pos = (*rhs <= arr[low]) ? rhs : (lhs - 1);
+    temp = arr[low];
     arr[low] = *pivot_pos;
     *pivot_pos = temp;
 
@@ -40,8 +45,9 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {
+    unsigned pi;
     if (low >= high) return;
-    unsigned pi = partition(arr, low, high);
+    pi = partition(arr, low, high);
     if (pi > low) qsort_impl(arr, low, pi - 1);
     qsort_impl(arr, pi + 1, high);
 }
@@ -53,10 +59,11 @@ void my_qsort(int *arr, unsigned len) {
 int main() {
     unsigned sz;
     int i;
-    int res = scanf("%d", &sz);
+    int *arr;
+    int res = scanf("%u", &sz);
     assert(res == 1);
 
-    int *arr = calloc(sz, sizeof(int));
+    arr = calloc(sz, sizeof(int));
 
     for (i = 0; i < sz; ++i) {
         res = scanf("%d", &arr[i]);

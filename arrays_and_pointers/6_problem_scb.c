@@ -30,7 +30,9 @@ void *cbsearch(const void *key, const void *base, int num, int size, cmp_t intcm
         if (val < 0) lhs = m + 1;
     }
 
-    return lhs;
+    int * keyp = key;
+
+    return *lhs == *keyp ? lhs : base + num * size;
 }
 
 int main() {

@@ -6,9 +6,9 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
     int *lhs = arr + low + 1;
     int *rhs = arr + high;
 
-    while (lhs < rhs ) {
-        while (*lhs < arr[0]) lhs += 1;
-        while (*rhs >= arr[0]) rhs -= 1;
+    while (lhs < rhs) {
+        while (*lhs <= arr[0]) lhs += 1;
+        while (*rhs > arr[0]) rhs -= 1;
 
         const int temp = *lhs;
         *lhs = *rhs;

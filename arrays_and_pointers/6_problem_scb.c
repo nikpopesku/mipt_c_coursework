@@ -6,11 +6,11 @@
 typedef int (*cmp_t)(const void *lhs, const void *rhs);
 
 int cmp(void const *lhs, void const *rhs) {
-    const int a = *(int const *) lhs;
-    const int b = *(int const *) rhs;
+    const int *a = lhs;
+    const int *b = rhs;
 
-    if (a < b) return -1;
-    if (a > b) return 1;
+    if (*a < *b) return -1;
+    if (*a > *b) return 1;
 
     return 0;
 }
@@ -48,9 +48,9 @@ int main() {
     const void *key = arr + 3;
 
     void *found = cbsearch(key, arr, sz, sizeof(int), cmp);
-    int val = *(int *) found;
+    int *val = found;
 
-    printf("%d", val);
+    printf("%d", *val);
 
     free(arr);
     return 0;

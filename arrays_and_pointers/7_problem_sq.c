@@ -2,23 +2,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+void printit(int *arr, unsigned sz) {
+    int i;
+
+    for (i = 0; i < sz; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 unsigned partition(int *arr, unsigned low, unsigned high) {
+    if (low == high) return low;
+
     int *lhs = arr + low + 1;
     int *rhs = arr + high;
 
     while (lhs < rhs) {
-        while (*lhs <= arr[0]) lhs += 1;
-        while (*rhs > arr[0]) rhs -= 1;
+        while (*lhs <= arr[low]) lhs += 1;
+        while (*rhs > arr[low]) rhs -= 1;
 
-        const int temp = *lhs;
-        *lhs = *rhs;
-        *rhs = temp;
-        rhs -= 1;
-        lhs += 1;
+        if (lhs < rhs) {
+            const int temp = *lhs;
+            *lhs = *rhs;
+            *rhs = temp;
+            rhs -= 1;
+            lhs += 1;
+        }
     }
 
-    const int temp = arr[0];
-    arr[0] = *(lhs - 1);
+    const int temp = arr[low];
+    arr[low] = *(lhs - 1);
     *(lhs - 1) = temp;
 
     return lhs - 1 - arr;
@@ -50,10 +64,7 @@ int main() {
 
     my_qsort(arr, sz);
 
-    for (i = 0; i < sz; ++i) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printit(arr, sz);
 
     free(arr);
 

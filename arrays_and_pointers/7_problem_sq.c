@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 unsigned partition(int *arr, unsigned low, unsigned high) {
-    // TODO: ваш код здесь
+    return 5;
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {
@@ -13,19 +13,24 @@ void qsort_impl(int *arr, unsigned low, unsigned high) {
     qsort_impl(arr, pi + 1, high);
 }
 
-void qsort(int *arr, unsigned len) { qsort_impl(arr, 0u, len - 1); }
+void qsort(int *arr, unsigned len) {
+    qsort_impl(arr, 0u, len - 1);
+}
 
 int main() {
-    int sz;
+    unsigned sz;
+    int i;
     int res = scanf("%d", &sz);
     assert(res == 1);
 
     int* arr = calloc(sz, sizeof(int));
 
-    for (int i = 0; i < sz; ++i) {
+    for (i = 0; i < sz; ++i) {
         res = scanf("%d", &arr[i]);
         assert(res == 1);
     }
+
+    qsort(arr, sz);
 
     free(arr);
 

@@ -19,7 +19,7 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
     int *rhs = arr + high;
 
     while (lhs < rhs) {
-        while (*lhs <= arr[low]) lhs += 1;
+        while (lhs < rhs && *lhs <= arr[low]) lhs += 1;
         while (*rhs > arr[low]) rhs -= 1;
 
         if (lhs < rhs) {
@@ -31,11 +31,12 @@ unsigned partition(int *arr, unsigned low, unsigned high) {
         }
     }
 
+    int *pivot_pos = (*rhs <= arr[low]) ? rhs : (lhs - 1);
     const int temp = arr[low];
-    arr[low] = *(lhs - 1);
-    *(lhs - 1) = temp;
+    arr[low] = *pivot_pos;
+    *pivot_pos = temp;
 
-    return lhs - 1 - arr;
+    return pivot_pos - arr;
 }
 
 void qsort_impl(int *arr, unsigned low, unsigned high) {

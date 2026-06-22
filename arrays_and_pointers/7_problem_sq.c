@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 unsigned partition(int *arr, unsigned low, unsigned high) {
-    int * lhs = arr + low + 1;
-    int * rhs = arr + high;
+    int *lhs = arr + low + 1;
+    int *rhs = arr + high;
 
     while (*lhs <= arr[0] && lhs < rhs) {
         lhs += 1;

@@ -16,11 +16,11 @@ int cmp(void const *lhs, void const *rhs) {
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) {
-    void *lhs = base;
-    void *rhs = base + (num - 1) * size;
+    int *lhs = base;
+    int *rhs = base + (num - 1) * size;
 
     while (lhs < rhs) {
-        void *m = lhs + (rhs - lhs) * size / 2;
+        int *m = lhs + (rhs - lhs) / 2;
         const int val = cmp(m, key);
 
         if (val == 0) {

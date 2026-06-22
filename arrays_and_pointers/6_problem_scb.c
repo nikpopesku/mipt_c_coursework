@@ -1,11 +1,10 @@
 #include <assert.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 
 typedef int (*cmp_t)(const void *lhs, const void *rhs);
 
-int cmp(void const *lhs, void const *rhs) {
+int intcmp(void const *lhs, void const *rhs) {
     const int *a = lhs;
     const int *b = rhs;
 
@@ -15,13 +14,13 @@ int cmp(void const *lhs, void const *rhs) {
     return 0;
 }
 
-void *cbsearch(const void *key, const void *base, int num, int size, cmp_t cmp) {
+void *cbsearch(const void *key, const void *base, int num, int size, cmp_t intcmp) {
     int *lhs = base;
     int *rhs = base + (num - 1) * size;
 
     while (lhs < rhs) {
         int *m = lhs + (rhs - lhs) / 2;
-        const int val = cmp(m, key);
+        const int val = intcmp(m, key);
 
         if (val == 0) {
             return m;
@@ -47,7 +46,7 @@ int main() {
 
     const void *key = arr + 3;
 
-    void *found = cbsearch(key, arr, sz, sizeof(int), cmp);
+    void *found = cbsearch(key, arr, sz, sizeof(int), intcmp);
     int *val = found;
 
     printf("%d", *val);

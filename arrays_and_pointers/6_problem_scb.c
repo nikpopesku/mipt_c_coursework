@@ -15,9 +15,9 @@ int intcmp(void const *lhs, void const *rhs) {
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t intcmp) {
-    char *lhs = (char *)base;
-    char *rhs = (char *)base + (num - 1) * size;
-    const int *keyp = (const int *)key;
+    char *lhs = (char *) base;
+    char *rhs = (char *) base + (num - 1) * size;
+    const int *keyp = key;
     char *m;
     int val;
 
@@ -33,7 +33,7 @@ void *cbsearch(const void *key, const void *base, int num, int size, cmp_t intcm
         if (val < 0) lhs = m + size;
     }
 
-    return *(const int *)lhs == *keyp ? lhs : (char *)base + num * size;
+    return *(const int *) lhs == *keyp ? lhs : (char *) base + num * size;
 }
 
 int main() {

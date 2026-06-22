@@ -15,24 +15,25 @@ int intcmp(void const *lhs, void const *rhs) {
 }
 
 void *cbsearch(const void *key, const void *base, int num, int size, cmp_t intcmp) {
-    int *lhs = base;
-    int *rhs = base + (num - 1) * size;
+    char *lhs = (char *)base;
+    char *rhs = (char *)base + (num - 1) * size;
+    const int *keyp = (const int *)key;
+    char *m;
+    int val;
 
     while (lhs < rhs) {
-        int *m = lhs + (rhs - lhs) / 2;
-        const int val = intcmp(m, key);
+        m = lhs + (rhs - lhs) / size / 2 * size;
+        val = intcmp(m, key);
 
         if (val == 0) {
             return m;
         }
 
         if (val > 0) rhs = m;
-        if (val < 0) lhs = m + 1;
+        if (val < 0) lhs = m + size;
     }
 
-    int * keyp = key;
-
-    return *lhs == *keyp ? lhs : base + num * size;
+    return *(const int *)lhs == *keyp ? lhs : (char *)base + num * size;
 }
 
 int main() {

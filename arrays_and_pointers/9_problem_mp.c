@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,6 +26,7 @@ int main() {
     int *arr1;
     int *arr2;
     int *arr;
+    int flag = 0;
     int res = scanf("%u", &sz1);
     assert(res == 1);
     res = scanf("%u", &sz2);
@@ -45,7 +47,10 @@ int main() {
 
     arr = calc(arr1, arr2, sz1, sz2);
 
-    for (i = 0; i < sz1 + sz2 - 1; ++i) {
+    i = 0;
+    while (arr[i] == 0) ++i;
+
+    for (; i < sz1 + sz2 - 1; ++i) {
         printf("%d ", arr[i]);
     }
 

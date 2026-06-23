@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-int *calc(int *arr1, int *arr2, unsigned sz1, unsigned sz2) {
+int *calc(const int *arr1, const int *arr2, const unsigned sz1, const unsigned sz2) {
     int *arr = calloc(sz1 + sz2 - 1, sizeof(int));
     unsigned it1;
     unsigned it2;

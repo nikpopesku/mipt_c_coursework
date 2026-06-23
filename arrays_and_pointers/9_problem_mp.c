@@ -4,19 +4,27 @@
 
 
 int *calc(int *arr1, int *arr2, unsigned sz1, unsigned sz2) {
+    int * arr;
+    unsigned i;
+
+    for (i = 0; i < sz1 + sz2 - 1; ++i) {
+
+    }
+
+    return arr;
 }
 
 
 int main() {
-    int sz1;
-    int sz2;
+    unsigned sz1;
+    unsigned sz2;
     int i;
     int *arr1;
     int *arr2;
     int *arr;
-    int res = scanf("%d", &sz1);
+    int res = scanf("%u", &sz1);
     assert(res == 1);
-    res = scanf("%d", &sz2);
+    res = scanf("%u", &sz2);
     assert(res == 2);
     arr1 = calloc(sz1, sizeof(int));
     arr2 = calloc(sz2, sizeof(int));

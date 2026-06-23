@@ -22,7 +22,6 @@ int main() {
     unsigned sz1;
     unsigned sz2;
     unsigned i;
-    int j;
     int *arr1;
     int *arr2;
     int *arr;
@@ -46,7 +45,7 @@ int main() {
 
     arr = calc(arr1, arr2, sz1, sz2);
 
-    for (j = sz1 + sz2 - 1; j >= 0; --j) {
+    for (i = 0; i < sz1 + sz2 - 1; ++i) {
         printf("%d ", arr[i]);
     }
 

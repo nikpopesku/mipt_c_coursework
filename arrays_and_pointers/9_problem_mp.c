@@ -3,8 +3,7 @@
 #include <stdlib.h>
 
 
-int * calc(int * arr1, int * arr2, unsigned sz1, unsigned sz2) {
-
+int *calc(int *arr1, int *arr2, unsigned sz1, unsigned sz2) {
 }
 
 
@@ -14,7 +13,7 @@ int main() {
     int i;
     int *arr1;
     int *arr2;
-    int * arr;
+    int *arr;
     int res = scanf("%d", &sz1);
     assert(res == 1);
     res = scanf("%d", &sz2);

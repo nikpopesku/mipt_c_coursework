@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -47,7 +46,7 @@ int main() {
 
     arr = calc(arr1, arr2, sz1, sz2);
 
-    i = sz1 + sz2 - 1;
+    i = sz1 + sz2 - 2;
     while (arr[i] == 0) --i;
 
     for (j = 0; j <= i; ++j) {

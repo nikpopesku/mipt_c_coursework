@@ -7,8 +7,8 @@ int main() {
     int sz1;
     int sz2;
     int i;
-    int * arr1;
-    int * arr2;
+    int *arr1;
+    int *arr2;
     int res = scanf("%d", &sz1);
     assert(res == 1);
     res = scanf("%d", &sz2);

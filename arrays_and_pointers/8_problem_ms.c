@@ -1,7 +1,23 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-void merge(int *arr, int l, int m, int r);
+
+void merge(int *arr, int l, int m, int r) {
+    int *p1;
+    int *p2;
+    int *temp = calloc(r - l + 1, sizeof(int));
+    int *it = temp;
+    p1 = arr + l;
+    p2 = arr + m + 1;
+
+    while (p1 <= arr + m && p2 <= arr + r) *it++ = *p1 > *p2 ? *p2++ : *p1++;
+    while (p1 <= arr + m) *it++ = *p1++;
+    while (p2 <= arr + r) *it++ = *p2++;
+
+    p1 = arr + l;
+    it = temp;
+    while (p1 <= arr + r) *p1++ = *it++;
+}
 
 void merge_sort_imp(int *arr, int l, int r) {
     int m;
@@ -20,7 +36,7 @@ int main() {
     unsigned sz;
     int i;
     int res = scanf("%u", &sz);
-    int * arr;
+    int *arr;
 
     assert(res == 1);
     arr = calloc(sz, sizeof(int));
@@ -31,6 +47,12 @@ int main() {
     }
 
     merge_sort(arr, sz);
+
+    for (i = 0; i < sz; ++i) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
 
     free(arr);
 

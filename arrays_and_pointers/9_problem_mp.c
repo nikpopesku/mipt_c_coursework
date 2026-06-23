@@ -4,11 +4,14 @@
 
 
 int *calc(int *arr1, int *arr2, unsigned sz1, unsigned sz2) {
-    int * arr;
-    unsigned i;
+    int *arr = calloc(sz1 + sz2 - 1, sizeof(int));
+    unsigned it1;
+    unsigned it2;
 
-    for (i = 0; i < sz1 + sz2 - 1; ++i) {
-
+    for (it1 = 0; it1 < sz1; ++it1) {
+        for (it2 = 0; it2 < sz2; ++it2) {
+            arr[it1 + it2] += arr1[it1] * arr2[it2];
+        }
     }
 
     return arr;

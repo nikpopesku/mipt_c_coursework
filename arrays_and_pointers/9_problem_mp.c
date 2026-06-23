@@ -3,12 +3,18 @@
 #include <stdlib.h>
 
 
+int * calc(int * arr1, int * arr2, unsigned sz1, unsigned sz2) {
+
+}
+
+
 int main() {
     int sz1;
     int sz2;
     int i;
     int *arr1;
     int *arr2;
+    int * arr;
     int res = scanf("%d", &sz1);
     assert(res == 1);
     res = scanf("%d", &sz2);
@@ -28,6 +34,16 @@ int main() {
 
     free(arr1);
     free(arr2);
+
+    arr = calc(arr1, arr2, sz1, sz2);
+
+    for (i = sz1 + sz2 - 1; i >= 0; --i) {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n");
+
+    free(arr);
 
     return 0;
 }

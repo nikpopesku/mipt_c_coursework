@@ -21,14 +21,15 @@ int *calc(int *arr1, int *arr2, unsigned sz1, unsigned sz2) {
 int main() {
     unsigned sz1;
     unsigned sz2;
-    int i;
+    unsigned i;
+    int j;
     int *arr1;
     int *arr2;
     int *arr;
     int res = scanf("%u", &sz1);
     assert(res == 1);
     res = scanf("%u", &sz2);
-    assert(res == 2);
+    assert(res == 1);
     arr1 = calloc(sz1, sizeof(int));
     arr2 = calloc(sz2, sizeof(int));
 
@@ -42,18 +43,18 @@ int main() {
         assert(res == 1);
     }
 
-    free(arr1);
-    free(arr2);
 
     arr = calc(arr1, arr2, sz1, sz2);
 
-    for (i = sz1 + sz2 - 1; i >= 0; --i) {
+    for (j = sz1 + sz2 - 1; j >= 0; --j) {
         printf("%d ", arr[i]);
     }
 
     printf("\n");
 
     free(arr);
+    free(arr1);
+    free(arr2);
 
     return 0;
 }

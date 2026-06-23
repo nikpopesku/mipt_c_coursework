@@ -4,8 +4,9 @@
 void merge(int *arr, int l, int m, int r);
 
 void merge_sort_imp(int *arr, int l, int r) {
+    int m;
     if (l >= r) return;
-    int m = (l + r) / 2;
+    m = (l + r) / 2;
     merge_sort_imp(arr, l, m);
     merge_sort_imp(arr, m + 1, r);
     merge(arr, l, m, r);
@@ -28,6 +29,10 @@ int main() {
         res = scanf("%d", &arr[i]);
         assert(res == 1);
     }
+
+    merge_sort(arr, sz);
+
+    free(arr);
 
     return 0;
 }

@@ -17,6 +17,8 @@ void merge(int *arr, int l, int m, int r) {
     p1 = arr + l;
     it = temp;
     while (p1 <= arr + r) *p1++ = *it++;
+
+    free(temp);
 }
 
 void merge_sort_imp(int *arr, int l, int r) {

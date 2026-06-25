@@ -7,6 +7,7 @@ int majority_element(const int *parr, int len) {
     int elem = -1;
     int elem_back = -1;
     int count = 0;
+    int count_back = 0;
     for (i = 0; i < len; ++i) {
         if (count == 0) {
             elem = parr[i];
@@ -18,20 +19,18 @@ int majority_element(const int *parr, int len) {
         }
     }
 
-    count = 0;
-
     for (i = len - 1; i >= 0; --i) {
-        if (count == 0) {
+        if (count_back == 0) {
             elem_back = parr[i];
-            ++count;
-        } else if (count > 0 && elem_back != parr[i]) {
-            --count;
+            ++count_back;
+        } else if (count_back > 0 && elem_back != parr[i]) {
+            --count_back;
         } else {
-            ++count;
+            ++count_back;
         }
     }
 
-    return elem != elem_back ? -1 : elem;
+    return elem == elem_back && count > 0 && count_back > 0 ? elem : -1;
 }
 
 int main() {

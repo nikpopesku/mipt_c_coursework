@@ -30,7 +30,7 @@ int main() {
     parr = calloc(sz, sizeof(int));
 
     for (i = 0; i < sz; ++i) {
-        res = scanf("%u", &parr[i]);
+        res = scanf("%d", &parr[i]);
         assert(res == 1);
     }
 

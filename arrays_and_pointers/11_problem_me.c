@@ -5,32 +5,29 @@
 int majority_element(const int *parr, int len) {
     int i;
     int elem = -1;
-    int elem_back = -1;
     int count = 0;
-    int count_back = 0;
+
+    /* Boyer-Moore: find a candidate */
     for (i = 0; i < len; ++i) {
         if (count == 0) {
             elem = parr[i];
             ++count;
-        } else if (count > 0 && elem != parr[i]) {
+        } else if (elem != parr[i]) {
             --count;
         } else {
             ++count;
         }
     }
 
-    for (i = len - 1; i >= 0; --i) {
-        if (count_back == 0) {
-            elem_back = parr[i];
-            ++count_back;
-        } else if (count_back > 0 && elem_back != parr[i]) {
-            --count_back;
-        } else {
-            ++count_back;
+    /* Verify the candidate actually occurs more than len/2 times */
+    count = 0;
+    for (i = 0; i < len; ++i) {
+        if (parr[i] == elem) {
+            ++count;
         }
     }
 
-    return elem == elem_back && count > 0 && count_back > 0 ? elem : -1;
+    return count > len / 2 ? elem : -1;
 }
 
 int main() {

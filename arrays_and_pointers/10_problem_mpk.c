@@ -9,6 +9,8 @@ void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
     int l[k] = {0};
     int r[k] = {0};
     int t[n] = {0};
+    int *t1 = t, *t2 = t + k;
+    int *s1 = res, *s2 = res + k, *s3 = res + 2 * k, *s4 = res + 3 * k;
 
     if (n <= 64) {
         for (i = 0; i < n; i++)
@@ -22,11 +24,9 @@ void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
         karatsuba(l, r, t, k); // считает t
         karatsuba(arr1, arr2, res, k); // считает p1
         karatsuba(arr1 + k, arr2 + k, res + n, k); // считает p2
-        int *t1 = t, *t2 = t + k;
-        int *s1 = res, *s2 = res + k, *s3 = res + 2 * k, *s4 = res + 3 * k;
-        for (int i = 0; i < k; i++) {
-            int c1 = s2[i] + t1[i] - s1[i] - s3[i];
-            int c2 = s3[i] + t2[i] - s2[i] - s4[i];
+        for (i = 0; i < k; i++) {
+            const int c1 = s2[i] + t1[i] - s1[i] - s3[i];
+            const int c2 = s3[i] + t2[i] - s2[i] - s4[i];
             res[k + i] = c1;
             res[n + i] = c2;
         }

@@ -1,38 +1,54 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
 void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
     int i;
     int j;
-    int k = n / 2;
-    int l[k];
-    int r[k];
-    int t[n];
-    int *t1 = t, *t2 = t + k;
-    int *s1 = res, *s2 = res + k, *s3 = res + 2 * k, *s4 = res + 3 * k;
-    memset(t, 0, n * sizeof(int));
+    int k = (int)(n / 2);
+    int *l;
+    int *r;
+    int *t;
+    int *t1;
+    int *t2;
+    int *s1;
+    int *s2;
+    int *s3;
+    int *s4;
 
     if (n <= 64) {
         for (i = 0; i < (int)n; i++)
             for (j = 0; j < (int)n; j++)
                 res[i + j] += arr1[i] * arr2[j];
-    } else {
-        for (i = 0; i < k; i++) {
-            l[i] = arr1[i] + arr1[k + i];
-            r[i] = arr2[i] + arr2[k + i];
-        }
-        karatsuba(l, r, t, k); /* считает t */
-        karatsuba(arr1, arr2, res, k); /* считает p1 */
-        karatsuba(arr1 + k, arr2 + k, res + n, k); /* считает p2 */
-        for (i = 0; i < k; i++) {
-            const int c1 = s2[i] + t1[i] - s1[i] - s3[i];
-            const int c2 = s3[i] + t2[i] - s2[i] - s4[i];
-            res[k + i] = c1;
-            res[n + i] = c2;
-        }
+        return;
     }
+
+    l = malloc(k * sizeof(int));
+    r = malloc(k * sizeof(int));
+    t = calloc(n, sizeof(int));
+    t1 = t;
+    t2 = t + k;
+    s1 = res;
+    s2 = res + k;
+    s3 = res + 2 * k;
+    s4 = res + 3 * k;
+
+    for (i = 0; i < k; i++) {
+        l[i] = arr1[i] + arr1[k + i];
+        r[i] = arr2[i] + arr2[k + i];
+    }
+    karatsuba(l, r, t, k); /* считает t */
+    karatsuba(arr1, arr2, res, k); /* считает p1 */
+    karatsuba(arr1 + k, arr2 + k, res + n, k); /* считает p2 */
+    for (i = 0; i < k; i++) {
+        const int c1 = s2[i] + t1[i] - s1[i] - s3[i];
+        const int c2 = s3[i] + t2[i] - s2[i] - s4[i];
+        res[k + i] = c1;
+        res[n + i] = c2;
+    }
+
+    free(l);
+    free(r);
+    free(t);
 }
 
 int main() {

@@ -10,22 +10,22 @@ void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
     int l[k];
     int r[k];
     int t[n];
-    memset(t, 0, n * sizeof(int));
     int *t1 = t, *t2 = t + k;
     int *s1 = res, *s2 = res + k, *s3 = res + 2 * k, *s4 = res + 3 * k;
+    memset(t, 0, n * sizeof(int));
 
     if (n <= 64) {
-        for (i = 0; i < n; i++)
-            for (j = 0; j < n; j++)
+        for (i = 0; i < (int)n; i++)
+            for (j = 0; j < (int)n; j++)
                 res[i + j] += arr1[i] * arr2[j];
     } else {
         for (i = 0; i < k; i++) {
             l[i] = arr1[i] + arr1[k + i];
             r[i] = arr2[i] + arr2[k + i];
         }
-        karatsuba(l, r, t, k); // считает t
-        karatsuba(arr1, arr2, res, k); // считает p1
-        karatsuba(arr1 + k, arr2 + k, res + n, k); // считает p2
+        karatsuba(l, r, t, k); /* считает t */
+        karatsuba(arr1, arr2, res, k); /* считает p1 */
+        karatsuba(arr1 + k, arr2 + k, res + n, k); /* считает p2 */
         for (i = 0; i < k; i++) {
             const int c1 = s2[i] + t1[i] - s1[i] - s3[i];
             const int c2 = s3[i] + t2[i] - s2[i] - s4[i];
@@ -53,19 +53,19 @@ int main() {
     arr2 = calloc(sz2, sizeof(int));
     result = calloc(2 * sz2, sizeof(int));
 
-    for (i = 0; i < sz1; ++i) {
+    for (i = 0; i < (int)sz1; ++i) {
         res = scanf("%d", &arr1[i]);
         assert(res == 1);
     }
 
-    for (i = 0; i < sz2; ++i) {
+    for (i = 0; i < (int)sz2; ++i) {
         res = scanf("%d", &arr2[i]);
         assert(res == 1);
     }
 
     karatsuba(arr1, arr2, result, sz1);
 
-    i = 2 * sz1 - 1;
+    i = (int)(2 * sz1 - 1);
 
     while (result[i] == 0) --i;
     for (j = 0; j <= i; ++j) {

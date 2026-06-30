@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
+void karatsuba(int *arr1, int *arr2, int *res, const unsigned n) {
     int i;
     int j;
-    int k = (int) (n / 2);
+    const int k = (int) (n / 2);
     int *l;
     int *r;
     int *t;

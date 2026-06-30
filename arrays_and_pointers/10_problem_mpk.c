@@ -1,10 +1,11 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
     int i;
     int j;
-    int k = (int)(n / 2);
+    int k = (int) (n / 2);
     int *l;
     int *r;
     int *t;
@@ -16,8 +17,8 @@ void karatsuba(int *arr1, int *arr2, int *res, unsigned n) {
     int *s4;
 
     if (n <= 64) {
-        for (i = 0; i < (int)n; i++)
-            for (j = 0; j < (int)n; j++)
+        for (i = 0; i < (int) n; i++)
+            for (j = 0; j < (int) n; j++)
                 res[i + j] += arr1[i] * arr2[j];
         return;
     }
@@ -69,19 +70,19 @@ int main() {
     arr2 = calloc(sz2, sizeof(int));
     result = calloc(2 * sz2, sizeof(int));
 
-    for (i = 0; i < (int)sz1; ++i) {
+    for (i = 0; i < (int) sz1; ++i) {
         res = scanf("%d", &arr1[i]);
         assert(res == 1);
     }
 
-    for (i = 0; i < (int)sz2; ++i) {
+    for (i = 0; i < (int) sz2; ++i) {
         res = scanf("%d", &arr2[i]);
         assert(res == 1);
     }
 
     karatsuba(arr1, arr2, result, sz1);
 
-    i = (int)(2 * sz1 - 1);
+    i = (int) (2 * sz1 - 1);
 
     while (result[i] == 0) --i;
     for (j = 0; j <= i; ++j) {

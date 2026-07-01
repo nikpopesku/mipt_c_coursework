@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int N = 10;
+int N = 2;
 
-void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
+void powNxN(unsigned (*A)[N], unsigned k, unsigned m) {
     int row, col, l;
     unsigned long long value;
-    unsigned long long (*B)[N] = calloc(N, sizeof(unsigned long long [N]));
-    unsigned long long (*C)[N] = calloc(N, sizeof(unsigned long long [N]));
+    unsigned (*B)[N] = calloc(N, sizeof(unsigned [N]));
+    unsigned (*C)[N] = calloc(N, sizeof(unsigned [N]));
 
     for (row = 0; row < N; ++row) {
         for (col = 0; col < N; ++col) {
@@ -21,9 +21,9 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
             for (col = 0; col < N; ++col) {
                 value = 0;
                 for (l = 0; l < N; ++l) {
-                    value = (value + B[row][l] % m * (A[l][col] % m) % m) % m;
+                    value = (value + (unsigned long long)(B[row][l] % m) * (A[l][col] % m)) % m;
                 }
-                C[row][col] = value;
+                C[row][col] = (unsigned)value;
             }
         }
         for (row = 0; row < N; ++row) {
@@ -44,19 +44,19 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
 }
 
 int main() {
-    unsigned long long k, m;
-    unsigned long long (*arr)[N];
+    unsigned k, m;
+    unsigned (*arr)[N];
     int i, j;
-    int res = scanf("%llu", &k);
+    int res = scanf("%u", &k);
     assert(res == 1);
-    res = scanf("%llu", &m);
+    res = scanf("%u", &m);
     assert(res == 1);
 
-    arr = calloc(N, sizeof(unsigned long long [N]));
+    arr = calloc(N, sizeof(unsigned [N]));
 
     for (i = 0; i < N; ++i) {
         for (j = 0; j < N; ++j) {
-            res = scanf("%llu", &arr[i][j]);
+            res = scanf("%u", &arr[i][j]);
             assert(res == 1);
         }
     }
@@ -65,7 +65,7 @@ int main() {
 
     for (i = 0; i < N; ++i) {
         for (j = 0; j < N; ++j) {
-            printf("%llu ", arr[i][j]);
+            printf("%u ", arr[i][j]);
         }
         printf("\n");
     }

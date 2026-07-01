@@ -17,18 +17,19 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
                         value = (value + A[i][col] % m * (A[row][j] % m) % m) % m;
                     }
                 }
+                A[i][j] = value;
             }
         }
     }
 }
 
 int main() {
-    int k, m;
+    unsigned long long k, m;
     unsigned long long (*arr)[N];
     int i, j;
-    int res = scanf("%d", &k);
+    int res = scanf("%llu", &k);
     assert(res == 1);
-    res = scanf("%d", &m);
+    res = scanf("%llu", &m);
     assert(res == 1);
 
     arr = calloc(N, sizeof(unsigned long long [N]));

@@ -21,9 +21,9 @@ void powNxN(unsigned (*A)[N], unsigned k, unsigned m) {
             for (col = 0; col < N; ++col) {
                 value = 0;
                 for (l = 0; l < N; ++l) {
-                    value = (value + (unsigned long long)(B[row][l] % m) * (A[l][col] % m)) % m;
+                    value = (value + (unsigned long long) (B[row][l] % m) * (A[l][col] % m)) % m;
                 }
-                C[row][col] = (unsigned)value;
+                C[row][col] = (unsigned) value;
             }
         }
         for (row = 0; row < N; ++row) {

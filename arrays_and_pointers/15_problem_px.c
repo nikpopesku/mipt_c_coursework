@@ -8,6 +8,7 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
     int row, col, l;
     unsigned long long value;
     unsigned long long (*B)[N] = calloc(N, sizeof(unsigned long long [N]));
+    unsigned long long (*C)[N] = calloc(N, sizeof(unsigned long long [N]));
 
     for (row = 0; row < N; ++row) {
         for (col = 0; col < N; ++col) {
@@ -22,7 +23,12 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
                 for (l = 0; l < N; ++l) {
                     value = (value + B[row][l] % m * (A[l][col] % m) % m) % m;
                 }
-                B[row][col] = value;
+                C[row][col] = value;
+            }
+        }
+        for (row = 0; row < N; ++row) {
+            for (col = 0; col < N; ++col) {
+                B[row][col] = C[row][col];
             }
         }
     }

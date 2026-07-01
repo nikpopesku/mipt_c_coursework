@@ -4,23 +4,23 @@
 
 int N = 2;
 
-void powNxN(unsigned (*A)[N], unsigned k, unsigned m) {
+void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
 }
 
 int main() {
     int k, m;
-    unsigned (*arr)[N];
+    unsigned long long (*arr)[N];
     int i, j;
     int res = scanf("%d", &k);
     assert(res == 1);
     res = scanf("%d", &m);
     assert(res == 1);
 
-    arr = calloc(N, sizeof(unsigned [N]));
+    arr = calloc(N, sizeof(unsigned long long [N]));
 
     for (i = 0; i < N; ++i) {
         for (j = 0; j < N; ++j) {
-            res = scanf("%u", &arr[i][j]);
+            res = scanf("%llu", &arr[i][j]);
             assert(res == 1);
         }
     }

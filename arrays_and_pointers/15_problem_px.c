@@ -1,6 +1,5 @@
 #include <assert.h>
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 
 int N = 2;
@@ -10,14 +9,14 @@ void powNxN(unsigned (*A)[N], unsigned k, unsigned m) {
 
 int main() {
     int k, m;
-    unsigned **arr;
+    unsigned (*arr)[N];
     int i, j;
     int res = scanf("%d", &k);
     assert(res == 1);
     res = scanf("%d", &m);
     assert(res == 1);
 
-    arr = calloc(N, sizeof(unsigned *));
+    arr = calloc(N, sizeof(unsigned [N]));
 
     for (i = 0; i < N; ++i) {
         for (j = 0; j < N; ++j) {

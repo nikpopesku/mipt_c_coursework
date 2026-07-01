@@ -5,20 +5,19 @@
 
 int N = 2;
 
-void powNxN (unsigned (*A)[N], unsigned k, unsigned m) {
-
+void powNxN(unsigned (*A)[N], unsigned k, unsigned m) {
 }
 
 int main() {
     int k, m;
-    unsigned * arr;
+    unsigned **arr;
     int i, j;
     int res = scanf("%d", &k);
     assert(res == 1);
     res = scanf("%d", &m);
     assert(res == 1);
 
-    calloc(N * N, sizeof(unsigned));
+    arr = calloc(N, sizeof(unsigned *));
 
     for (i = 0; i < N; ++i) {
         for (j = 0; j < N; ++j) {

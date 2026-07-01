@@ -5,6 +5,21 @@
 int N = 2;
 
 void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
+    int i, j,  col, row;
+    unsigned long long value;
+
+    while (k-- > 1) {
+        for (i = 0; i < N; ++i) {
+            for (j = 0; j < N; ++j) {
+                value = 0;
+                for (row = 0; row < N; ++row) {
+                    for (col = 0; col < N; ++col) {
+                        value = (value + A[i][col] % m * (A[row][j] % m) % m) % m;
+                    }
+                }
+            }
+        }
+    }
 }
 
 int main() {
@@ -26,6 +41,13 @@ int main() {
     }
 
     powNxN(arr, k, m);
+
+    for (i = 0; i < N; ++i) {
+        for (j = 0; j < N; ++j) {
+            printf("%llu ", arr[i][j]);
+        }
+        printf("\n");
+    }
 
     free(arr);
 

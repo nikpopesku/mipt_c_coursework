@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int N = 2;
+int N = 10;
 
 void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
     int row, col, l;
@@ -40,6 +40,7 @@ void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long
     }
 
     free(B);
+    free(C);
 }
 
 int main() {

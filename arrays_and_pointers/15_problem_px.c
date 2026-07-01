@@ -5,7 +5,7 @@
 int N = 2;
 
 void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
-    int i, j,  col, row;
+    int i, j, col, row;
     unsigned long long value;
     unsigned long long (*B)[N] = calloc(N, sizeof(unsigned long long [N]));
 

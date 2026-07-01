@@ -5,31 +5,31 @@
 int N = 2;
 
 void powNxN(unsigned long long (*A)[N], unsigned long long k, unsigned long long m) {
-    int i, j, l;
+    int row, col, l;
     unsigned long long value;
     unsigned long long (*B)[N] = calloc(N, sizeof(unsigned long long [N]));
 
-    for (i = 0; i < N; ++i) {
-        for (j = 0; j < N; ++j) {
-            B[i][j] = A[i][j];
+    for (row = 0; row < N; ++row) {
+        for (col = 0; col < N; ++col) {
+            B[row][col] = A[row][col];
         }
     }
 
     while (k-- > 1) {
-        for (i = 0; i < N; ++i) {
-            for (j = 0; j < N; ++j) {
+        for (row = 0; row < N; ++row) {
+            for (col = 0; col < N; ++col) {
                 value = 0;
                 for (l = 0; l < N; ++l) {
-                    value = (value + B[i][l] % m * (A[l][j] % m) % m) % m;
+                    value = (value + B[row][l] % m * (A[l][col] % m) % m) % m;
                 }
-                B[i][j] = value;
+                B[row][col] = value;
             }
         }
     }
 
-    for (i = 0; i < N; ++i) {
-        for (j = 0; j < N; ++j) {
-            A[i][j] = B[i][j];
+    for (row = 0; row < N; ++row) {
+        for (col = 0; col < N; ++col) {
+            A[row][col] = B[row][col];
         }
     }
 

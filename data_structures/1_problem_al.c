@@ -50,7 +50,7 @@ int main() {
 
 
     struct node_t *top = read_list(f);
-    struct node_t* tmp;
+    struct node_t *tmp;
 
     while (top != NULL) {
         printf("%d ", top->data);

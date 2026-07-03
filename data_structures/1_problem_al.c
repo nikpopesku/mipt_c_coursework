@@ -15,7 +15,7 @@ struct node_t *read_list(FILE *inp) {
     int number;
 
     while (fscanf(inp, "%d", &number) == 1) {
-        if (number % 2) {
+        if (number % 2 == 1) {
             odd->data = number;
             odd->next = calloc(1, sizeof(struct node_t));
             odd = odd->next;
@@ -52,7 +52,8 @@ int main() {
 
 
     struct node_t *top = read_list(f);
-    struct node_t *tmp, *node = top;
+    struct node_t *tmp;
+    const struct node_t *node = top;
 
     while (node != NULL) {
         printf("%d ", node->data);

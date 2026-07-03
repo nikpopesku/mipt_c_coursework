@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,8 +8,10 @@ struct node_t {
 };
 
 struct node_t *read_list(FILE *inp) {
-    struct node_t *odd = calloc(1, sizeof(struct node_t));
-    struct node_t *even = calloc(1, sizeof(struct node_t));
+    struct node_t *odd_top = calloc(1, sizeof(struct node_t));
+    struct node_t *even_top = calloc(1, sizeof(struct node_t));
+    struct node_t *even = even_top;
+    struct node_t *odd = odd_top;
     int number;
 
     while (fscanf(inp, "%d", &number) == 1) {
@@ -26,15 +27,16 @@ struct node_t *read_list(FILE *inp) {
     }
 
 
-    even->next = odd;
+    even->next = odd_top;
 
-    return even;
+    return even_top;
 }
 
 void delete_list(struct node_t *top) {
     struct node_t *tmp;
     while (top != NULL) {
         tmp = top->next != NULL ? top->next : NULL;
+        free(top);
 
         top = tmp ? tmp : NULL;
     }
@@ -50,12 +52,12 @@ int main() {
 
 
     struct node_t *top = read_list(f);
-    struct node_t *tmp;
+    struct node_t *tmp, *node = top;
 
-    while (top != NULL) {
-        printf("%d ", top->data);
-        tmp = top->next ? top->next : NULL;
-        top = tmp ? tmp : NULL;
+    while (node != NULL) {
+        printf("%d ", node->data);
+        tmp = node->next ? node->next : NULL;
+        node = tmp ? tmp : NULL;
     }
 
     delete_list(top);

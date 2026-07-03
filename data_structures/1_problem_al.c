@@ -37,10 +37,10 @@ struct node_t *read_list(FILE *inp) {
     }
 
 
-    if (even != NULL && odd != odd_top) {
+    if (even_top != NULL && odd_top != NULL) {
         even->next = odd_top;
     } else {
-        even_top = odd_top;
+        even_top = even_top == NULL ? odd_top : even_top;
     }
 
     even = NULL;

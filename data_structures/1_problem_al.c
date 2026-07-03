@@ -8,26 +8,44 @@ struct node_t {
 };
 
 struct node_t *read_list(FILE *inp) {
-    struct node_t *odd_top = calloc(1, sizeof(struct node_t));
-    struct node_t *even_top = calloc(1, sizeof(struct node_t));
-    struct node_t *even = even_top;
-    struct node_t *odd = odd_top;
+    struct node_t *odd_top = NULL;
+    struct node_t *even_top = NULL;
+    struct node_t *even = NULL;
+    struct node_t *odd = NULL;
     int number;
 
     while (fscanf(inp, "%d", &number) == 1) {
         if (number % 2 == 1) {
+            if (odd == NULL) {
+                odd = calloc(1, sizeof(struct node_t));
+                odd_top = odd;
+            } else {
+                odd->next = calloc(1, sizeof(struct node_t));
+                odd = odd->next;
+            }
             odd->data = number;
-            odd->next = calloc(1, sizeof(struct node_t));
-            odd = odd->next;
         } else {
+            if (even == NULL) {
+                even = calloc(1, sizeof(struct node_t));
+                even_top = even;
+            } else {
+                even->next = calloc(1, sizeof(struct node_t));
+                even = even->next;
+            }
             even->data = number;
-            even->next = calloc(1, sizeof(struct node_t));
-            even = even->next;
         }
     }
 
 
-    even->next = odd_top;
+    if (even != NULL && odd != odd_top) {
+        even->next = odd_top;
+    } else {
+        even_top = odd_top;
+    }
+
+    even = NULL;
+    odd = NULL;
+    odd_top = NULL;
 
     return even_top;
 }

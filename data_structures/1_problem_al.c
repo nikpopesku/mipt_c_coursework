@@ -41,5 +41,26 @@ void delete_list(struct node_t *top) {
 }
 
 int main() {
+    FILE *f = fopen("1.txt", "r");
+
+    if (f == NULL) {
+        printf("Error: Could not open file.\n");
+        return 1;
+    }
+
+
+    struct node_t *top = read_list(f);
+    struct node_t* tmp;
+
+    while (top != NULL) {
+        printf("%d ", top->data);
+        tmp = top->next ? top->next : NULL;
+        top = tmp ? tmp : NULL;
+    }
+
+    delete_list(top);
+
+    fclose(f);
+
     return 0;
 }

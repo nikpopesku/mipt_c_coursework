@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -13,11 +14,15 @@ int main() {
     assert(res == 1);
 
     int * arr = calloc(sz, sizeof(int));
+    int mx = INT_MIN;
 
     for (int i = 0; i < sz; ++i) {
         res = scanf("%d", &arr[i]);
         assert(res == 1);
+        mx = mx > arr[i] ? mx : arr[i];
     }
+
+
 
     return 0;
 }

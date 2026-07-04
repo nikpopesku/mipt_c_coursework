@@ -13,7 +13,7 @@ int main() {
     int res = scanf("%u", &sz);
     assert(res == 1);
 
-    int * arr = calloc(sz, sizeof(int));
+    int *arr = calloc(sz, sizeof(int));
     int mx = INT_MIN;
 
     for (int i = 0; i < sz; ++i) {
@@ -21,7 +21,6 @@ int main() {
         assert(res == 1);
         mx = mx > arr[i] ? mx : arr[i];
     }
-
 
 
     return 0;

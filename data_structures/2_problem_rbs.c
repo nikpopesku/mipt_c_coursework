@@ -22,20 +22,20 @@ int main() {
         mx = mx > arr[i] ? mx : arr[i];
     }
 
-    struct node_t *bucket = malloc(sz * sizeof(struct node_t));
+    struct node_t **bucket = calloc(sz, sizeof(struct node_t *));
     const int bucket_size = mx / sz;
 
     for (int i = 0; i < sz; ++i) {
         const int num = arr[i] / bucket_size;
-        struct node_t *node = &bucket[num];
+        struct node_t *node = bucket[num];
         if (node == NULL) {
-            bucket[num] = *(struct node_t *)calloc(1, sizeof(struct node_t));
-            bucket[num].data = arr[i];
+            bucket[num] = malloc(sizeof(struct node_t));
+            bucket[num]->data = arr[i];
         } else {
             while (node != NULL && node->data < arr[i] && node->next != NULL) {
                 node = node->next;
             }
-            struct node_t *new_node = calloc(1, sizeof(struct node_t));
+            struct node_t *new_node = malloc(sizeof(struct node_t));
             new_node->data = arr[i];
 
             if (node->data < arr[i]) {
@@ -48,7 +48,7 @@ int main() {
                 }
             } else {
                 new_node->next = node;
-                bucket[num] = *new_node;
+                bucket[num] = new_node;
             }
         }
     }
@@ -56,7 +56,7 @@ int main() {
     for (int i = 0; i < sz; ++i) {
         printf("0 ");
 
-        struct node_t *node = &bucket[i];
+        struct node_t *node = bucket[i];
         while (node != NULL) {
             printf("%d ", node->data);
             node = node->next;

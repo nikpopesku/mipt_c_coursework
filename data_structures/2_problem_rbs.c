@@ -32,7 +32,9 @@ int main() {
             bucket[num] = malloc(sizeof(struct node_t));
             bucket[num]->data = arr[i];
         } else {
+            struct node_t *prev = NULL;
             while (node != NULL && node->data < arr[i] && node->next != NULL) {
+                prev = node;
                 node = node->next;
             }
             struct node_t *new_node = malloc(sizeof(struct node_t));
@@ -48,7 +50,11 @@ int main() {
                 }
             } else {
                 new_node->next = node;
-                bucket[num] = new_node;
+                if (prev == NULL) {
+                    bucket[num] = new_node;
+                } else {
+                    prev->next = new_node;
+                }
             }
         }
     }

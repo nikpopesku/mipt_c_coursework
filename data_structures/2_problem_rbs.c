@@ -23,7 +23,7 @@ int main() {
     }
 
     struct node_t **bucket = calloc(sz, sizeof(struct node_t *));
-    const int bucket_size = mx / sz + (mx % sz > 0 ? 1 : 0);
+    const int bucket_size = mx / sz;
 
     for (int i = 0; i < sz; ++i) {
         int num = arr[i] != mx ? arr[i] / bucket_size : sz - 1;

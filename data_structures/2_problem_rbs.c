@@ -35,10 +35,10 @@ int main() {
             while (node != NULL && node->data < arr[i] && node->next != NULL) {
                 node = node->next;
             }
-            if (node->data < arr[i]) {
-                struct node_t *new_node = calloc(1, sizeof(struct node_t));
-                new_node->data = arr[i];
+            struct node_t *new_node = calloc(1, sizeof(struct node_t));
+            new_node->data = arr[i];
 
+            if (node->data < arr[i]) {
                 if (node->next) {
                     struct node_t *tmp = node->next;
                     node->next = new_node;
@@ -46,6 +46,9 @@ int main() {
                 } else {
                     node->next = new_node;
                 }
+            } else {
+                new_node->next = node;
+                bucket[num] = *new_node;
             }
         }
     }

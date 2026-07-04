@@ -54,16 +54,15 @@ int main() {
     }
 
     for (int i = 0; i < sz; ++i) {
-        printf("0 ");
-
         struct node_t *node = bucket[i];
         while (node != NULL) {
             printf("%d ", node->data);
             node = node->next;
         }
+        printf("0 ");
     }
 
-    printf("0\n");
+    printf("\n");
 
 
     return 0;

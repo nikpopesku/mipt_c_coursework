@@ -22,6 +22,22 @@ int main() {
         mx = mx > arr[i] ? mx : arr[i];
     }
 
+    struct node_t *bucket = malloc(sz * sizeof(struct node_t));
+    const int bucket_size = mx / sz;
+
+    for (int i = 0; i < sz; ++i) {
+        const int num = arr[i] / bucket_size;
+        struct node_t *node = &bucket[num];
+        if (node == NULL) {
+            bucket[num] = calloc(1, sizeof(struct node_t));
+            bucket[num].data = arr[i];
+        } else {
+            while (node != NULL && node->data < arr[i] && node->next != NULL) {
+                node = node->next;
+            }
+        }
+    }
+
 
     return 0;
 }

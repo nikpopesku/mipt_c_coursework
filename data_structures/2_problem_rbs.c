@@ -29,7 +29,7 @@ int main() {
         const int num = arr[i] / bucket_size;
         struct node_t *node = &bucket[num];
         if (node == NULL) {
-            bucket[num] = calloc(1, sizeof(struct node_t));
+            bucket[num] = *(struct node_t *)calloc(1, sizeof(struct node_t));
             bucket[num].data = arr[i];
         } else {
             while (node != NULL && node->data < arr[i] && node->next != NULL) {
@@ -56,7 +56,7 @@ int main() {
     for (int i = 0; i < sz; ++i) {
         printf("0 ");
 
-        struct node_t *node = bucket[i];
+        struct node_t *node = &bucket[i];
         while (node != NULL) {
             printf("%d ", node->data);
             node = node->next;

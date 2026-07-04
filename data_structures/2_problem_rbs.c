@@ -26,7 +26,7 @@ int main() {
     const int bucket_size = mx / sz + (mx % sz > 0 ? 1 : 0);
 
     for (int i = 0; i < sz; ++i) {
-        const int num = arr[i] / bucket_size;
+        int num = arr[i] != mx ? arr[i] / bucket_size : sz - 1;
         struct node_t *node = bucket[num];
         if (node == NULL) {
             bucket[num] = malloc(sizeof(struct node_t));

@@ -32,6 +32,8 @@ struct node_t *reverse(struct node_t *top) {
         prev = cur;
         cur = nxt;
     }
+
+    return prev;
 }
 
 int main() {

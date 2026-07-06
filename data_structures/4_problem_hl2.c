@@ -7,37 +7,36 @@ struct node_t {
     int data;
 };
 
-int list_is_a_loop(const struct node_t *turtle, const struct node_t *rabbit) {
-    if (rabbit == NULL) return 0;
+struct node_t *list_is_a_loop(const struct node_t *turtle, const struct node_t *rabbit) {
+    if (rabbit == NULL) return NULL;
 
     do {
         rabbit = rabbit->next;
 
-        if (rabbit == turtle) return 1;
+        if (rabbit == turtle) return (struct node_t *) rabbit;
 
-        if (rabbit == NULL) return 0;
+        if (rabbit == NULL) return NULL;
 
         rabbit = rabbit->next;
         turtle = turtle->next;
 
-        if (rabbit == turtle) return 1;
+        if (rabbit == turtle) return (struct node_t *) rabbit;
     } while (rabbit && turtle);
 
-    return 0;
+    return NULL;
 }
 
 int loop_len(struct node_t *top) {
-    const struct node_t *rabbit = top;
-    const struct node_t *turtle = top;
-    if (list_is_a_loop(turtle, rabbit) == 0) return 0;
+    struct node_t *meet = list_is_a_loop(top, top);
+    if (meet == NULL) return 0;
 
-    int counter = 0;
+    int counter = 1;
+    struct node_t *p = meet->next;
 
-    do {
+    while (p != meet) {
+        p = p->next;
         ++counter;
-        rabbit = rabbit->next->next;
-        turtle = turtle->next;
-    } while (turtle != rabbit);
+    }
 
     return counter;
 }

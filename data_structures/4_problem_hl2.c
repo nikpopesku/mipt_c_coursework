@@ -26,8 +26,6 @@ int list_is_a_loop(const struct node_t *turtle, const struct node_t *rabbit) {
     return 0;
 }
 
-// определяет длину петли в односвязном списке
-// возвращает длину если есть, 0 если петли нет
 int loop_len(struct node_t *top) {
     const struct node_t *rabbit = top;
     const struct node_t *turtle = top;

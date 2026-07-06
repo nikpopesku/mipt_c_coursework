@@ -7,7 +7,7 @@ struct node_t {
     int data;
 };
 
-struct node_t *list_is_a_loop(struct node_t *turtle, struct node_t *rabbit) {
+struct node_t *list_is_a_loop(const struct node_t *turtle, struct node_t *rabbit) {
     if (rabbit == NULL) return 0;
 
     do {
@@ -29,10 +29,10 @@ struct node_t *list_is_a_loop(struct node_t *turtle, struct node_t *rabbit) {
 // определяет длину петли в односвязном списке
 // возвращает длину если есть, 0 если петли нет
 int loop_len(struct node_t *top) {
-    struct node_t *rabbit = list_is_a_loop(top, top);
+    const struct node_t *rabbit = list_is_a_loop(top, top);
     if (rabbit == NULL) return 0;
 
-    struct node_t *turtle = top;
+    const struct node_t *turtle = top;
     int counter = 0;
 
     while (turtle != rabbit) {

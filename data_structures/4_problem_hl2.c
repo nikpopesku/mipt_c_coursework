@@ -9,28 +9,23 @@ struct node_t {
 };
 
 int list_is_a_loop(struct node_t *top) {
-    struct node_t *turtle = top;
-    struct node_t *rabbit = top;
+    if (top == NULL) return 0;
 
-    while (rabbit && turtle) {
+    const struct node_t *turtle = top;
+    const struct node_t *rabbit = top;
+
+    do {
         rabbit = rabbit->next;
 
-        if (rabbit == turtle) {
-            return 1;
-        }
+        if (rabbit == turtle) return 1;
 
-
-        if (rabbit == NULL) {
-            return 0;
-        }
+        if (rabbit == NULL) return 0;
 
         rabbit = rabbit->next;
         turtle = turtle->next;
 
-        if (rabbit == turtle) {
-            return 1;
-        }
-    }
+        if (rabbit == turtle) return 1;
+    } while (rabbit && turtle);
 
     return 0;
 }

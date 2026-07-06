@@ -18,6 +18,10 @@ int genit2(int x) {
 }
 
 int genit3(int x) {
+    return (x + 2) % 5 + 3;
+}
+
+int genit4(int x) {
     return (3 * x + 2) % 5 + 4;
 }
 
@@ -38,5 +42,6 @@ int main() {
     printf("%d\n", cycle_len(genit1));
     printf("%d\n", cycle_len(genit2));
     printf("%d\n", cycle_len(genit3));
+    printf("%d\n", cycle_len(genit4));
     return 0;
 }

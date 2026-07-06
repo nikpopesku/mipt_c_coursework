@@ -9,10 +9,17 @@ struct node_t {
 
 typedef int (*generator_t)(int);
 
-
-// определяет длину петли в генераторе
 unsigned cycle_len(generator_t gen) {
+    const int first = gen(0);
+    int next = first;
+    unsigned counter = 1;
 
+    while (next != first) {
+        ++counter;
+        next = gen(next);
+    }
+
+    return counter;
 }
 
 int main() {

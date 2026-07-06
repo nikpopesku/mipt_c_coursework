@@ -9,8 +9,16 @@ struct node_t {
 
 typedef int (*generator_t)(int);
 
-int genit(int x) {
+int genit1(int x) {
     return (x + 2) % 5;
+}
+
+int genit2(int x) {
+    return (x + 2) % 5 + 1;
+}
+
+int genit3(int x) {
+    return (3 * x + 2) % 5 + 4;
 }
 
 unsigned cycle_len(generator_t gen) {
@@ -27,6 +35,8 @@ unsigned cycle_len(generator_t gen) {
 }
 
 int main() {
-    printf("%d\n", cycle_len(genit));
+    printf("%d\n", cycle_len(genit1));
+    printf("%d\n", cycle_len(genit2));
+    printf("%d\n", cycle_len(genit3));
     return 0;
 }

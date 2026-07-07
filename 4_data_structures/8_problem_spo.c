@@ -8,44 +8,30 @@ struct tree_t {
     int data;
 };
 
-struct node_t {
-    struct node_t *next;
-    int data;
+struct stacktree_t {
+    struct stacktree_t *next;
+    struct tree_t * data;
 };
 
-struct node_t *create_preorder(struct tree_t *tree) {
-    struct node_t *top;
-    struct node_t *node;
-    if (tree == NULL) return NULL;
-
-    top = calloc(1, sizeof(struct node_t));
-    top->data = tree->data;
-    node = top;
-
-    if (tree->left) {
-        node->next = create_preorder(tree->left);
-        node = node->next;
-    }
-
-    if (tree->right) {
-        node->next = create_preorder(tree->right);
-    }
-
-
-    node = NULL;
-
-    return top;
+void push(struct stacktree_t **s, struct tree_t *t) {
+    struct stacktree_t *tmp = calloc(1, sizeof(struct stacktree_t));
+    tmp->data = t;
+    tmp->next = *s;
+    *s = tmp;
 }
 
 void print_pre(struct tree_t *top) {
-    struct node_t *node = create_preorder(top);
-    struct node_t *tmp;
+    struct stacktree_t *s = calloc(1, sizeof(struct stacktree_t));
+    struct stacktree_t *tmp;
+    s->data = top;
 
-    while (node) {
-        printf("%d ", node->data);
-        tmp = node;
-        node = node->next;
-        free(tmp);
+    while (s) {
+        printf("%d ", s->data->data);
+        tmp = s;
+        s = s->next;
+
+        if (tmp.data.right) {
+        }
     }
 }
 

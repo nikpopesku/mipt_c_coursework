@@ -1,6 +1,5 @@
 #include <assert.h>
 #include <stdio.h>
-#include <stddef.h>
 #include <stdlib.h>
 
 struct tree_t {
@@ -39,11 +38,14 @@ struct node_t *create_preorder(struct tree_t *tree) {
 }
 
 void print_pre(struct tree_t *top) {
-    const struct node_t *node = create_preorder(top);
+    struct node_t *node = create_preorder(top);
+    struct node_t *tmp;
 
     while (node) {
         printf("%d ", node->data);
+        tmp = node;
         node = node->next;
+        free(tmp);
     }
 }
 

@@ -36,6 +36,8 @@ void print_pre(struct tree_t *top) {
         if (tmp->data->left) {
             push(&s, tmp->data->left);
         }
+
+        free(tmp);
     }
 }
 

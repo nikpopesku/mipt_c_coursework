@@ -20,6 +20,7 @@ struct node_t *create_preorder(struct tree_t *tree) {
     if (tree == NULL) return NULL;
 
     top = calloc(1, sizeof(struct node_t));
+    top->data = tree->data;
     node = top;
 
     if (tree->left) {

@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,7 +20,7 @@ void push(struct stacktree_t **s, struct tree_t *t) {
 }
 
 void print_pre(struct tree_t *top) {
-    struct stacktree_t *s;
+    struct stacktree_t *s = NULL;
     struct stacktree_t *tmp;
     push(&s, top);
 

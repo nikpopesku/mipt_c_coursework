@@ -2,8 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_postorder(int *preorder, int *inorder, const int begin_preorder, const int begin_inorder,
-                     const int end_inorder) {
+void print_postorder(int *preorder, int *inorder, const int begin_inorder, const int end_inorder) {
     int count = 0;
     printf("%d ", preorder[0]);
 
@@ -13,7 +12,7 @@ void print_postorder(int *preorder, int *inorder, const int begin_preorder, cons
         if (inorder[count] == preorder[0]) break;
     }
 
-    print_postorder(preorder, inorder, begin_preorder + 1, begin_inorder, begin_inorder + count);
+    print_postorder(preorder, inorder, begin_inorder, count - 1);
 }
 
 
@@ -38,7 +37,7 @@ int main() {
         assert(res == 1);
     }
 
-    print_postorder(preorder, inorder, 0, 0, sz - 1);
+    print_postorder(preorder, inorder, 0, sz - 1);
 
     free(preorder);
     free(inorder);

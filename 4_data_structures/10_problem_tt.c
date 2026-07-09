@@ -2,22 +2,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_postorder(int *preorder, int *inorder, const int begin_preorder, int begin_inorder,
-                     const int end_inorder) {
+void print_postorder(int *preorder, int *inorder, int begin_preorder, int begin_inorder,
+                     int end_inorder) {
     int count = 0;
     printf("%d ", preorder[0]);
+
+    if (begin_inorder == end_inorder) return;
 
     for (count = begin_inorder; count < end_inorder; ++count) {
         if (inorder[count] == preorder[0]) break;
     }
 
-    print_postorder(preorder, inorder, begin_preorder + 1, begin_inorder + 1 + count, begin_inorder,
-                    begin_inorder + count - 1);
+    print_postorder(preorder, inorder, begin_preorder + 1, begin_inorder, begin_inorder + count);
 }
 
 
 int main() {
-    unsigned sz;
+    int sz;
     int *preorder;
     int *inorder;
 

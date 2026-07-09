@@ -1,13 +1,6 @@
 #include <assert.h>
-#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-struct tree_t {
-    struct tree_t *left;
-    struct tree_t *right;
-    int data;
-};
 
 void print_postorder(int *preorder, int *inorder, const int begin_preorder, int begin_inorder,
                      const int end_inorder) {

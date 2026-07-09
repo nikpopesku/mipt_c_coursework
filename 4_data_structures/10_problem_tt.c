@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void print_postorder(int *preorder, int *inorder, const int begin_preorder, const int begin_inorder, const int end_inorder) {
-    int count = 0;
+    int count;
     printf("%d ", preorder[0]);
 
     if (begin_inorder == end_inorder) return;

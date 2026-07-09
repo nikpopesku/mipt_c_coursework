@@ -6,8 +6,7 @@ void print_postorder(int *preorder, int *inorder, const int begin_preorder, cons
                      const int end_inorder) {
     int count;
 
-    if (begin_inorder + 1 == end_inorder) {
-        printf("%d ", inorder[begin_inorder]);
+    if (begin_inorder == end_inorder) {
         return;
     }
 
@@ -16,6 +15,8 @@ void print_postorder(int *preorder, int *inorder, const int begin_preorder, cons
     }
 
     print_postorder(preorder, inorder, begin_preorder + 1, begin_inorder, count);
+    print_postorder(preorder, inorder, begin_preorder + 1 + (count - begin_inorder), count + 1, end_inorder);
+    printf("%d ", preorder[begin_preorder]);
 }
 
 

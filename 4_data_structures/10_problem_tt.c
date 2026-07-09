@@ -5,7 +5,7 @@
 void print_postorder(int *preorder, int *inorder, const int begin_preorder, const int begin_inorder,
                      const int end_inorder) {
     int count;
-    printf("%d ", preorder[0]);
+    printf("%d ", preorder[begin_preorder]);
 
     if (begin_inorder + 1 == end_inorder) return;
 

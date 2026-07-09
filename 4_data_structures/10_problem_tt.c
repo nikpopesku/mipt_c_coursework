@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_postorder(int *preorder, int *inorder, int begin_preorder, int begin_inorder,
-                     int end_inorder) {
+void print_postorder(int *preorder, int *inorder, const int begin_preorder, const int begin_inorder,
+                     const int end_inorder) {
     int count = 0;
     printf("%d ", preorder[0]);
 

@@ -12,7 +12,6 @@ struct tree_t {
 void print_postorder(int *preorder, int *inorder, const int begin_preorder, int begin_inorder,
                      const int end_inorder) {
     int count = 0;
-    int i;
     printf("%d ", preorder[0]);
 
     for (count = begin_inorder; count < end_inorder; ++count) {

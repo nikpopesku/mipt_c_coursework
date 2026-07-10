@@ -1,5 +1,3 @@
-#include <assert.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 int HASH_MAX = 100;

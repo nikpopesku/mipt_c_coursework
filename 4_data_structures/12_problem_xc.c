@@ -22,6 +22,7 @@ int ncollisions(char **strs, int n, get_hash_t f) {
         ++arr[val];
     }
 
+    free(arr);
 
     return counter;
 }

@@ -9,7 +9,6 @@ struct tree_t {
 };
 
 void insert(struct tree_t *root, int value) {
-
 }
 
 int main() {
@@ -29,7 +28,6 @@ int main() {
     res = fscanf(fptr, "%u", &sz);
     assert(res == 1);
 
-    arr = malloc(sz * sizeof(int));
     for (i = 0; i < sz; ++i) {
         res = fscanf(fptr, "%d", &val);
         if (i == 0) {

@@ -34,6 +34,13 @@ void preorder(struct tree_t *node) {
     preorder(node->right);
 }
 
+void free_tree(struct tree_t *node) {
+    if (node == NULL) return;
+    free_tree(node->left);
+    free_tree(node->right);
+    free(node);
+}
+
 int main() {
     FILE *fptr = fopen("input.txt", "r");
     unsigned sz;
@@ -64,6 +71,7 @@ int main() {
     preorder(root);
 
     fclose(fptr);
+    free_tree(root);
 
     return 0;
 }

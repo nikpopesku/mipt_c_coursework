@@ -8,12 +8,17 @@ struct tree_t {
     int data;
 };
 
+void insert(struct tree_t *root, int value) {
+
+}
+
 int main() {
     FILE *fptr = fopen("input.txt", "r");
     unsigned sz;
     int res;
-    int *arr;
+    int val;
     int i;
+    struct tree_t *root = malloc(sizeof(struct tree_t));
 
     if (fptr == NULL) {
         // 3. Check for errors
@@ -26,7 +31,12 @@ int main() {
 
     arr = malloc(sz * sizeof(int));
     for (i = 0; i < sz; ++i) {
-        res = fscanf(fptr, "%d", &arr[i]);
+        res = fscanf(fptr, "%d", &val);
+        if (i == 0) {
+            root->data = val;
+        } else {
+            insert(root, val);
+        }
         assert(res == 1);
     }
 

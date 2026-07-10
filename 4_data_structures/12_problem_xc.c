@@ -1,6 +1,5 @@
 #include <stdlib.h>
-
-int HASH_MAX = 100;
+#include "func.h"
 
 typedef int (*get_hash_t)(const char *s);
 

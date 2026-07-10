@@ -2,9 +2,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int HASH_MAX = 100;
 typedef int (*get_hash_t)(const char *s);
 
-int ncollisions(char **strs, int n, get_hash_t f);
+int ncollisions(char **strs, int n, get_hash_t f) {
+    int counter = 0;
+    int i = 0;
+    int val;
+    int * arr = calloc(HASH_MAX, sizeof(int));
+
+    for (i = 0; i < n; ++i) {
+        val = f(strs[i]);
+
+        if (arr[val] >= 1) {
+            ++counter;
+        }
+
+        ++arr[val];
+    }
+
+
+    return counter;
+}
 
 
 int main() {

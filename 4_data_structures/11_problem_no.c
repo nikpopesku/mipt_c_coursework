@@ -40,7 +40,7 @@ int main() {
     int res;
     int val;
     int i;
-    struct tree_t *root = malloc(sizeof(struct tree_t));
+    struct tree_t *root = calloc(1, sizeof(struct tree_t));
 
     if (fptr == NULL) {
         // 3. Check for errors

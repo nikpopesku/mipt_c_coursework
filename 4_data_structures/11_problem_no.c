@@ -13,14 +13,14 @@ void insert(struct tree_t *node, const int value) {
         if (node->left) {
             insert(node->left, value);
         } else {
-            node->left = malloc(sizeof(struct tree_t));
+            node->left = calloc(1, sizeof(struct tree_t));
             node->left->data = value;
         }
     } else {
         if (node->right) {
             insert(node->right, value);
         } else {
-            node->right = malloc(sizeof(struct tree_t));
+            node->right = calloc(1, sizeof(struct tree_t));
             node->right->data = value;
         }
     }

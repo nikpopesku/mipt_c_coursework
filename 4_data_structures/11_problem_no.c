@@ -26,6 +26,14 @@ void insert(struct tree_t *node, const int value) {
     }
 }
 
+void preorder(struct tree_t *node) {
+    if (node == NULL) return;
+
+    printf("%d ", node->data);
+    preorder(node->left);
+    preorder(node->right);
+}
+
 int main() {
     FILE *fptr = fopen("input.txt", "r");
     unsigned sz;
@@ -45,14 +53,15 @@ int main() {
 
     for (i = 0; i < sz; ++i) {
         res = fscanf(fptr, "%d", &val);
+        assert(res == 1);
         if (i == 0) {
             root->data = val;
         } else {
             insert(root, val);
         }
-        assert(res == 1);
     }
 
+    preorder(root);
 
     fclose(fptr);
 

@@ -14,9 +14,12 @@ int main() {
     unsigned sz1;
     unsigned sz2;
     char* word;
+    char* needle;
+    char* needle_delimited;
     char* word_delimited;
     struct node_t * tmp;
-    struct node_t *bucket = calloc(26, sizeof(struct node_t *));
+    struct node_t* node;
+    struct node_t **bucket = calloc(26, sizeof(struct node_t *));
     int res = scanf("%u", &answer);
     assert(res == 1);
 
@@ -32,7 +35,7 @@ int main() {
         struct node_t* new_node = calloc(1, sizeof(struct node_t));
         new_node->data = word_delimited;
 
-        struct node_t* node = bucket[word_delimited[0] - 'a'];
+        node = bucket[word_delimited[0] - 'a'];
 
         if (node == NULL) {
             bucket[word_delimited[0] - 'a'] = new_node;
@@ -53,6 +56,14 @@ int main() {
         word_delimited = strtok(NULL, " \n");
     }
 
+    res = scanf("%u", &sz2);
+    assert(res == 1);
+    needle = calloc(sz2 + 1, sizeof(char));
+    needle_delimited = strtok(needle, " \n");
+
+    while (needle_delimited != NULL) {
+        needle_delimited = strtok(NULL, " \n");
+    }
 
     return 0;
 }

@@ -14,6 +14,7 @@ int main() {
     unsigned sz1;
     unsigned sz2;
     char* word = NULL;
+    struct node_t * tmp;
     struct node_t *bucket = calloc(26, sizeof(struct node_t));
     int res = scanf("%u", &answer);
     assert(res == 1);
@@ -30,9 +31,15 @@ int main() {
         if (node == NULL) {
             bucket[word[0] - 'a'] = new_node;
         } else {
+            tmp = node;
             while (node) {
                 if (strcmp(node->data, word) == -1) {
+                    tmp = node;
                     node = node->next;
+                } else {
+                    new_node->next = node;
+                    tmp->next = new_node;
+                    break;
                 }
             }
         }

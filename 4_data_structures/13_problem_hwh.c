@@ -75,8 +75,11 @@ int main() {
 
     res = scanf("%u", &sz2);
     assert(res == 1);
+    getchar();  // consume the leftover '\n' left in stdin by scanf
+
     occurence = calloc(sz2, sizeof(int));
     needle = calloc(sz2 + 1, sizeof(char));
+    fgets(needle, sz2 + 1, stdin);
     needle_delimited = strtok(needle, " \n");
 
     while (needle_delimited != NULL) {
@@ -88,9 +91,11 @@ int main() {
                 occurence[counter++] = node->occurence;
             }
         }
+
+        needle_delimited = strtok(NULL, " \n");
     }
 
-    for (int i = 0; i < sz2; ++i) {
+    for (int i = 0; i < counter; ++i) {
         printf("%d ", occurence[i]);
     }
 

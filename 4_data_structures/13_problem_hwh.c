@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct node_t {
     struct node_t *next;
@@ -13,7 +14,7 @@ int main() {
     unsigned sz1;
     unsigned sz2;
     char* word = NULL;
-    struct node_t *bucket = calloc(26, sizeof(struct node_t*));
+    struct node_t *bucket = calloc(26, sizeof(struct node_t));
     int res = scanf("%u", &answer);
     assert(res == 1);
 
@@ -30,7 +31,9 @@ int main() {
             bucket[word[0] - 'a'] = new_node;
         } else {
             while (node) {
-
+                if (strcmp(node->data, word) == -1) {
+                    node = node->next;
+                }
             }
         }
 

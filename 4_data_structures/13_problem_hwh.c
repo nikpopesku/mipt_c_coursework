@@ -90,17 +90,18 @@ int main() {
 
         while (node) {
             if (node->data == needle_delimited) {
-                occurence[counter++] = node->occurence;
+                occurence[counter] = node->occurence;
                 break;
             }
 
             node = node->next;
+            ++counter;
         }
 
         needle_delimited = strtok(NULL, " \n");
     }
 
-    for (int i = 0; i < counter; ++i) {
+    for (int i = 0; i <= counter; ++i) {
         printf("%d ", occurence[i]);
     }
 

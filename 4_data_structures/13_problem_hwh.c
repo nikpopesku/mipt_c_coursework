@@ -13,23 +13,29 @@ int main() {
     unsigned answer;
     unsigned sz1;
     unsigned sz2;
-    char* word = NULL;
+    char* word;
+    char* word_delimited;
     struct node_t * tmp;
-    struct node_t *bucket = calloc(26, sizeof(struct node_t));
+    struct node_t *bucket = calloc(26, sizeof(struct node_t *));
     int res = scanf("%u", &answer);
     assert(res == 1);
 
     res = scanf("%u", &sz1);
     assert(res == 1);
 
-    while (scanf("%ms", &word) == 1) {
-        struct node_t* new_node = calloc(1, sizeof(struct node_t));
-        new_node->data = word;
+    word = calloc(sz1 + 1, sizeof(char));
 
-        struct node_t* node = bucket[word[0] - 'a'];
+    fgets(word, sz1 + 1, stdin);
+    word_delimited = strtok(word, " \n");
+
+    while (word_delimited != NULL) {
+        struct node_t* new_node = calloc(1, sizeof(struct node_t));
+        new_node->data = word_delimited;
+
+        struct node_t* node = bucket[word_delimited[0] - 'a'];
 
         if (node == NULL) {
-            bucket[word[0] - 'a'] = new_node;
+            bucket[word_delimited[0] - 'a'] = new_node;
         } else {
             tmp = node;
             while (node) {
@@ -44,7 +50,7 @@ int main() {
             }
         }
 
-        free(word);
+        word_delimited = strtok(NULL, " \n");
     }
 
 

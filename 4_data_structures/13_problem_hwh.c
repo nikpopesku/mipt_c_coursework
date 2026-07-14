@@ -83,13 +83,18 @@ int main() {
     needle_delimited = strtok(needle, " \n");
 
     while (needle_delimited != NULL) {
+        // xxx = needle_delimited[0] - 'a';
+        // printf("%d", xxx);
         node = bucket[needle_delimited[0] - 'a'];
         needle_delimited = strtok(NULL, " \n");
 
         while (node) {
             if (node->data == needle_delimited) {
                 occurence[counter++] = node->occurence;
+                break;
             }
+
+            node = node->next;
         }
 
         needle_delimited = strtok(NULL, " \n");

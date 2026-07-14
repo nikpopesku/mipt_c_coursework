@@ -6,6 +6,7 @@
 struct node_t {
     struct node_t *next;
     char* data;
+    int occurence;
 };
 
 
@@ -19,21 +20,27 @@ int main() {
     char* word_delimited;
     struct node_t * tmp;
     struct node_t* node;
+    int * occurence;
+    int counter = 0;
     struct node_t **bucket = calloc(26, sizeof(struct node_t *));
     int res = scanf("%u", &answer);
     assert(res == 1);
 
     res = scanf("%u", &sz1);
     assert(res == 1);
+    getchar();  // consume the leftover '\n' left in stdin by scanf
 
     word = calloc(sz1 + 1, sizeof(char));
 
     fgets(word, sz1 + 1, stdin);
+    // printf("%s", word);
+
     word_delimited = strtok(word, " \n");
 
     while (word_delimited != NULL) {
         struct node_t* new_node = calloc(1, sizeof(struct node_t));
         new_node->data = word_delimited;
+        new_node->occurence = 1;
 
         node = bucket[word_delimited[0] - 'a'];
 
@@ -42,14 +49,24 @@ int main() {
         } else {
             tmp = node;
             while (node) {
-                if (strcmp(node->data, word) == -1) {
+                if (strcmp(node->data, word) == 0) {
+                    ++node->occurence;
+                    break;
+                }
+
+                if (strcmp(node->data, word) < 0) {
                     tmp = node;
                     node = node->next;
                 } else {
                     new_node->next = node;
                     tmp->next = new_node;
+                    tmp = new_node;
                     break;
                 }
+            }
+
+            if (tmp->data != new_node->data) {
+                tmp->next = new_node;
             }
         }
 
@@ -58,11 +75,23 @@ int main() {
 
     res = scanf("%u", &sz2);
     assert(res == 1);
+    occurence = calloc(sz2, sizeof(int));
     needle = calloc(sz2 + 1, sizeof(char));
     needle_delimited = strtok(needle, " \n");
 
     while (needle_delimited != NULL) {
+        node = bucket[needle_delimited[0] - 'a'];
         needle_delimited = strtok(NULL, " \n");
+
+        while (node) {
+            if (node->data == needle_delimited) {
+                occurence[counter++] = node->occurence;
+            }
+        }
+    }
+
+    for (int i = 0; i < sz2; ++i) {
+        printf("%d ", occurence[i]);
     }
 
     return 0;

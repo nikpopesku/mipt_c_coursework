@@ -86,24 +86,31 @@ int main() {
         // xxx = needle_delimited[0] - 'a';
         // printf("%d", xxx);
         node = bucket[needle_delimited[0] - 'a'];
-        needle_delimited = strtok(NULL, " \n");
 
         while (node) {
-            if (node->data == needle_delimited) {
+            if (strcmp(node->data, needle_delimited) == 0) {
                 occurence[counter] = node->occurence;
                 break;
             }
 
             node = node->next;
-            ++counter;
         }
 
         needle_delimited = strtok(NULL, " \n");
+        ++counter;
     }
 
-    for (int i = 0; i <= counter; ++i) {
+    for (int i = 0; i < counter; ++i) {
         printf("%d ", occurence[i]);
     }
+
+    free(occurence);
+    free(needle);
+    free(needle_delimited);
+    free(word);
+    free(word_delimited);
+    free(tmp);
+    free(node);
 
     return 0;
 }

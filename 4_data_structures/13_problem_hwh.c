@@ -46,10 +46,13 @@ int main() {
         if (node == NULL) {
             bucket[word_delimited[0] - 'a'] = new_node;
         } else {
+            int inserted = 0;
             tmp = node;
             while (node) {
                 if (strcmp(node->data, word_delimited) == 0) {
                     ++node->occurence;
+                    free(new_node);
+                    inserted = 1;
                     break;
                 }
 
@@ -59,12 +62,12 @@ int main() {
                 } else {
                     new_node->next = node;
                     tmp->next = new_node;
-                    tmp = new_node;
+                    inserted = 1;
                     break;
                 }
             }
 
-            if (tmp->data != new_node->data) {
+            if (!inserted) {
                 tmp->next = new_node;
             }
         }

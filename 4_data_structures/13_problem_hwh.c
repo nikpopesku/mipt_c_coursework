@@ -103,14 +103,10 @@ int main() {
 
     free(occurence);
     free(needle);
-    free(needle_delimited);
     free(word);
-    free(word_delimited);
-
-
 
     for (counter = 0; counter < 26; ++counter) {
-        node = bucket[counter]->next;
+        node = bucket[counter];
 
         while (node) {
             tmp = node->next;
@@ -119,9 +115,7 @@ int main() {
         }
     }
 
-
-    free(node);
-    free(tmp);
+    free(bucket);
 
     return 0;
 }

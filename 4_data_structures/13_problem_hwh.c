@@ -49,12 +49,12 @@ int main() {
         } else {
             tmp = node;
             while (node) {
-                if (strcmp(node->data, word) == 0) {
+                if (strcmp(node->data, word_delimited) == 0) {
                     ++node->occurence;
                     break;
                 }
 
-                if (strcmp(node->data, word) < 0) {
+                if (strcmp(node->data, word_delimited) < 0) {
                     tmp = node;
                     node = node->next;
                 } else {

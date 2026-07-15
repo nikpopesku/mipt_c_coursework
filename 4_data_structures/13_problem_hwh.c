@@ -28,12 +28,11 @@ int main() {
 
     res = scanf("%u", &sz1);
     assert(res == 1);
-    getchar();  // consume the leftover '\n' left in stdin by scanf
+    getchar();
 
     word = calloc(sz1 + 1, sizeof(char));
 
     fgets(word, sz1 + 1, stdin);
-    // printf("%s", word);
 
     word_delimited = strtok(word, " \n");
 
@@ -75,7 +74,7 @@ int main() {
 
     res = scanf("%u", &sz2);
     assert(res == 1);
-    getchar();  // consume the leftover '\n' left in stdin by scanf
+    getchar();
 
     occurence = calloc(sz2, sizeof(int));
     needle = calloc(sz2 + 1, sizeof(char));
@@ -83,8 +82,6 @@ int main() {
     needle_delimited = strtok(needle, " \n");
 
     while (needle_delimited != NULL) {
-        // xxx = needle_delimited[0] - 'a';
-        // printf("%d", xxx);
         node = bucket[needle_delimited[0] - 'a'];
 
         while (node) {
@@ -109,8 +106,22 @@ int main() {
     free(needle_delimited);
     free(word);
     free(word_delimited);
-    free(tmp);
+
+
+
+    for (counter = 0; counter < 26; ++counter) {
+        node = bucket[counter]->next;
+
+        while (node) {
+            tmp = node->next;
+            free(node);
+            node = tmp;
+        }
+    }
+
+
     free(node);
+    free(tmp);
 
     return 0;
 }

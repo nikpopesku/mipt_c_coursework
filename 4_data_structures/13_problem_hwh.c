@@ -47,6 +47,7 @@ int main() {
             bucket[word_delimited[0] - 'a'] = new_node;
         } else {
             int inserted = 0;
+            struct node_t* head = node;
             tmp = node;
             while (node) {
                 if (strcmp(node->data, word_delimited) == 0) {
@@ -61,7 +62,11 @@ int main() {
                     node = node->next;
                 } else {
                     new_node->next = node;
-                    tmp->next = new_node;
+                    if (node == head) {
+                        bucket[word_delimited[0] - 'a'] = new_node;
+                    } else {
+                        tmp->next = new_node;
+                    }
                     inserted = 1;
                     break;
                 }

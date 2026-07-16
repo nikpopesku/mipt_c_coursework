@@ -4,6 +4,7 @@
 
 int main() {
     unsigned sz;
+    unsigned q;
     unsigned i;
     unsigned * distance;
     int res = scanf("%u", &sz);
@@ -14,6 +15,8 @@ int main() {
         res = scanf("%u", &distance[i]);
     }
 
+    res = scanf("%u", &q);
+    assert(res == 1);
 
     free(distance);
 

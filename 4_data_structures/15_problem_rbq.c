@@ -2,8 +2,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int find_index(const unsigned sz, const unsigned* distance, const unsigned value) {
+    unsigned left = 0;
+    unsigned right = sz;
+    while (left < right) {
+        unsigned m = left + (right - left) / 2;
+
+        if (distance[m] > value) {
+            right = m - 1;
+        } else {
+            left = m;
+        }
+    }
+}
+
 int main() {
-    unsigned sz, q, i, left, right;
+    unsigned sz, q, i, left, right, index1, index2;
     unsigned *distance;
     int res = scanf("%u", &sz);
     assert(res == 1);
@@ -19,8 +33,15 @@ int main() {
     for (i = 0; i < q; ++i) {
         res = scanf("%u", &left);
         assert(res == 1);
+
+        index1 = find_index(sz, distance, left);
+
         res = scanf("%u", &right);
         assert(res == 1);
+
+        index2 = find_index(sz, distance, left);
+
+        printf("%u", index2 - index1);
     }
 
     free(distance);

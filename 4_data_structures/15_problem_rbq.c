@@ -4,9 +4,9 @@
 
 int find_index_left(const unsigned sz, const unsigned *distance, const unsigned value) {
     unsigned left = 0;
-    unsigned right = sz;
+    unsigned right = sz - 1;
     while (left < right) {
-        const unsigned m = left + (right - left) / 2;
+        const unsigned m = left + (right - left + 1) / 2;
 
         if (distance[m] > value) {
             right = m > 0 ? m - 1 : 0;
@@ -20,12 +20,12 @@ int find_index_left(const unsigned sz, const unsigned *distance, const unsigned 
 
 int find_index_right(const unsigned sz, const unsigned *distance, const unsigned value) {
     unsigned left = 0;
-    unsigned right = sz;
+    unsigned right = sz - 1;
     while (left < right) {
-        const unsigned m = left + (right - left) / 2;
+        const unsigned m = left + (right - left + 1) / 2;
 
         if (distance[m] > value) {
-            right = m - 1;
+            right = m > 0 ? m - 1 : 0;
         } else {
             left = m;
         }
@@ -59,7 +59,7 @@ int main() {
 
         index2 = find_index_right(sz, distance, value);
 
-        printf("%u", index2 - index1 + 1);
+        printf("%u ", index2 - index1 + 1);
     }
 
     free(distance);

@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int find_index(const unsigned sz, const unsigned* distance, const unsigned value) {
+int find_index_left(const unsigned sz, const unsigned* distance, const unsigned value) {
     unsigned left = 0;
     unsigned right = sz;
     while (left < right) {
-        unsigned m = left + (right - left) / 2;
+        const unsigned m = left + (right - left) / 2;
 
         if (distance[m] > value) {
             right = m - 1;
@@ -14,6 +14,24 @@ int find_index(const unsigned sz, const unsigned* distance, const unsigned value
             left = m;
         }
     }
+
+    return left;
+}
+
+int find_index_right(const unsigned sz, const unsigned* distance, const unsigned value) {
+    unsigned left = 0;
+    unsigned right = sz;
+    while (left < right) {
+        const unsigned m = left + (right - left) / 2;
+
+        if (distance[m] > value) {
+            right = m - 1;
+        } else {
+            left = m;
+        }
+    }
+
+    return left;
 }
 
 int main() {
@@ -34,14 +52,14 @@ int main() {
         res = scanf("%u", &left);
         assert(res == 1);
 
-        index1 = find_index(sz, distance, left);
+        index1 = find_index_left(sz, distance, left);
 
         res = scanf("%u", &right);
         assert(res == 1);
 
-        index2 = find_index(sz, distance, left);
+        index2 = find_index_right(sz, distance, left);
 
-        printf("%u", index2 - index1);
+        printf("%u", index2 - index1 + 1);
     }
 
     free(distance);

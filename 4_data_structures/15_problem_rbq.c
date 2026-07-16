@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int find_index_left(const unsigned sz, const unsigned* distance, const unsigned value) {
+int find_index_left(const unsigned sz, const unsigned *distance, const unsigned value) {
     unsigned left = 0;
     unsigned right = sz;
     while (left < right) {
@@ -18,7 +18,7 @@ int find_index_left(const unsigned sz, const unsigned* distance, const unsigned 
     return left;
 }
 
-int find_index_right(const unsigned sz, const unsigned* distance, const unsigned value) {
+int find_index_right(const unsigned sz, const unsigned *distance, const unsigned value) {
     unsigned left = 0;
     unsigned right = sz;
     while (left < right) {

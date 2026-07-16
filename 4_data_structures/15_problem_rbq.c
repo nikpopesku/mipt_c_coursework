@@ -4,7 +4,7 @@
 
 int main() {
     unsigned sz, q, i, left, right;
-    unsigned * distance;
+    unsigned *distance;
     int res = scanf("%u", &sz);
     assert(res == 1);
     distance = calloc(sz, sizeof(unsigned));

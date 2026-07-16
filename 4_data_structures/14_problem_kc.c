@@ -1,7 +1,5 @@
-#include <assert.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include "func.h"
 
 // подсчитать хеш строки от start до fin
 int get_hash(const char *start, const char *fin);

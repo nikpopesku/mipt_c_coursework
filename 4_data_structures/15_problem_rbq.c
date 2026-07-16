@@ -9,7 +9,7 @@ int find_index_left(const unsigned sz, const unsigned *distance, const unsigned 
         const unsigned m = left + (right - left) / 2;
 
         if (distance[m] > value) {
-            right = m - 1;
+            right = m > 0 ? m - 1 : 0;
         } else {
             left = m;
         }
@@ -35,7 +35,7 @@ int find_index_right(const unsigned sz, const unsigned *distance, const unsigned
 }
 
 int main() {
-    unsigned sz, q, i, left, right, index1, index2;
+    unsigned sz, q, i, value, index1, index2;
     unsigned *distance;
     int res = scanf("%u", &sz);
     assert(res == 1);
@@ -49,15 +49,15 @@ int main() {
     res = scanf("%u", &q);
     assert(res == 1);
     for (i = 0; i < q; ++i) {
-        res = scanf("%u", &left);
+        res = scanf("%u", &value);
         assert(res == 1);
 
-        index1 = find_index_left(sz, distance, left);
+        index1 = find_index_left(sz, distance, value);
 
-        res = scanf("%u", &right);
+        res = scanf("%u", &value);
         assert(res == 1);
 
-        index2 = find_index_right(sz, distance, left);
+        index2 = find_index_right(sz, distance, value);
 
         printf("%u", index2 - index1 + 1);
     }

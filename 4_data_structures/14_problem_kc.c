@@ -23,7 +23,7 @@ int rabin_karp(const char *needle, const char *haystack) {
     cur = get_hash(haystack, haystack + right);
     n = pow_mod(R, right - 1, Q);
 
-    while(target != cur && haystack[right] != 0) {
+    while(target != cur && haystack[right] != 0 && strncmp(haystack + left, needle, right - left) != 0) {
         cur = update_hash(cur, n, haystack[left], haystack[right]);
         left += 1;
         right += 1;

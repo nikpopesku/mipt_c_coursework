@@ -5,7 +5,7 @@
 
 int main() {
     unsigned sz1, sz2;
-    int i;
+    int i, j;
     char *word;
     char *sentence;
     char *result;
@@ -31,9 +31,17 @@ int main() {
         sentence[i] = getchar();
     }
 
-    while ((result = strstr(sentence, word))) {
-        for (i = sz1 - 1; i >= 0; --i, result++) {
-            *result = word[i];
+    for (i = 0, j = sz1 - 1; i < j; ++i, --j) {
+        if (word[i] != word[j]) {
+            break;
+        }
+    }
+
+    if (word[i] != word[j]) {
+        while ((result = strstr(sentence, word))) {
+            for (i = sz1 - 1; i >= 0; --i, result++) {
+                *result = word[i];
+            }
         }
     }
 

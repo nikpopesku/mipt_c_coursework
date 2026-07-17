@@ -4,7 +4,7 @@ int main() {
     int sum = 0;
     int ch;
 
-    while (scanf("%d", &ch) == 1) {
+    while ((ch = getchar()) != EOF) {
         sum += ch;
     }
 

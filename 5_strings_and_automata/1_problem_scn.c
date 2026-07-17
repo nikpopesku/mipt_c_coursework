@@ -2,7 +2,7 @@
 
 int main() {
     int sum = 0;
-    int ch;
+    char ch;
 
     while ((ch = getchar()) != EOF) {
         sum += ch;

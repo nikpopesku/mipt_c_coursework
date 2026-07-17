@@ -1,12 +1,14 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
     unsigned sz1, sz2;
-    unsigned i;
-    char * word;
-    char * sentence;
+    int i;
+    char *word;
+    char *sentence;
+    char *result;
 
     int res = scanf("%u", &sz1);
     assert(res == 1);
@@ -24,6 +26,12 @@ int main() {
     sentence = calloc(sz2 + 1, sizeof(char));
     for (i = 0; i < sz2; ++i) {
         sentence[i] = getchar();
+    }
+
+    while ((result = strstr(sentence, word))) {
+        for (i = sz1 - 1; i >= 0; --i, result++) {
+            *result = word[i];
+        }
     }
 
     for (i = 0; i < sz2; ++i) {

@@ -7,7 +7,8 @@ int main() {
     unsigned i;
     char * word;
     char * sentence;
-    int res = scanf("%d", &sz1);
+    int res = scanf("%u", &sz1);
+    getchar();
     assert(res == 1);
 
     word = calloc(sz1 + 1, sizeof(char));
@@ -15,12 +16,16 @@ int main() {
         word[i] = getchar();
     }
 
-    res = scanf("%d", &sz2);
+    res = scanf("%u", &sz2);
     assert(res == 1);
 
     sentence = calloc(sz2 + 1, sizeof(char));
     for (i = 0; i < sz2; ++i) {
         sentence[i] = getchar();
+    }
+
+    for (i = 0; i < sz2; ++i) {
+        printf("%c", sentence[i]);
     }
 
     return 0;

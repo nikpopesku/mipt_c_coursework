@@ -9,6 +9,7 @@ int main() {
     char *word;
     char *sentence;
     char *result;
+    char *pos;
 
     int res = scanf("%u", &sz1);
     assert(res == 1);
@@ -38,7 +39,9 @@ int main() {
     }
 
     if (word[i] != word[j]) {
-        while ((result = strstr(sentence, word))) {
+        pos = sentence;
+        while ((result = strstr(pos, word))) {
+            pos = result + sz1;
             for (i = sz1 - 1; i >= 0; --i, result++) {
                 *result = word[i];
             }

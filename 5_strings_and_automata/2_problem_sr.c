@@ -23,6 +23,9 @@ int main() {
     res = scanf("%u", &sz2);
     assert(res == 1);
 
+    getchar();
+
+
     sentence = calloc(sz2 + 1, sizeof(char));
     for (i = 0; i < sz2; ++i) {
         sentence[i] = getchar();

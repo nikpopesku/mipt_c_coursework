@@ -7,9 +7,11 @@ int main() {
     unsigned i;
     char * word;
     char * sentence;
+
     int res = scanf("%u", &sz1);
-    getchar();
     assert(res == 1);
+
+    getchar();
 
     word = calloc(sz1 + 1, sizeof(char));
     for (i = 0; i < sz1; ++i) {

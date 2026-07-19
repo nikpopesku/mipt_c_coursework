@@ -17,7 +17,7 @@ char *replace(char *str, char const *from, char const *to) {
         source = p + i;
     }
 
-    return source;
+    return str;
 }
 
 int main() {
@@ -28,18 +28,19 @@ int main() {
     assert(res == 1);
 
     from = calloc(sz1, sizeof(char));
+    getchar();
 
     while ((ch = getchar()) != '\n') {
         from[i++] = ch;
     }
     from[i] = '\0';
-    getchar();
 
     res = scanf("%u", &sz2);
     assert(res == 1);
 
     i = 0;
     to = calloc(sz2, sizeof(char));
+    getchar();
 
     while ((ch = getchar()) != '\n') {
         to[i++] = ch;
@@ -52,6 +53,7 @@ int main() {
 
     i = 0;
     src = calloc(sz3, sizeof(char));
+    getchar();
 
     while ((ch = getchar()) != '\n') {
         src[i++] = ch;

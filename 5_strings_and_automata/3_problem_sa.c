@@ -1,7 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 char *strcat_r(char *dest, const char *src, int *bufsz) {
     int i, j, k;

@@ -37,15 +37,13 @@ char *replace(char *str, char const *from, char const *to) {
 
     new_str[k] = '\0';
 
-    free(str);
-
     return new_str;
 }
 
 int main() {
     unsigned sz1, sz2, sz3, i = 0;
     char ch;
-    char *from, *to, *src;
+    char *from, *to, *src, *new_src;
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
@@ -82,7 +80,10 @@ int main() {
     }
     src[i] = '\0';
 
-    src = replace(src, from, to);
+    new_src = replace(src, from, to);
+
+    free(src);
+    src = new_src;
 
     for (i = 0; src[i] != '\0'; ++i) {
         printf("%c", src[i]);

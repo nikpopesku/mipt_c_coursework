@@ -4,31 +4,35 @@
 #include <string.h>
 
 char *replace(char *str, char const *from, char const *to) {
-    char *p, *new_str;
+    char *p, *new_str, *prev, *cur;
     char *source = str;
-    int i, count = 0;
+    int i, count = 0, k = 0;
 
     if (strlen(from) != strlen(to)) {
         while ((p = strstr(source, from)) != NULL) {
             ++count;
             source = p + strlen(to);
         }
-
-        new_str = realloc(str, strlen(str) + count * (strlen(from) - strlen(to) + 1));
-        str = new_str;
     }
+
+    new_str = calloc(strlen(str) + count * (strlen(from) - strlen(to)) + 1, sizeof(char));
 
     source = str;
+    prev = source;
 
     while ((p = strstr(source, from)) != NULL) {
-        for (i = 0; to[i] != '\0'; ++i) {
-            p[i] = to[i];
+        for (cur = prev; cur < p; ++cur) {
+            new_str[k++] = *cur;
         }
 
-        source = p + i;
+        for (i = 0; i < strlen(to); ++i) {
+            new_str[k++] = to[i];
+        }
+
+        source = p + strlen(from);
     }
 
-    return str;
+    return new_str;
 }
 
 int main() {

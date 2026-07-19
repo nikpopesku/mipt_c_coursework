@@ -15,7 +15,7 @@ char *replace(char *str, char const *from, char const *to) {
         }
     }
 
-    new_str = calloc(strlen(str) + count * (strlen(from) - strlen(to)) + 1, sizeof(char));
+    new_str = calloc(strlen(str) + count * (strlen(to) - strlen(from)) + 1, sizeof(char));
 
     source = str;
     prev = source;
@@ -31,6 +31,8 @@ char *replace(char *str, char const *from, char const *to) {
 
         source = p + strlen(from);
     }
+
+    new_str[k] = '\0';
 
     return new_str;
 }

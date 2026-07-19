@@ -31,6 +31,10 @@ char *replace(char *str, char const *from, char const *to) {
         source = p + strlen(from);
     }
 
+    for (cur = source; *cur != '\0'; ++cur) {
+        new_str[k++] = *cur;
+    }
+
     new_str[k] = '\0';
 
     return new_str;

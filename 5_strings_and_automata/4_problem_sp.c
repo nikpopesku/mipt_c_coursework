@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,6 +16,8 @@ char *replace(char *str, char const *from, char const *to) {
 
         source = p + i;
     }
+
+    return source;
 }
 
 int main() {
@@ -32,6 +33,7 @@ int main() {
         from[i++] = ch;
     }
     from[i] = '\0';
+    getchar();
 
     res = scanf("%u", &sz2);
     assert(res == 1);

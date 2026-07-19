@@ -14,11 +14,11 @@ char *replace(char *str, char const *from, char const *to) {
             source = p + strlen(to);
         }
 
-        new_str = realloc(str, strlen(str) + count * (strlen(from) - strlen(to)));
+        new_str = realloc(str, strlen(str) + count * (strlen(from) - strlen(to) + 1));
         str = new_str;
     }
 
-
+    source = str;
 
     while ((p = strstr(source, from)) != NULL) {
         for (i = 0; to[i] != '\0'; ++i) {

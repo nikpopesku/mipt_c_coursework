@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,5 +20,19 @@ char *replace(char *str, char const *from, char const *to) {
 }
 
 int main() {
+    unsigned sz1, i = 0;
+    char ch;
+    char * from;
+    int res = scanf("%u", &sz1);
+    assert(res == 1);
+
+    from = calloc(sz1, sizeof(char));
+
+    while ((ch = getchar()) != '\n') {
+        from[i++] = ch;
+    }
+    from[i] = '\0';
+
+
     return 0;
 }

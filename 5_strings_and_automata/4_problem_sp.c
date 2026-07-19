@@ -4,9 +4,20 @@
 #include <string.h>
 
 char *replace(char *str, char const *from, char const *to) {
-    char *p;
+    char *p, *new_str;
     char *source = str;
-    int i;
+    int i, count = 0;
+
+    if (strlen(from) != strlen(to)) {
+        while ((p = strstr(source, from)) != NULL) {
+            ++count;
+            source = p + strlen(to);
+        }
+
+        new_str = realloc(str, strlen(str) + count * (strlen(from) - strlen(to)));
+        str = new_str;
+    }
+
 
 
     while ((p = strstr(source, from)) != NULL) {

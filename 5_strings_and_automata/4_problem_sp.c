@@ -20,9 +20,9 @@ char *replace(char *str, char const *from, char const *to) {
 }
 
 int main() {
-    unsigned sz1, sz2, i = 0;
+    unsigned sz1, sz2, sz3, i = 0;
     char ch;
-    char *from, *to;
+    char *from, *to, *src;
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
@@ -43,6 +43,24 @@ int main() {
         to[i++] = ch;
     }
     to[i] = '\0';
+
+
+    res = scanf("%u", &sz3);
+    assert(res == 1);
+
+    i = 0;
+    src = calloc(sz3, sizeof(char));
+
+    while ((ch = getchar()) != '\n') {
+        src[i++] = ch;
+    }
+    src[i] = '\0';
+
+    src = replace(src, from, to);
+
+    for (i = 0; src[i] != '\0'; ++i) {
+        printf("%c", src[i]);
+    }
 
     return 0;
 }

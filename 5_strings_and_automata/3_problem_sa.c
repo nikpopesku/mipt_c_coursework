@@ -17,9 +17,16 @@ char *strcat_r(char *dest, const char *src, int *bufsz) {
     for (k = 0; k < j; ++k) {
         dest[k + i - 1] = src[k];
     }
+
+    return dest;
 }
 
 
 int main() {
+    unsigned sz;
+    int res = scanf("%u", &sz);
+    assert(res == 1);
+
+
     return 0;
 }

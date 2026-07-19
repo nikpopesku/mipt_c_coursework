@@ -4,13 +4,15 @@
 
 char *strcat_r(char *dest, const char *src, int *bufsz) {
     int i, j, k;
+    char *new_dest;
     for (i = 0; i < *bufsz && dest[i] != '\0'; ++i) {
     }
     for (j = 0; src[j] != '\0'; ++j) {
     }
     if (i + j + i > *bufsz) {
-        dest = realloc(dest, i + j + 1);
+        new_dest = realloc(dest, i + j + 1);
         *bufsz = i + j + 1;
+        dest = new_dest;
     }
 
     for (k = 0; k < j; ++k) {

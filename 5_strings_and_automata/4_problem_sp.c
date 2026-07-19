@@ -27,7 +27,7 @@ int main() {
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
-    from = calloc(sz1, sizeof(char));
+    from = calloc(sz1 + 1, sizeof(char));
     getchar();
 
     while ((ch = getchar()) != '\n') {
@@ -39,7 +39,7 @@ int main() {
     assert(res == 1);
 
     i = 0;
-    to = calloc(sz2, sizeof(char));
+    to = calloc(sz2 + 1, sizeof(char));
     getchar();
 
     while ((ch = getchar()) != '\n') {
@@ -52,7 +52,7 @@ int main() {
     assert(res == 1);
 
     i = 0;
-    src = calloc(sz3, sizeof(char));
+    src = calloc(sz3 + 1, sizeof(char));
     getchar();
 
     while ((ch = getchar()) != '\n') {

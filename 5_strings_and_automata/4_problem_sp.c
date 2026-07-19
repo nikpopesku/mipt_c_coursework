@@ -4,7 +4,7 @@
 #include <string.h>
 
 char *replace(char *str, char const *from, char const *to) {
-    char *p, *new_str, *prev, *cur;
+    char *p, *new_str, *cur;
     char *source = str;
     int i, count = 0, k = 0;
 
@@ -18,10 +18,9 @@ char *replace(char *str, char const *from, char const *to) {
     new_str = calloc(strlen(str) + count * (strlen(to) - strlen(from)) + 1, sizeof(char));
 
     source = str;
-    prev = source;
 
     while ((p = strstr(source, from)) != NULL) {
-        for (cur = prev; cur < p; ++cur) {
+        for (cur = source; cur < p; ++cur) {
             new_str[k++] = *cur;
         }
 

@@ -11,7 +11,7 @@ char *replace(char *str, char const *from, char const *to) {
     if (strlen(from) != strlen(to)) {
         while ((p = strstr(source, from)) != NULL) {
             ++count;
-            source = p + strlen(to);
+            source = p + strlen(from);
         }
     }
 
@@ -36,6 +36,8 @@ char *replace(char *str, char const *from, char const *to) {
     }
 
     new_str[k] = '\0';
+
+    free(str);
 
     return new_str;
 }
@@ -85,6 +87,10 @@ int main() {
     for (i = 0; src[i] != '\0'; ++i) {
         printf("%c", src[i]);
     }
+
+    free(from);
+    free(to);
+    free(src);
 
     return 0;
 }

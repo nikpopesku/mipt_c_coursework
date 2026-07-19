@@ -53,7 +53,7 @@ int main() {
     ptr_sz = &sz;
     strcat_r(dest, src, ptr_sz);
 
-    for (i = 0; i < *ptr_sz; ++i) {
+    for (i = 0; dest[i] != '\0'; ++i) {
         printf("%c", dest[i]);
     }
 

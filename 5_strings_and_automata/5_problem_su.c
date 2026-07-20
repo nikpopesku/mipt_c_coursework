@@ -1,10 +1,24 @@
 #include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-char * strstrci(char const * needle, char const * haystack) {
+char *strstrci(char const *needle, char const *haystack) {
+    unsigned i, j;
 
+    for (i = 0; i < strlen(haystack) - strlen(needle); ++i) {
+        if (tolower(haystack[i]) != tolower(needle[0])) continue;
+
+        if (strlen(needle) == 1) return (char *) (haystack + i);
+
+        for (j = i + 1; j < strlen(needle) && tolower(haystack[j]) == tolower(needle[j - i]); ++j) {
+        }
+
+        if (j == strlen(needle)) {
+            return (char *) (haystack + i);
+        }
+    }
 }
 
 

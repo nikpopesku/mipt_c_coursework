@@ -5,7 +5,7 @@
 #include <string.h>
 
 char *strstrci(char const *needle, char const *haystack) {
-    unsigned i, j;
+    unsigned i = 0, j = 0;
 
     for (i = 0; i < strlen(haystack) - strlen(needle); ++i) {
         if (tolower(haystack[i]) != tolower(needle[0])) continue;

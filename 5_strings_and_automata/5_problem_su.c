@@ -1,0 +1,44 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char * strstrci(char const * needle, char const * haystack) {
+
+}
+
+
+int main() {
+    unsigned sz1, i, sz2;
+    char *haystack, *needle, *new_haystack;
+    int res = scanf("%u", &sz1);
+    assert(res == 1);
+
+    haystack = calloc(sz1, sizeof(char));
+
+    for (i = 0; i < sz1; ++i) {
+        res = scanf("%c", &haystack[i]);
+        assert(res == 1);
+    }
+
+    res = scanf("%u", &sz2);
+    assert(res == 1);
+
+    needle = calloc(sz2, sizeof(char));
+
+    for (i = 0; i < sz2; ++i) {
+        res = scanf("%c", &needle[i]);
+        assert(res == 1);
+    }
+
+    new_haystack = strstrci(needle, haystack);
+
+    free(haystack);
+    free(needle);
+
+    for (i = 0; i < strlen(new_haystack); ++i) {
+        printf("%c", haystack[i]);
+    }
+
+    return 0;
+}

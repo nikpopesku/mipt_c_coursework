@@ -1,7 +1,7 @@
 #include <assert.h>
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 
 char *strstrci(char const *needle, char const *haystack) {
@@ -19,6 +19,8 @@ char *strstrci(char const *needle, char const *haystack) {
             return (char *) (haystack + i);
         }
     }
+
+    return NULL;
 }
 
 

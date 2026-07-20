@@ -30,6 +30,8 @@ int main() {
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
+    getchar();
+
     haystack = calloc(sz1, sizeof(char));
 
     for (i = 0; i < sz1; ++i) {
@@ -40,6 +42,8 @@ int main() {
     res = scanf("%u", &sz2);
     assert(res == 1);
 
+    getchar();
+
     needle = calloc(sz2, sizeof(char));
 
     for (i = 0; i < sz2; ++i) {
@@ -49,12 +53,13 @@ int main() {
 
     new_haystack = strstrci(needle, haystack);
 
-    free(haystack);
-    free(needle);
 
     for (i = 0; i < strlen(new_haystack); ++i) {
         printf("%c", haystack[i]);
     }
+
+    free(haystack);
+    free(needle);
 
     return 0;
 }

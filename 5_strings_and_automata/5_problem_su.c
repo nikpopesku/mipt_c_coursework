@@ -7,12 +7,15 @@
 char *strstrci(char const *needle, char const *haystack) {
     unsigned i = 0, j = 0;
 
+    if (strlen(haystack) < strlen(needle)) return NULL;
+
     for (i = 0; i < strlen(haystack) - strlen(needle); ++i) {
         if (tolower(haystack[i]) != tolower(needle[0])) continue;
 
         if (strlen(needle) == 1) return (char *) (haystack + i);
 
-        for (j = i + 1; j < strlen(needle) && tolower(haystack[j]) == tolower(needle[j - i]); ++j) {
+        for (j = 1; j < strlen(needle) && j + i < strlen(haystack) && tolower(haystack[j + i]) == tolower(needle[j]); ++
+             j) {
         }
 
         if (j == strlen(needle)) {

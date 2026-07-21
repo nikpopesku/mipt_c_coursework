@@ -13,21 +13,9 @@ int main() {
         switch (ch) {
             case 'a':
                 switch (position) {
-                    case 1:
-                        position = 1;
-                        break;
-                    case 2:
-                        position = 2;
-                        break;
                     case 3:
-                        position = 5;
-                        break;
                     case 4:
                         position = 5;
-                        break;
-                    case 5:
-                        position = 5;
-                        break;
                 }
                 break;
             case 'b':
@@ -35,17 +23,8 @@ int main() {
                     case 1:
                         position = 2;
                         break;
-                    case 2:
-                        position = 2;
-                        break;
                     case 3:
                         position = 4;
-                        break;
-                    case 4:
-                        position = 4;
-                        break;
-                    case 5:
-                        position = 5;
                         break;
                 }
                 break;
@@ -55,17 +34,8 @@ int main() {
                         position = 5;
                         break;
                     case 2:
-                        position = 3;
-                        break;
-                    case 3:
-                        position = 3;
-                        break;
                     case 4:
                         position = 3;
-                        break;
-                    case 5:
-                        position = 5;
-                        break;
                 }
                 break;
             default:

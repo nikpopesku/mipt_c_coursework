@@ -2,9 +2,8 @@
 #include <stdio.h>
 
 
-
 int main() {
-    char ch;
+    int ch;
     int position = 1;
 
     while ((ch = getchar()) != EOF) {

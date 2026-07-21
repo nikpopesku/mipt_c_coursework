@@ -6,8 +6,7 @@
 
 
 int main() {
-    char * word;
-    int i = 0;
+    char ch;
     int position = 1;
 
     while ((ch = getchar()) != EOF) {

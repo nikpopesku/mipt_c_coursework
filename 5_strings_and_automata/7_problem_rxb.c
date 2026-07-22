@@ -4,12 +4,12 @@
 #include <regex.h>
 
 int main() {
-    char ch, *p;
+    char ch;
     size_t cap = 16, len = 0;
     char *buf = calloc(cap, sizeof(char)), *new_buf;
 
     regex_t re;
-    int ret = regcomp(&re, "your pattern here", REG_EXTENDED);
+    int ret = regcomp(&re, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", REG_EXTENDED);
     assert(ret == 0);
 
     while ((ch = getchar()) != EOF && ch != '\n') {

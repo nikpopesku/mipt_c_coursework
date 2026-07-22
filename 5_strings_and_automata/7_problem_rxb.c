@@ -22,11 +22,14 @@ int main() {
         buf[len++] = (char) ch;
     }
 
+    buf[len] = '\0';
+
 
     ret = regexec(&re, buf, 0, NULL, 0);
     printf("%d", ret == 0 ? 1 : 0);
 
     regfree(&re);
+    free(buf);
 
     return 0;
 }

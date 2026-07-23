@@ -4,7 +4,7 @@
 #include <regex.h>
 
 int main() {
-    unsigned amount, sz, c, i, j;
+    unsigned amount, sz, c, i;
     int res = scanf("%u", &amount);
     int *coin, *dp;
     assert(res == 1);
@@ -23,18 +23,14 @@ int main() {
 
     for (i = 1; i <= amount; ++i) {
         for (c = 0; c < sz; ++c) {
-            if (i >= coin[c]) {
+            if (i >= coin[c] && dp[i - coin[c]] != -1) {
                 if (dp[i] == -1) {
-                    dp[i] = 1;
+                    dp[i] = dp[i - coin[c]] + 1;
                 } else {
                     dp[i] = dp[i - coin[c]] + 1 > dp[i] ? dp[i] : dp[i - coin[c]] + 1;
                 }
             }
         }
-        for (j = 0; j <= amount; ++j) {
-            printf("%d ", dp[i]);
-        }
-        printf("\n");
     }
 
     printf("%d", dp[amount] != -1 ? dp[amount] : 0);

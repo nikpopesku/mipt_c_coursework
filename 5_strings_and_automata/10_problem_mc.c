@@ -12,8 +12,8 @@ int main() {
     res = scanf("%u", &sz);
     assert(res == 1);
 
-    coin = calloc(sz, sizeof(unsigned));
-    dp = calloc(amount + 1, sizeof(unsigned));
+    coin = calloc(sz, sizeof(int));
+    dp = calloc(amount + 1, sizeof(int));
     for (i = 1; i <= amount; ++i) dp[i] = -1;
 
     for (i = 0; i < sz; ++i) {

@@ -2,19 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned max(const unsigned a, const unsigned b) {
-    return a > b ? a : b;
-}
 
 struct val {
     unsigned weight;
     unsigned count;
 };
 
+struct val max(const struct val a, const struct val b) {
+    return a.weight > b.weight ? a : b;
+}
+
+
 int main() {
     unsigned backpack, sz;
     unsigned *weight, row, col;
-    struct val **dp;
+    struct val **dp, xxx;
     int res = scanf("%u", &backpack);
     assert(res == 1);
 
@@ -34,8 +36,20 @@ int main() {
     }
 
     for (row = 1; row <= sz; ++row) {
+        struct val temp;
+        temp = calloc(1, sizeof(struct val));
+        temp.weight = 0;
+        temp.count = 0;
+
         for (col = 1; col <= backpack; ++col) {
-            dp[row][col].weight = max(dp[row - 1][col].weight, col >= weight[row] ? dp[row - 1][col - weight[row]].weight + weight[row] : 0);
+            if (col > weight[row]) {
+                xxx = temp;
+            } else {
+                xxx = dp[row - 1][col - weight[row]];
+                xxx.weight += weight[row];
+                xxx.count += 1;
+            }
+            dp[row][col] = max(dp[row - 1][col], xxx);
         }
     }
 

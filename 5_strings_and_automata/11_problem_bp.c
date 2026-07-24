@@ -30,7 +30,7 @@ int main() {
 
     for (row = 1; row <= sz; ++row) {
         for (col = 1; col <= backpack; ++col) {
-            dp[row][col] = max(dp[row - 1][col], dp[row - 1][col - weight[col]] + weight[col]);
+            dp[row][col] = max(dp[row - 1][col], col >= weight[row] ? dp[row - 1][col - weight[row]] + weight[row] : 0);
         }
     }
 

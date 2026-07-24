@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max(const int a, const int b) {
+unsigned max(const unsigned a, const unsigned b) {
     return a > b ? a : b;
 }
 

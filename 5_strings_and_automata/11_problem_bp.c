@@ -41,7 +41,7 @@ int main() {
         temp.count = 0;
 
         for (col = 1; col <= backpack; ++col) {
-            if (col > weight[row]) {
+            if (col < weight[row]) {
                 xxx = temp;
             } else {
                 xxx = dp[row - 1][col - weight[row]];

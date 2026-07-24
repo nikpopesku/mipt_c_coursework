@@ -9,7 +9,7 @@ struct val {
 };
 
 struct val max(const struct val a, const struct val b) {
-    return a.weight > b.weight ? a : b;
+    return a.count > b.count ? a : b;
 }
 
 

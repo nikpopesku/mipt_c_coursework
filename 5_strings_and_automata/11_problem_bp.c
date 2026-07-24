@@ -36,5 +36,11 @@ int main() {
 
     printf("%u\n", dp[sz][backpack]);
 
+    for (row = 1; row <= sz; ++row) {
+        free(dp[row]);
+    }
+
+    free(weight);
+
     return 0;
 }

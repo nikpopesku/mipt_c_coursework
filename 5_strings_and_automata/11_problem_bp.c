@@ -37,7 +37,6 @@ int main() {
 
     for (row = 1; row <= sz; ++row) {
         struct val temp;
-        temp = calloc(1, sizeof(struct val));
         temp.weight = 0;
         temp.count = 0;
 

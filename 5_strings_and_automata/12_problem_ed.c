@@ -53,7 +53,7 @@ int main() {
     dp = calloc(sz1 + 1, sizeof(unsigned *));
 
     for (row = 0; row <= sz1; ++row) {
-        dp[row] = calloc(sz2, sizeof(unsigned));
+        dp[row] = calloc(sz2 + 1, sizeof(unsigned));
     }
 
     for (row = 1; row <= sz1; ++row) {

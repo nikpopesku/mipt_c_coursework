@@ -2,10 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+unsigned max(const unsigned a, const unsigned b, const unsigned c) {
+    unsigned temp = a > b ? a : b;
+    temp = temp > c ? temp : c;
+
+    return temp;
+}
 
 int main() {
     unsigned add, delete, edit;
-    unsigned sz1, sz2, i;
+    unsigned sz1, sz2, i, row, col;
     unsigned **dp;
     char *st1, *st2;
 
@@ -42,9 +48,18 @@ int main() {
 
     dp = calloc(sz1 + 1, sizeof(unsigned *));
 
-    for (i = 0; i <= sz1; ++i) {
-        dp[i] = calloc(sz2, sizeof(unsigned));
+    for (row = 0; row <= sz1; ++row) {
+        dp[row] = calloc(sz2, sizeof(unsigned));
     }
+
+    for (row = 1; row <= sz1; ++row) {
+        for (col = 1; col <= sz2; ++col) {
+            dp[row][col] = max(st1[row - 1] != st2[col - 1] ? dp[row - 1][col - 1] + 1 : 0, dp[row][col - 1] + 1,
+                               dp[row - 1][col] + 1);
+        }
+    }
+
+    printf("%u\n", dp[sz1][sz2]);
 
 
     return 0;

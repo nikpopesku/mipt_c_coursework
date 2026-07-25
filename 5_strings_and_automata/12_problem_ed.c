@@ -27,6 +27,8 @@ int main() {
     res = scanf("%u", &sz1);
     assert(res == 1);
 
+    getchar();
+
     st1 = calloc(sz1 + 1, sizeof(char));
     for (i = 0; i < sz1; ++i) {
         res = scanf("%c", &st1[i]);
@@ -34,6 +36,8 @@ int main() {
     }
 
     st1[i] = '\0';
+
+    getchar();
 
     res = scanf("%u", &sz2);
     assert(res == 1);

@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned max(const unsigned a, const unsigned b, const unsigned c) {
-    unsigned temp = a > b ? a : b;
-    temp = temp > c ? temp : c;
+unsigned min(const unsigned a, const unsigned b, const unsigned c) {
+    unsigned temp = a > b ? b : a;
+    temp = temp > c ? c : temp;
 
     return temp;
 }
@@ -58,7 +58,7 @@ int main() {
 
     for (row = 1; row <= sz1; ++row) {
         for (col = 1; col <= sz2; ++col) {
-            dp[row][col] = max(st1[row - 1] != st2[col - 1] ? dp[row - 1][col - 1] + 1 : 0, dp[row][col - 1] + 1,
+            dp[row][col] = min(dp[row - 1][col - 1] + (st1[row - 1] != st2[col - 1] ? 1 : 0), dp[row][col - 1] + 1,
                                dp[row - 1][col] + 1);
         }
     }

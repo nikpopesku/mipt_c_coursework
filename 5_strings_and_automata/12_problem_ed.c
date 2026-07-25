@@ -65,8 +65,8 @@ int main() {
 
     for (row = 1; row <= sz1; ++row) {
         for (col = 1; col <= sz2; ++col) {
-            dp[row][col] = min(dp[row - 1][col - 1] + (st1[row - 1] != st2[col - 1] ? 1 : 0), dp[row][col - 1] + 1,
-                               dp[row - 1][col] + 1);
+            dp[row][col] = min(dp[row - 1][col - 1] + (st1[row - 1] != st2[col - 1] ? edit : 0), dp[row][col - 1] + add,
+                               dp[row - 1][col] + delete);
         }
     }
 

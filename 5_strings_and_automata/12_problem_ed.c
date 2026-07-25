@@ -54,6 +54,9 @@ int main() {
 
     for (row = 0; row <= sz1; ++row) {
         dp[row] = calloc(sz2 + 1, sizeof(unsigned));
+        if (row > 0) {
+            dp[row][0] = dp[row - 1][0] + 1;
+        }
     }
 
     for (row = 1; row <= sz1; ++row) {

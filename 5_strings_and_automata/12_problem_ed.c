@@ -65,6 +65,13 @@ int main() {
 
     printf("%u\n", dp[sz1][sz2]);
 
+    for (row = 1; row <= sz1; ++row) {
+        free(dp[row]);
+    }
+
+    free(st1);
+    free(st2);
+
 
     return 0;
 }

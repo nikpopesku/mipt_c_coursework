@@ -3,11 +3,11 @@
 #include <stdlib.h>
 
 
-
 int main() {
     unsigned add, delete, edit;
     unsigned sz1, sz2, i;
-    char * st1, *st2;
+    unsigned **dp;
+    char *st1, *st2;
 
     int res = scanf("%u", &add);
     assert(res == 1);
@@ -39,6 +39,12 @@ int main() {
     }
 
     st2[i] = '\0';
+
+    dp = calloc(sz1 + 1, sizeof(unsigned *));
+
+    for (i = 0; i <= sz1; ++i) {
+        dp[i] = calloc(sz2, sizeof(unsigned));
+    }
 
 
     return 0;

@@ -34,7 +34,6 @@ int main() {
     }
 
 
-
     res = regcomp(&re, needle, REG_EXTENDED);
     assert(res == 0);
 

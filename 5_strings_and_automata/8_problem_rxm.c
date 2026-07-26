@@ -4,8 +4,8 @@
 #include <regex.h>
 
 int main() {
-    unsigned sz1, sz2, i;
-    char *needle, *haystack;
+    unsigned sz1, sz2, i, j;
+    char *needle, *haystack, *word;
     regex_t re;
     regmatch_t match;
     int res = scanf("%u", &sz1);
@@ -41,8 +41,13 @@ int main() {
     res = regcomp(&re, needle, REG_EXTENDED);
     assert(res == 0);
 
-    while (regexec(&re, haystack, 1, &match, 0) != 0) {
-        res = 2;
+    while (regexec(&re, haystack, 1, &match, 0) == 0) {
+        word = calloc(match.rm_eo - match.rm_so + 1, sizeof(char));
+        for (i = match.rm_eo - 1, j = 0; i >= match.rm_so; --i, ++j) {
+            word[j] = haystack[i];
+        }
+
+        word[match.rm_eo - match.rm_so] = '\0';
     }
 
     return 0;

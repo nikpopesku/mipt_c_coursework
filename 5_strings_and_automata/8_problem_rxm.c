@@ -48,7 +48,17 @@ int main() {
         }
 
         word[match.rm_eo - match.rm_so] = '\0';
+
+        for (i = match.rm_so; i < match.rm_eo; ++i, ++j) {
+            haystack[i] = word[i - match.rm_so];
+        }
     }
+
+    for (i = 0; i < sz2; ++i) {
+        printf("%c", haystack[i]);
+    }
+
+    printf("\n");
 
     return 0;
 }

@@ -4,7 +4,7 @@
 #include <regex.h>
 
 int main() {
-    unsigned sz1, sz2, i, j;
+    unsigned sz1, sz2, i, j, offset;
     char *needle, *haystack, *word;
     regex_t re;
     regmatch_t match;
@@ -41,17 +41,20 @@ int main() {
     res = regcomp(&re, needle, REG_EXTENDED);
     assert(res == 0);
 
-    while (regexec(&re, haystack, 1, &match, 0) == 0) {
+    offset = 0;
+    while (regexec(&re, haystack + offset, 1, &match, 0) == 0) {
         word = calloc(match.rm_eo - match.rm_so + 1, sizeof(char));
-        for (i = match.rm_eo - 1, j = 0; i >= match.rm_so; --i, ++j) {
+        for (i = offset + match.rm_eo - 1, j = 0; i >= offset + match.rm_so; --i, ++j) {
             word[j] = haystack[i];
         }
 
         word[match.rm_eo - match.rm_so] = '\0';
 
-        for (i = match.rm_so; i < match.rm_eo; ++i, ++j) {
-            haystack[i] = word[i - match.rm_so];
+        for (i = offset + match.rm_so; i < offset + match.rm_eo; ++i, ++j) {
+            haystack[i] = word[i - offset - match.rm_so];
         }
+
+        offset += match.rm_eo;
     }
 
     for (i = 0; i < sz2; ++i) {

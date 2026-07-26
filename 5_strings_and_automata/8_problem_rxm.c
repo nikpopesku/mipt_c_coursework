@@ -1,11 +1,12 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <regex.h>
 
 int main() {
     unsigned sz1, sz2, i;
     char *needle, *haystack;
+    regex_t re;
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
@@ -31,6 +32,11 @@ int main() {
         res = scanf("%c", &haystack[i]);
         assert(res == 1);
     }
+
+
+
+    res = regcomp(&re, needle, REG_EXTENDED);
+    assert(res == 0);
 
 
     return 0;

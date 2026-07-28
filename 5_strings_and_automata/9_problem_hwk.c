@@ -37,6 +37,8 @@ int main() {
     int res = scanf("%u", &sz1);
     assert(res == 1);
 
+    getchar();
+
     haystack = calloc(sz1 + 1, sizeof(char));
     for (i = 0; i < sz1; ++i) {
         res = scanf("%c", &haystack[i]);
@@ -45,8 +47,12 @@ int main() {
 
     haystack[i] = '\0';
 
+    getchar();
+
     res = scanf("%u", &sz2);
     assert(res == 1);
+
+    getchar();
 
     needle = calloc(sz2 + 1, sizeof(char));
     for (i = 0; i < sz2; ++i) {

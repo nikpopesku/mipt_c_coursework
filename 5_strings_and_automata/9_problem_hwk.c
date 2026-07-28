@@ -5,11 +5,10 @@
 #include <string.h>
 #include "func.h"
 
-void patpreproc(char const * needle, int * needle_lps) {
-
+void patpreproc(char const *needle, int *needle_lps) {
 }
 
-char * strstrci(char const * needle, int const * needle_lps, char const * haystack) {
+char *strstrci(char const *needle, int const *needle_lps, char const *haystack) {
     unsigned i = 0, j = 0;
 
     if (strlen(haystack) < strlen(needle)) return NULL;
@@ -21,7 +20,7 @@ char * strstrci(char const * needle, int const * needle_lps, char const * haysta
 
         for (j = 1; j < strlen(needle) && j + i < strlen(haystack) && tolower(haystack[j + i]) == tolower(needle[j]); ++
              j) {
-             }
+        }
 
         if (j == strlen(needle)) {
             return (char *) (haystack + i);
@@ -33,7 +32,7 @@ char * strstrci(char const * needle, int const * needle_lps, char const * haysta
 
 int main() {
     unsigned sz1, sz2, i;
-    char * haystack, *needle;
+    char *haystack, *needle;
     int res = scanf("%u", &sz1);
     assert(res == 1);
 

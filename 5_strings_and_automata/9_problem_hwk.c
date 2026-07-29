@@ -7,7 +7,6 @@
 
 void patpreproc(char const *needle, int *needle_lps) {
     int i, j;
-    needle_lps = calloc(strlen(needle), sizeof(int));
 
     for (i = 1; i < strlen(needle); ++i) {
         j = needle_lps[i - 1];
@@ -46,6 +45,7 @@ int main() {
     unsigned sz1, sz2, i;
     char *haystack, *needle;
     int res = scanf("%u", &sz1);
+    int *needle_lps;
     assert(res == 1);
 
     getchar();
@@ -72,6 +72,13 @@ int main() {
     }
 
     needle[i] = '\0';
+
+    needle_lps = calloc(strlen(needle), sizeof(int));
+    patpreproc(needle, needle_lps);
+
+    free(needle_lps);
+    free(needle);
+    free(haystack);
 
 
     return 0;

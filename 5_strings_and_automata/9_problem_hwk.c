@@ -24,17 +24,9 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
 
     if (strlen(haystack) < strlen(needle)) return NULL;
 
-    for (i = 0; i < strlen(haystack) - strlen(needle); ++i) {
-        if (tolower(haystack[i]) != tolower(needle[0])) continue;
-
-        if (strlen(needle) == 1) return (char *) (haystack + i);
-
-        for (j = 1; j < strlen(needle) && j + i < strlen(haystack) && tolower(haystack[j + i]) == tolower(needle[j]); ++
-             j) {
-        }
-
-        if (j == strlen(needle)) {
-            return (char *) (haystack + i);
+    for (i = 0; i < strlen(haystack); ++i) {
+        if (needle_lps[strlen(needle) + 1 + i] == strlen(needle)) {
+            return (char *) (haystack + i - strlen(needle) + 1);
         }
     }
 

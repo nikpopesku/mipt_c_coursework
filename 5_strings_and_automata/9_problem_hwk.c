@@ -35,9 +35,9 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
 
 int main() {
     unsigned sz1, sz2, i;
-    char *haystack, *needle;
+    char *haystack, *needle, *pos;
     int res = scanf("%u", &sz1);
-    int *needle_lps;
+    int *needle_lps, counter;
     assert(res == 1);
 
     getchar();
@@ -68,9 +68,21 @@ int main() {
     needle_lps = calloc(strlen(needle), sizeof(int));
     patpreproc(needle, needle_lps);
 
+
+    counter = 0;
+
+    do {
+        pos = strstrci(needle, needle_lps, haystack);
+        if (pos != NULL) {
+            ++counter;
+        }
+    } while (pos != NULL);
+
     free(needle_lps);
     free(needle);
     free(haystack);
+
+    printf("%d\n", counter);
 
 
     return 0;

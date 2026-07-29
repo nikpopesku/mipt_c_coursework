@@ -68,6 +68,9 @@ int main() {
     needle_lps = calloc(strlen(needle), sizeof(int));
     patpreproc(needle, needle_lps);
 
+    for (i = 0; i < strlen(needle); ++i) {
+        printf("%d ", needle_lps[i]);
+    }
 
     counter = 0;
 

@@ -36,7 +36,7 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
         }
 
         if (j == strlen(needle)) {
-            return (char *) (haystack + i);
+            return (char *) (haystack + i - strlen(needle) + 1);
         }
     }
 
@@ -85,6 +85,7 @@ int main() {
         pos = strstrci(needle, needle_lps, pos);
         if (pos != NULL) {
             ++counter;
+            ++pos;
         }
     } while (pos != NULL);
 

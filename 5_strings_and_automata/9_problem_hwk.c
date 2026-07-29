@@ -11,11 +11,11 @@ void patpreproc(char const *needle, int *needle_lps) {
     for (i = 1; i < strlen(needle); ++i) {
         j = needle_lps[i - 1];
 
-        while (j > 0 && needle[i] != needle[j]) {
+        while (j > 0 && tolower(needle[i]) != tolower(needle[j])) {
             j = needle_lps[j - 1];
         }
 
-        needle_lps[j] = j + (needle[i] == needle[j] ? 1 : 0);
+        needle_lps[j] = j + (tolower(needle[i]) == tolower(needle[j]) ? 1 : 0);
     }
 }
 

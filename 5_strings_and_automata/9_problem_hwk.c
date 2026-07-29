@@ -73,9 +73,10 @@ int main() {
     }
 
     counter = 0;
+    pos = haystack;
 
     do {
-        pos = strstrci(needle, needle_lps, haystack);
+        pos = strstrci(needle, needle_lps, pos);
         if (pos != NULL) {
             ++counter;
         }

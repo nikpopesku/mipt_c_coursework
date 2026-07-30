@@ -27,7 +27,7 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
     for (i = 0; i < strlen_haystack; ++i) {
         j = needle_lps[i - 1];
 
-        while (j > 0 && tolower(needle[i]) != tolower(needle[j])) {
+        while (j > 0 && tolower(haystack[i]) != tolower(needle[j])) {
             j = needle_lps[j - 1];
         }
 

@@ -15,7 +15,7 @@ void patpreproc(char const *needle, int *needle_lps) {
             j = needle_lps[j - 1];
         }
 
-        needle_lps[i] = j + (tolower(needle[i]) == tolower(needle[j] ? 1 : 0));
+        needle_lps[i] = j + (tolower(needle[i]) == tolower(needle[j]) ? 1 : 0);
     }
 }
 
@@ -24,6 +24,7 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
     int strlen_haystack = strlen(haystack);
     int strlen_needle = strlen(needle);
 
+    j = 0;
     for (i = 1; i < strlen_haystack; ++i) {
         j = needle_lps[i - 1];
 
@@ -81,7 +82,7 @@ int main() {
     counter = 0;
     pos = haystack;
     do {
-        pos = strstrci(needle, needle_lps, haystack);
+        pos = strstrci(needle, needle_lps, pos);
         if (pos != NULL) {
             ++counter;
             ++pos;

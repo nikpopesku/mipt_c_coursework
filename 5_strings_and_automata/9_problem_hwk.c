@@ -6,6 +6,17 @@
 #include "func.h"
 
 void patpreproc(char const *needle, int *needle_lps) {
+    int i, j;
+
+    for (i = 1; i < strlen(needle); ++i) {
+        j = needle_lps[i - 1];
+
+        while (j > 0 && tolower(needle[i]) != tolower(needle[j])) {
+            j = needle_lps[j - 1];
+        }
+
+        needle_lps[i] = j + (tolower(needle[i]) == tolower(needle[j] ? 1 : 0));
+    }
 }
 
 char *strstrci(char const *needle, int const *needle_lps, char const *haystack) {
@@ -43,7 +54,8 @@ int main() {
 
     needle[i] = '\0';
 
-
+    needle_lps = calloc(sz2, sizeof(int));
+    patpreproc(needle, needle_lps);
 
     // free(needle_lps);
     free(needle);

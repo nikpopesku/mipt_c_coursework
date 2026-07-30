@@ -36,7 +36,7 @@ char *strstrci(char const *needle, int const *needle_lps, char const *haystack) 
         }
 
         if (j == strlen_needle) {
-            return (char *) (haystack + i- strlen_needle + 1);
+            return (char *) (haystack + i - strlen_needle + 1);
         }
     }
 
@@ -77,6 +77,16 @@ int main() {
 
     needle_lps = calloc(sz2, sizeof(int));
     patpreproc(needle, needle_lps);
+
+    counter = 0;
+    pos = haystack;
+    do {
+        pos = strstrci(needle, needle_lps, haystack);
+        if (pos != NULL) {
+            ++counter;
+            ++pos;
+        }
+    } while (pos != NULL);
 
     free(needle_lps);
     free(needle);

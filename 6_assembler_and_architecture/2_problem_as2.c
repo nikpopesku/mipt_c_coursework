@@ -6,8 +6,8 @@
 enum Register {
     A = 0,
     B = 1,
-    C = 10,
-    D = 11
+    C = 2,
+    D = 3
 };
 
 int main() {
@@ -21,7 +21,7 @@ int main() {
             continue;
         }
 
-        first = (val & (11 << 2)) >> 2;
+        first = (val & (3 << 2)) >> 2;
         second = val & 11;
 
         switch (val >> 4) {

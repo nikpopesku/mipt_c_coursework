@@ -26,19 +26,19 @@ int main() {
 
         switch (val >> 4) {
             case 8:
-                printf("ADD %c, %c\n", first, second);
+                printf("ADD %c, %c\n", 'A' + first, 'A' + second);
                 break;
             case 9:
-                printf("SUB %c, %c\n", first, second);
+                printf("SUB %c, %c\n", 'A' + first, 'A' + second);
                 break;
             case 10:
-                printf("MUL %c, %c\n", first, second);
+                printf("MUL %c, %c\n", 'A' + first, 'A' + second);
                 break;
             case 11:
-                printf("DIV %c, %c\n", first, second);
+                printf("DIV %c, %c\n", 'A' + first, 'A' + second);
                 break;
             case 12:
-                if ((val & (1 << 3)) >> 3 == 1) {
+                if ((val & (1 << 2)) >> 2 == 1) {
                     printf("OUT %c\n", 'A' + second);
                 } else {
                     printf("IN %c\n", 'A' + second);

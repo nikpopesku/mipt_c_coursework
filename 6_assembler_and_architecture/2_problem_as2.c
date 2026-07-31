@@ -26,22 +26,22 @@ int main() {
 
         switch (val >> 4) {
             case 8:
-                printf("ADD %c, %c", first, second);
+                printf("ADD %c, %c\n", first, second);
                 break;
             case 9:
-                printf("SUB %c, %c", first, second);
+                printf("SUB %c, %c\n", first, second);
                 break;
             case 10:
-                printf("MUL %c, %c", first, second);
+                printf("MUL %c, %c\n", first, second);
                 break;
             case 11:
-                printf("DIV %c, %c", first, second);
+                printf("DIV %c, %c\n", first, second);
                 break;
             case 12:
                 if ((val & (1 << 3)) == 1) {
-                    printf("OUT ");
+                    printf("OUT \n");
                 } else {
-                    printf("IN ");
+                    printf("IN \n");
                 }
         }
 

@@ -43,6 +43,9 @@ int main() {
                 } else {
                     printf("IN %c\n", 'A' + second);
                 }
+            default:
+                printf("ERROR\n");
+                return 0;
         }
 
     }

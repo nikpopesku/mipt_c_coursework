@@ -22,7 +22,7 @@ int main() {
         }
 
         first = (val & (3 << 2)) >> 2;
-        second = val & 11;
+        second = val & 3;
 
         switch (val >> 4) {
             case 8:

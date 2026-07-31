@@ -38,10 +38,10 @@ int main() {
                 printf("DIV %c, %c\n", first, second);
                 break;
             case 12:
-                if ((val & (1 << 3)) == 1) {
-                    printf("OUT \n");
+                if ((val & (1 << 3) >> 3) == 1) {
+                    printf("OUT %c\n", second);
                 } else {
-                    printf("IN \n");
+                    printf("IN %c\n", second);
                 }
         }
 

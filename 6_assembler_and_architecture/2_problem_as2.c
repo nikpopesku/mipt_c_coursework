@@ -1,7 +1,4 @@
-#include <assert.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 enum Register {
     A = 0,
@@ -43,6 +40,7 @@ int main() {
                 } else {
                     printf("IN %c\n", 'A' + second);
                 }
+                break;
             default:
                 printf("ERROR\n");
                 return 0;

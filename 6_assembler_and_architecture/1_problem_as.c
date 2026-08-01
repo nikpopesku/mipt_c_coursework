@@ -8,7 +8,7 @@ int main() {
     char ch;
     size_t cap = 16, len = 0;
     char *buf, *new_buf;
-    unsigned i;
+    unsigned i, j;
 
     regex_t re_movi, re_out, re_in, re_add, re_sub, re_mul, re_div;
     regmatch_t matches[4];
@@ -55,9 +55,9 @@ int main() {
                 regmatch_t g2 = matches[2];
                 regmatch_t g3 = matches[3];
 
-                for (i = g1.rm_so; i < g1.rm_eo; ++i) printf("%c", buf[i]);
-                for (i = g2.rm_so; i < g2.rm_eo; ++i) printf("%c", buf[i]);
-                for (i = g3.rm_so; i < g3.rm_eo; ++i) printf("%c", buf[i]);
+                for (j = g1.rm_so; j < g1.rm_eo; ++j) printf("%c", buf[j]);
+                for (j = g2.rm_so; j < g2.rm_eo; ++j) printf("%c", buf[j]);
+                for (j = g3.rm_so; j < g3.rm_eo; ++j) printf("%c", buf[j]);
                 printf("\n");
             }
         }

@@ -17,10 +17,10 @@ int main() {
     regcomp(&re_movi, "^(MOVI )([0-9]+)$", REG_EXTENDED);
     regcomp(&re_out, "^(OUT )([A-D]{1})$", REG_EXTENDED);
     regcomp(&re_in, "^(IN )([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_add, "^(ADD )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_sub, "^(SUB )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_mul, "^(MUL )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_div, "^(DIV )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_add, "^(ADD )([A-D]{1})(,[[:space:]]?)([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_sub, "^(SUB )([A-D]{1})(,[[:space:]]?)([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_mul, "^(MUL )([A-D]{1})(,[[:space:]]?)([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_div, "^(DIV )([A-D]{1})(,[[:space:]]?)([A-D]{1})$", REG_EXTENDED);
 
     re_arr[0] = re_movi;
     re_arr[1] = re_out;
@@ -67,6 +67,11 @@ int main() {
 
     regfree(&re_movi);
     regfree(&re_out);
+    regfree(&re_in);
+    regfree(&re_add);
+    regfree(&re_sub);
+    regfree(&re_mul);
+    regfree(&re_div);
     free(buf);
 
     return 0;

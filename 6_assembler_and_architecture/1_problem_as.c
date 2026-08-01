@@ -10,20 +10,25 @@ int main() {
     char *buf, *new_buf;
     unsigned i;
 
-    regex_t re_movi, re_out, re_in;
-    regmatch_t matches[3];
-    regex_t re_arr[3];
+    regex_t re_movi, re_out, re_in, re_add, re_sub, re_mul, re_div;
+    regmatch_t matches[4];
+    regex_t re_arr[7];
 
-    int res = regcomp(&re_movi, "^(MOVI )([0-9]+)$", REG_EXTENDED);
-    assert(res == 0);
-    res = regcomp(&re_out, "^(OUT )([A-D]{1})$", REG_EXTENDED);
-    assert(res == 0);
-    res = regcomp(&re_in, "^(IN )([A-D]{1})$", REG_EXTENDED);
-    assert(res == 0);
+    regcomp(&re_movi, "^(MOVI )([0-9]+)$", REG_EXTENDED);
+    regcomp(&re_out, "^(OUT )([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_in, "^(IN )([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_add, "^(ADD )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_sub, "^(SUB )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_mul, "^(MUL )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_div, "^(DIV )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
 
     re_arr[0] = re_movi;
     re_arr[1] = re_out;
     re_arr[2] = re_in;
+    re_arr[3] = re_add;
+    re_arr[4] = re_sub;
+    re_arr[5] = re_mul;
+    re_arr[6] = re_div;
 
 
     do {
@@ -44,13 +49,15 @@ int main() {
         buf[len] = '\0';
 
 
-        for (i = 0; i < 3; ++i) {
-            if (regexec(&re_arr[i], buf, 3, matches, 0) == 0) {
+        for (i = 0; i < 7; ++i) {
+            if (regexec(&re_arr[i], buf, 4, matches, 0) == 0) {
                 regmatch_t g1 = matches[1];
                 regmatch_t g2 = matches[2];
+                regmatch_t g3 = matches[3];
 
                 for (i = g1.rm_so; i < g1.rm_eo; ++i) printf("%c", buf[i]);
                 for (i = g2.rm_so; i < g2.rm_eo; ++i) printf("%c", buf[i]);
+                for (i = g3.rm_so; i < g3.rm_eo; ++i) printf("%c", buf[i]);
                 printf("\n");
             }
         }

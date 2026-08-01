@@ -11,16 +11,16 @@ int main() {
     unsigned i, j;
 
     regex_t re_movi, re_out, re_in, re_add, re_sub, re_mul, re_div;
-    regmatch_t matches[4];
+    regmatch_t matches[5];
     regex_t re_arr[7];
 
     regcomp(&re_movi, "^(MOVI )([0-9]+)$", REG_EXTENDED);
     regcomp(&re_out, "^(OUT )([A-D]{1})$", REG_EXTENDED);
     regcomp(&re_in, "^(IN )([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_add, "^(ADD )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_sub, "^(SUB )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_mul, "^(MUL )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
-    regcomp(&re_div, "^(DIV )([A-D]{1}),([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_add, "^(ADD )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_sub, "^(SUB )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_mul, "^(MUL )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
+    regcomp(&re_div, "^(DIV )([A-D]{1})(,[:space:])([A-D]{1})$", REG_EXTENDED);
 
     re_arr[0] = re_movi;
     re_arr[1] = re_out;
@@ -50,14 +50,16 @@ int main() {
 
 
         for (i = 0; i < 7; ++i) {
-            if (regexec(&re_arr[i], buf, 4, matches, 0) == 0) {
+            if (regexec(&re_arr[i], buf, 5, matches, 0) == 0) {
                 regmatch_t g1 = matches[1];
                 regmatch_t g2 = matches[2];
                 regmatch_t g3 = matches[3];
+                regmatch_t g4 = matches[4];
 
                 for (j = g1.rm_so; j < g1.rm_eo; ++j) printf("%c", buf[j]);
                 for (j = g2.rm_so; j < g2.rm_eo; ++j) printf("%c", buf[j]);
                 for (j = g3.rm_so; j < g3.rm_eo; ++j) printf("%c", buf[j]);
+                for (j = g4.rm_so; j < g4.rm_eo; ++j) printf("%c", buf[j]);
                 printf("\n");
             }
         }

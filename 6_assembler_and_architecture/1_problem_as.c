@@ -113,7 +113,7 @@ int main() {
         }
 
         if (matched) {
-            printf(first_token ? "0x%02x" : " 0x%02x", val);
+            printf(first_token ? "0x%x" : " 0x%x", val);
             first_token = 0;
         } else {
             printf(first_token ? "ERROR" : " ERROR");

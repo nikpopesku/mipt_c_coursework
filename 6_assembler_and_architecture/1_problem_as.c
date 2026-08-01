@@ -2,11 +2,13 @@
 #include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
     char ch;
     size_t cap = 16, len = 0;
     char *buf = calloc(cap, sizeof(char)), *new_buf;
+    unsigned i;
 
     regex_t re;
     regmatch_t matches[2];
@@ -29,8 +31,11 @@ int main() {
 
         if (regexec(&re, buf, 2, matches, 0) == 0) {
             regmatch_t g = matches[1];
-            int len = g.rm_eo - g.rm_so;
-            char *num = strndup(buf + g.rm_so, len);
+
+            printf("MOVI ");
+            for (i = g.rm_so; i < g.rm_eo; ++i) {
+                printf("%c", buf[i]);
+            }
         }
     } while (buf != NULL);
 

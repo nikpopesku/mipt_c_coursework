@@ -10,10 +10,12 @@ int main() {
     char *buf = calloc(cap, sizeof(char)), *new_buf;
     unsigned i;
 
-    regex_t re;
+    regex_t re_movi, re_out;
     regmatch_t matches[2];
-    int ret = regcomp(&re, "^MOVI ([0-9]+)$", REG_EXTENDED);
-    assert(ret == 0);
+    int res = regcomp(&re_movi, "^MOVI ([0-9]+)$", REG_EXTENDED);
+    assert(res == 0);
+    res = regcomp(&re_out, "^OUT ([A-Z]{1})$", REG_EXTENDED);
+    assert(res == 0);
 
     do {
         while ((ch = getchar()) != EOF && ch != '\n') {
@@ -29,13 +31,14 @@ int main() {
         buf[len] = '\0';
 
 
-        if (regexec(&re, buf, 2, matches, 0) == 0) {
+        if (regexec(&re_movi, buf, 2, matches, 0) == 0) {
             regmatch_t g = matches[1];
 
             printf("MOVI ");
             for (i = g.rm_so; i < g.rm_eo; ++i) {
                 printf("%c", buf[i]);
             }
+            printf("\n");
         }
     } while (buf != NULL);
 

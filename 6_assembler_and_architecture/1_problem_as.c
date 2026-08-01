@@ -9,7 +9,8 @@ int main() {
     char *buf = calloc(cap, sizeof(char)), *new_buf;
 
     regex_t re;
-    int ret = regcomp(&re, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", REG_EXTENDED);
+    regmatch_t matches[2];
+    int ret = regcomp(&re, "^MOVI ([0-9]+)$", REG_EXTENDED);
     assert(ret == 0);
 
     while ((ch = getchar()) != EOF && ch != '\n') {
@@ -24,6 +25,15 @@ int main() {
 
     buf[len] = '\0';
 
+
+    if (regexec(&re, buf, 2, matches, 0) == 0) {
+        regmatch_t g = matches[1];          // subgroup 1: the digits
+        int len = g.rm_eo - g.rm_so;
+        char *num = strndup(buf + g.rm_so, len);
+    }
+
+    regfree(&re);
+    free(buf);
 
     return 0;
 }

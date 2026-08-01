@@ -7,7 +7,7 @@
 int main() {
     char ch;
     size_t cap = 16, len = 0;
-    char *buf, *new_buf;
+    char *buf = NULL, *new_buf;
     unsigned i, j;
 
     regex_t re_movi, re_out, re_in, re_add, re_sub, re_mul, re_div;
@@ -63,6 +63,8 @@ int main() {
                 printf("\n");
             }
         }
+
+        free(buf);
     } while (len > 0);
 
     regfree(&re_movi);
@@ -72,7 +74,6 @@ int main() {
     regfree(&re_sub);
     regfree(&re_mul);
     regfree(&re_div);
-    free(buf);
 
     return 0;
 }

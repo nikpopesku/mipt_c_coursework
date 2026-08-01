@@ -13,24 +13,26 @@ int main() {
     int ret = regcomp(&re, "^MOVI ([0-9]+)$", REG_EXTENDED);
     assert(ret == 0);
 
-    while ((ch = getchar()) != EOF && ch != '\n') {
-        if (len + 1 >= cap) {
-            cap *= 2;
-            new_buf = realloc(buf, cap);
-            buf = new_buf;
-            assert(buf != NULL);
+    do {
+        while ((ch = getchar()) != EOF && ch != '\n') {
+            if (len + 1 >= cap) {
+                cap *= 2;
+                new_buf = realloc(buf, cap);
+                buf = new_buf;
+                assert(buf != NULL);
+            }
+            buf[len++] = ch;
         }
-        buf[len++] = ch;
-    }
 
-    buf[len] = '\0';
+        buf[len] = '\0';
 
 
-    if (regexec(&re, buf, 2, matches, 0) == 0) {
-        regmatch_t g = matches[1];          // subgroup 1: the digits
-        int len = g.rm_eo - g.rm_so;
-        char *num = strndup(buf + g.rm_so, len);
-    }
+        if (regexec(&re, buf, 2, matches, 0) == 0) {
+            regmatch_t g = matches[1];
+            int len = g.rm_eo - g.rm_so;
+            char *num = strndup(buf + g.rm_so, len);
+        }
+    } while (buf != NULL);
 
     regfree(&re);
     free(buf);

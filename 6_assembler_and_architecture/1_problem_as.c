@@ -62,10 +62,10 @@ int main() {
             regmatch_t g2 = matches[2];
             regmatch_t g4 = matches[4];
             val  = 8 << 4;
-            reg = buf[g2.rm_so];
+            reg = buf[g2.rm_so] - 'A';
             val = val + (reg << 2);
-            val = val + buf[g4.rm_so];
-            printf("%x", val);
+            val = val + (buf[g4.rm_so] - 'A');
+            printf("0x%x", val);
         }
 
         free(buf);

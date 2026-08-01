@@ -10,17 +10,20 @@ int main() {
     char *buf, *new_buf;
     unsigned i;
 
-    regex_t re_movi, re_out;
+    regex_t re_movi, re_out, re_in;
     regmatch_t matches[3];
-    regex_t re_arr[2];
+    regex_t re_arr[3];
 
     int res = regcomp(&re_movi, "^(MOVI )([0-9]+)$", REG_EXTENDED);
     assert(res == 0);
     res = regcomp(&re_out, "^(OUT )([A-D]{1})$", REG_EXTENDED);
     assert(res == 0);
+    res = regcomp(&re_in, "^(IN )([A-D]{1})$", REG_EXTENDED);
+    assert(res == 0);
 
     re_arr[0] = re_movi;
     re_arr[1] = re_out;
+    re_arr[2] = re_in;
 
 
     do {
@@ -41,7 +44,7 @@ int main() {
         buf[len] = '\0';
 
 
-        for (i = 0; i < 2; ++i) {
+        for (i = 0; i < 3; ++i) {
             if (regexec(&re_arr[i], buf, 3, matches, 0) == 0) {
                 regmatch_t g1 = matches[1];
                 regmatch_t g2 = matches[2];

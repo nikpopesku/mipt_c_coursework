@@ -11,11 +11,17 @@ int main() {
     unsigned i;
 
     regex_t re_movi, re_out;
-    regmatch_t matches[2];
-    int res = regcomp(&re_movi, "^MOVI ([0-9]+)$", REG_EXTENDED);
+    regmatch_t matches[3];
+    regex_t vals[2];
+
+    int res = regcomp(&re_movi, "^(MOVI) ([0-9]+)$", REG_EXTENDED);
     assert(res == 0);
-    res = regcomp(&re_out, "^OUT ([A-D]{1})$", REG_EXTENDED);
+    res = regcomp(&re_out, "^(OUT) ([A-D]{1})$", REG_EXTENDED);
     assert(res == 0);
+
+    vals[0] = re_movi;
+    vals[1] = re_out;
+
 
     do {
         len = 0;
@@ -35,22 +41,12 @@ int main() {
         buf[len] = '\0';
 
 
-        if (regexec(&re_movi, buf, 2, matches, 0) == 0) {
-            regmatch_t g = matches[1];
+        if (regexec(&re_movi, buf, 3, matches, 0) == 0) {
+            regmatch_t g1 = matches[1];
+            regmatch_t g2 = matches[2];
 
-            printf("MOVI ");
-            for (i = g.rm_so; i < g.rm_eo; ++i) {
-                printf("%c", buf[i]);
-            }
-            printf("\n");
-        }
-        if (regexec(&re_out, buf, 2, matches, 0) == 0) {
-            regmatch_t g = matches[1];
-
-            printf("OUT ");
-            for (i = g.rm_so; i < g.rm_eo; ++i) {
-                printf("%c", buf[i]);
-            }
+            for (i = g1.rm_so; i < g1.rm_eo; ++i) printf("%c", buf[i]);
+            for (i = g2.rm_so; i < g2.rm_eo; ++i) printf("%c", buf[i]);
             printf("\n");
         }
     } while (len > 0);

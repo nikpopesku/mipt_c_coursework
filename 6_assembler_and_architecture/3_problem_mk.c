@@ -75,5 +75,9 @@ int main() {
         }
 
     }
+
+    free(buf);
+    free(buf_num);
+
     return 0;
 }

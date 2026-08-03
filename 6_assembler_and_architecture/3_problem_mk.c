@@ -20,7 +20,7 @@ int main() {
     while (scanf("%x", &val) == 1 && val != 240) {
         if (len + 1 >= cap) {
             cap *= 2;
-            new_buf = realloc(buf, cap);
+            new_buf = realloc(buf, cap * sizeof(unsigned));
             buf = new_buf;
             assert(buf != NULL);
         }

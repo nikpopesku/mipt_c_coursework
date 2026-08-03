@@ -10,12 +10,12 @@ enum Register {
 };
 
 int main() {
-    unsigned val, counter = 0;
-    unsigned A, B, C, D;
+    unsigned val, counter = 0, counter_num = 0;
+    unsigned regs[4];
     size_t cap = 16, len = 0;
     size_t cap_num = 16, len_num = 0;
     char *buf = calloc(cap, sizeof(char)), *new_buf;
-    char *buf_num = calloc(cap, sizeof(char)), *new_buf_num;
+    unsigned *buf_num = calloc(cap, sizeof(char)), *new_buf_num;
     enum Register first;
     enum Register second;
 
@@ -42,7 +42,7 @@ int main() {
     for (counter = 0; counter < len; ++counter) {
         val = buf[counter];
         if (val >> 7 == 0) {
-            D = val;
+            regs[3] = val;
             continue;
         }
 
@@ -64,9 +64,9 @@ int main() {
                 break;
             case 12:
                 if ((val & (1 << 2)) >> 2 == 1) {
-                    printf("OUT %c\n", 'A' + second);
+                    printf("OUT %c\n", regs[second]);
                 } else {
-                    printf("IN %c\n", 'A' + second);
+                    regs[second] = buf_num[counter_num++];
                 }
                 break;
             default:

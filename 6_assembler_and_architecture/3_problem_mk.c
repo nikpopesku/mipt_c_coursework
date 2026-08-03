@@ -52,13 +52,14 @@ int main() {
                 break;
             case 12:
                 if ((val & (1 << 2)) >> 2 == 1) {
-                    printf("OUT %c\n", regs[second]);
+                    printf("OUT %d\n", regs[second]);
                 } else {
                     scanf("%u", &regs[second]);
                 }
                 break;
             default:
                 printf("ERROR\n");
+                free(buf);
                 return 0;
         }
 

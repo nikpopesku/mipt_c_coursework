@@ -1,4 +1,6 @@
+#include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 enum Register {
     A = 0,
@@ -9,9 +11,22 @@ enum Register {
 
 int main() {
     unsigned val;
-    int A, B, C, D;
+    unsigned A, B, C, D;
+    char ch;
+    size_t cap = 16, len = 0;
+    char *buf = calloc(cap, sizeof(char)), *new_buf;
     enum Register first;
     enum Register second;
+
+    while ((ch = getchar()) != EOF && ch != '\n') {
+        if (len + 1 >= cap) {
+            cap *= 2;
+            new_buf = realloc(buf, cap);
+            buf = new_buf;
+            assert(buf != NULL);
+        }
+        buf[len++] = (char) ch;
+    }
 
     while (scanf("%x", &val) == 1) {
         if (val >> 7 == 0) {

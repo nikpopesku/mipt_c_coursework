@@ -62,7 +62,6 @@ int main() {
                 free(buf);
                 return 0;
         }
-
     }
 
     free(buf);

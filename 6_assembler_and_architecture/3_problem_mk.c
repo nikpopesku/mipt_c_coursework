@@ -13,7 +13,7 @@ int main() {
     unsigned val, counter = 0;
     unsigned regs[4];
     size_t cap = 16, len = 0;
-    char *buf = calloc(cap, sizeof(char)), *new_buf;
+    unsigned *buf = calloc(cap, sizeof(unsigned)), *new_buf;
     enum Register first;
     enum Register second;
 
@@ -52,7 +52,7 @@ int main() {
                 break;
             case 12:
                 if ((val & (1 << 2)) >> 2 == 1) {
-                    printf("OUT %d\n", regs[second]);
+                    printf("%d\n", regs[second]);
                 } else {
                     scanf("%u", &regs[second]);
                 }

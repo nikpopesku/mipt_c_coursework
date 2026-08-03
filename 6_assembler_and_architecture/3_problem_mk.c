@@ -11,8 +11,7 @@ enum Register {
 
 int main() {
     unsigned val;
-    unsigned A, B, C, D;
-    char ch;
+    // unsigned A, B, C, D;
     size_t cap = 16, len = 0;
     size_t cap_num = 16, len_num = 0;
     char *buf = calloc(cap, sizeof(char)), *new_buf;
@@ -30,7 +29,7 @@ int main() {
         buf[len++] = val;
     }
 
-    while (scanf("%d", &val) == 1) {
+    while (scanf("%u", &val) == 1) {
         if (len_num + 1 >= cap_num) {
             cap *= 2;
             new_buf_num = realloc(buf_num, cap_num);
@@ -42,7 +41,8 @@ int main() {
 
     while (scanf("%x", &val) == 1) {
         if (val >> 7 == 0) {
-            D = val;
+            // D = val;
+            printf("MOVI %d\n", val);
             continue;
         }
 

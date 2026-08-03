@@ -9,12 +9,13 @@ enum Register {
 
 int main() {
     unsigned val;
+    int A, B, C, D;
     enum Register first;
     enum Register second;
 
     while (scanf("%x", &val) == 1) {
         if (val >> 7 == 0) {
-            printf("MOVI %d\n", val);
+            D = val;
             continue;
         }
 

@@ -51,16 +51,16 @@ int main() {
 
         switch (val >> 4) {
             case 8:
-                printf("ADD %c, %c\n", 'A' + first, 'A' + second);
+                regs[first] = (regs[first] + regs[second]) % 256;
                 break;
             case 9:
-                printf("SUB %c, %c\n", 'A' + first, 'A' + second);
+                regs[first] = (regs[first] - regs[second]) % 256;
                 break;
             case 10:
-                printf("MUL %c, %c\n", 'A' + first, 'A' + second);
+                regs[first] = (regs[first] * regs[second]) % 256;
                 break;
             case 11:
-                printf("DIV %c, %c\n", 'A' + first, 'A' + second);
+                regs[first] = (regs[first] / regs[second]) % 256;
                 break;
             case 12:
                 if ((val & (1 << 2)) >> 2 == 1) {

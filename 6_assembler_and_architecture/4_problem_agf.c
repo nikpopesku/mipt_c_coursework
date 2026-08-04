@@ -17,8 +17,6 @@ int foo(int x, int y) {
         edx = edx - edi;
         edx = edx - esi;
         eax = eax + edx;
-
-        return eax;
     }
 
     return eax;

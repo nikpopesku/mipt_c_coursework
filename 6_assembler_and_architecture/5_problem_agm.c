@@ -35,6 +35,7 @@
 
 int foo(int *x, int y, int z) {
     int r8d = 0;
+    int rax, *rdx;
     int eax;
     if (z == 0) {
         goto L1;
@@ -42,6 +43,22 @@ int foo(int *x, int y, int z) {
 
     eax = z - 1;
     if (eax < 0) goto L7;
+    rax = eax;
+    goto L4;
+
+    L5:
+        rdi[rax + 1] = z;
+        --rax;
+        if (eax < 0) {
+            goto L1;
+        }
+    L4:
+        z = rdi[rax];
+        r8d = eax;
+        if (z > y) {
+            goto L5;
+        }
+        r8d = r8d + 1;
 
     L1:
         eax = r8d;

@@ -36,33 +36,31 @@
 int foo(int *x, int y, int z) {
     int r8d = 0;
     int rax;
-    int eax;
     if (z == 0) {
         goto L1;
     }
 
-    eax = z - 1;
-    if (eax < 0) goto L7;
-    rax = eax;
+    rax = z - 1;
+    if (rax < 0) goto L7;
     goto L4;
 
     L5:
         x[rax + 1] = z;
         --rax;
-        if (eax < 0) {
+        if (rax < 0) {
             goto L1;
         }
     L4:
         z = x[rax];
-        r8d = eax;
+        r8d = rax;
         if (z > y) {
             goto L5;
         }
         r8d = r8d + 1;
 
     L1:
-        eax = r8d;
-        return eax;
+        rax = r8d;
+        return rax;
     L7:
         r8d = z;
         goto L1;

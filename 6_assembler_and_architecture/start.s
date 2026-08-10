@@ -5,7 +5,6 @@
 	.globl	"start"
 	.type	"start", @function
 "start":
-.LFB0:
 	.cfi_startproc
 	cmp	edi, 1
 	jbe	.composite
@@ -20,7 +19,7 @@
 	.p2align 5
 	.p2align 4,,10
 	.p2align 3
-.L16:
+.loop:
 	add	ecx, 2
 	mov	eax, ecx
 	imul	eax, ecx
@@ -31,7 +30,7 @@
 	xor	edx, edx
 	div	ecx
 	test	edx, edx
-	jne	.L16
+	jne	.loop
 .composite:
 	xor	eax, eax
 	ret
@@ -41,7 +40,3 @@
 	mov	eax, 1
 	ret
 	.cfi_endproc
-.LFE0:
-	.size	"start", .-"start"
-	.ident	"GCC: (GNU) 16.1.1 20260728"
-	.section	.note.GNU-stack,"",@progbits

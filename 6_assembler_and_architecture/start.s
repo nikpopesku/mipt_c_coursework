@@ -10,10 +10,6 @@
 	jbe	.prime
 	test	dil, 1
 	je	.composite
-	cmp	edi, 8
-	jbe	.prime
-	mov	ecx, 3
-	jmp	.L7
 .loop:
 	add	ecx, 2
 	mov	eax, ecx

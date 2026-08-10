@@ -1,58 +1,44 @@
 	.file	"start.c"
 	.intel_syntax noprefix
 	.text
+	.p2align 4
 	.globl	"start"
 	.type	"start", @function
 "start":
 .LFB0:
 	.cfi_startproc
-	push	rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	mov	rbp, rsp
-	.cfi_def_cfa_register 6
-	mov	DWORD PTR -20[rbp], edi
-	cmp	DWORD PTR -20[rbp], 1
-	ja	.L2
-	mov	eax, 0
-	jmp	.L3
-.L2:
-	cmp	DWORD PTR -20[rbp], 3
-	ja	.L4
-	mov	eax, 1
-	jmp	.L3
-.L4:
-	mov	eax, DWORD PTR -20[rbp]
-	and	eax, 1
-	test	eax, eax
-	jne	.L5
-	mov	eax, 0
-	jmp	.L3
-.L5:
-	mov	DWORD PTR -4[rbp], 5
-	jmp	.L6
-.L8:
-	mov	esi, DWORD PTR -4[rbp]
-	mov	eax, DWORD PTR -20[rbp]
-	mov	edx, 0
-	div	esi
-	mov	ecx, edx
+	cmp	edi, 1
+	jbe	.L5
+	cmp	edi, 3
+	jbe	.L6
+	test	dil, 1
+	je	.L5
+	cmp	edi, 24
+	jbe	.L6
+	mov	ecx, 5
+	jmp	.L7
+	.p2align 5
+	.p2align 4,,10
+	.p2align 3
+.L16:
+	add	ecx, 2
 	mov	eax, ecx
-	test	eax, eax
-	jne	.L7
-	mov	eax, 0
-	jmp	.L3
+	imul	eax, ecx
+	cmp	edi, eax
+	jb	.L6
 .L7:
-	add	DWORD PTR -4[rbp], 2
+	mov	eax, edi
+	xor	edx, edx
+	div	ecx
+	test	edx, edx
+	jne	.L16
+.L5:
+	xor	eax, eax
+	ret
+	.p2align 4,,10
+	.p2align 3
 .L6:
-	mov	eax, DWORD PTR -4[rbp]
-	imul	eax, eax
-	cmp	DWORD PTR -20[rbp], eax
-	jnb	.L8
 	mov	eax, 1
-.L3:
-	pop	rbp
-	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
 .LFE0:

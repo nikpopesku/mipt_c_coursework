@@ -1,9 +1,9 @@
-	.file	"prime.c"
+	.file	"start.c"
 	.intel_syntax noprefix
 	.text
-	.globl	"prime"
-	.type	"prime", @function
-"prime":
+	.globl	"start"
+	.type	"start", @function
+"start":
 .LFB0:
 	.cfi_startproc
 	push	rbp
@@ -56,6 +56,6 @@
 	ret
 	.cfi_endproc
 .LFE0:
-	.size	"prime", .-"prime"
+	.size	"start", .-"start"
 	.ident	"GCC: (GNU) 16.1.1 20260728"
 	.section	.note.GNU-stack,"",@progbits

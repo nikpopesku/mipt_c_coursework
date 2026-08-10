@@ -13,12 +13,12 @@
 	.cfi_def_cfa_register 6
 	mov	DWORD PTR -20[rbp], edi
 	cmp	DWORD PTR -20[rbp], 1
-	jg	.L2
+	ja	.L2
 	mov	eax, 0
 	jmp	.L3
 .L2:
 	cmp	DWORD PTR -20[rbp], 3
-	jg	.L4
+	ja	.L4
 	mov	eax, 1
 	jmp	.L3
 .L4:
@@ -32,10 +32,12 @@
 	mov	DWORD PTR -4[rbp], 5
 	jmp	.L6
 .L8:
+	mov	esi, DWORD PTR -4[rbp]
 	mov	eax, DWORD PTR -20[rbp]
-	cdq
-	idiv	DWORD PTR -4[rbp]
-	mov	eax, edx
+	mov	edx, 0
+	div	esi
+	mov	ecx, edx
+	mov	eax, ecx
 	test	eax, eax
 	jne	.L7
 	mov	eax, 0
@@ -46,7 +48,7 @@
 	mov	eax, DWORD PTR -4[rbp]
 	imul	eax, eax
 	cmp	DWORD PTR -20[rbp], eax
-	jge	.L8
+	jnb	.L8
 	mov	eax, 1
 .L3:
 	pop	rbp

@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "prime.c"
+#include "prime.h"
 
 int main() {
     unsigned x;

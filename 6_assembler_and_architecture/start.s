@@ -1,11 +1,9 @@
-	.file	"start.c"
 	.intel_syntax noprefix
 	.text
 	.p2align 4
 	.globl	"start"
 	.type	"start", @function
 "start":
-	.cfi_startproc
 	cmp	edi, 1
 	jbe	.composite
 	cmp	edi, 3
@@ -16,9 +14,6 @@
 	jbe	.prime
 	mov	ecx, 3
 	jmp	.L7
-	.p2align 5
-	.p2align 4,,10
-	.p2align 3
 .loop:
 	add	ecx, 2
 	mov	eax, ecx
@@ -34,9 +29,6 @@
 .composite:
 	xor	eax, eax
 	ret
-	.p2align 4,,10
-	.p2align 3
 .prime:
 	mov	eax, 1
 	ret
-	.cfi_endproc

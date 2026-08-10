@@ -1,6 +1,5 @@
 	.intel_syntax noprefix
 	.text
-	.p2align 4
 	.globl	"start"
 	.type	"start", @function
 "start":
@@ -16,7 +15,6 @@
 	imul	eax, ecx
 	cmp	edi, eax
 	jb	.prime
-.L7:
 	mov	eax, edi
 	xor	edx, edx
 	div	ecx

@@ -12,9 +12,9 @@
 	jbe	.prime
 	test	dil, 1
 	je	.composite
-	cmp	edi, 24
+	cmp	edi, 8
 	jbe	.prime
-	mov	ecx, 5
+	mov	ecx, 3
 	jmp	.L7
 	.p2align 5
 	.p2align 4,,10

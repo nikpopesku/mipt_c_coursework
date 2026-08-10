@@ -11,7 +11,6 @@
 	je	.composite
 	mov	ecx, 3
 .loop:
-	add	ecx, 2
 	mov	eax, ecx
 	imul	eax, ecx
 	cmp	edi, eax
@@ -22,7 +21,10 @@
 	div	ecx
 
 	test	edx, edx
-	jne	.loop
+	je	.composite
+
+	add	ecx, 2
+	jmp	.loop
 .composite:
 	xor	eax, eax
 	ret

@@ -9,15 +9,18 @@
 	jbe	.prime
 	test	dil, 1
 	je	.composite
+	mov	ecx, 3
 .loop:
 	add	ecx, 2
 	mov	eax, ecx
 	imul	eax, ecx
 	cmp	edi, eax
 	jb	.prime
+
 	mov	eax, edi
 	xor	edx, edx
 	div	ecx
+
 	test	edx, edx
 	jne	.loop
 .composite:

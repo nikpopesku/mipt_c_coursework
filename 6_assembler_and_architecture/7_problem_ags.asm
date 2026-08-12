@@ -6,28 +6,28 @@ caller:
     push  r12
     push  rbp
     push  rbx
-    sub rsp, 8
-    mov r12d, 1
-    test  esi, esi
-    je  .L1
-    mov eax, edi
-    mov ebx, esi
-    mov r13d, edx
-    mov edx, 0
-    div r13d
-    mov rbp, rdx
-    mov r12d, 1
-    jmp .L5
+    sub rsp, 8         ;rsp = rsp - 8
+    mov r12d, 1        ;r12d = 1
+    test  esi, esi     ; esi & esi
+    je  .L1            ;if (esi == 0) goto L1
+    mov eax, edi       ;eax = edi
+    mov ebx, esi       ;ebx = esi
+    mov r13d, edx      ;r13d = edx
+    mov edx, 0         ;edx = 0
+    div r13d           ; ???
+    mov rbp, rdx       ; rbp = rdx
+    mov r12d, 1        ; r12d = 1
+    jmp .L5            ; goto L5
 .L3:
-    mov edi, ebp
-    mov edx, r13d
-    mov esi, ebp
-    call  callee
+    mov edi, ebp       ;edi = ebp
+    mov edx, r13d      ;edx = r13d
+    mov esi, ebp       ;edi = ebp
+    call  callee       ;callee
     mov ebp, eax
     shr ebx
 .L4:
-    test  ebx, ebx
-    je  .L1
+    test  ebx, ebx     ;ebx & ebx
+    je  .L1            ; if (ebx == 0) goto L1
 .L5:
     test  bl, 1
     je  .L3
@@ -39,10 +39,10 @@ caller:
     sub ebx, 1
     jmp .L4
 .L1:
-    mov eax, r12d
-    add rsp, 8
-    pop rbx
-    pop rbp
-    pop r12
-    pop r13
+    mov eax, r12d       ; eax = r12d
+    add rsp, 8          ; rsp += 8
+    pop rbx             ; pop from stack probably
+    pop rbp             ; pop from stack probably
+    pop r12             ; pop from stack probably
+    pop r13             ; pop from stack probably
     ret

@@ -29,10 +29,6 @@ int caller(int x, int y, int z) {
         callee(x, y, z);
         rbp = eax;
         ebx = ebx >> 1;
-    L4:
-        if (ebx == 0) {
-            return r12d;
-        }
     L5:
         if (ebx % 2 == 0) goto L3;
         z = r13d;
@@ -41,5 +37,7 @@ int caller(int x, int y, int z) {
         callee(x, y, z);
         r12d = eax;
         ebx -= 1;
-        goto L4;
+        if (ebx == 0) {
+            return r12d;
+        }
 }

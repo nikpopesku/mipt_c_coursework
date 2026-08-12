@@ -1,3 +1,7 @@
+int callee(int a, int b, int c) {
+  return 0;
+}
+
 int caller(int x, int y, int z) {
     int eax;
     int ebx;

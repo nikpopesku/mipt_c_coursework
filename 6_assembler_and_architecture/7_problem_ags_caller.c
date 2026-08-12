@@ -5,8 +5,6 @@ int caller(int x, int y, int z) {
     int r12d;
     int r13d;
     int rbp;
-    int bl;
-        rsp = rsp - 8;
         r12d = 1;
 
         if (y == 0) goto L1;
@@ -20,18 +18,18 @@ int caller(int x, int y, int z) {
         r12d = 1;
         goto L5;
     L3:
-        x = ebp;
+        x = rbp;
         z = r13d;
-        y = ebp;
+        y = rbp;
         callee(x, y, z);
-        ebp = eax;
+        rbp = eax;
         ebx = ebx >> 1;
     L4:
         if (ebx == 0) goto L1;
     L5:
-        if (bl % 2 == 0) goto L3;
+        if (ebx % 2 == 0) goto L3;
         z = r13d;
-        y = ebp;
+        y = rbp;
         x = r12d;
         callee(x, y, z);
         r12d = eax;

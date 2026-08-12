@@ -29,15 +29,15 @@ caller:
     test  ebx, ebx     ;ebx & ebx
     je  .L1            ; if (ebx == 0) goto L1
 .L5:
-    test  bl, 1
-    je  .L3
-    mov edx, r13d
-    mov esi, ebp
-    mov edi, r12d
-    call  callee
-    mov r12d, eax
-    sub ebx, 1
-    jmp .L4
+    test  bl, 1        ; bl & 1
+    je  .L3            ; if (bl % 2 == 1) goto L3
+    mov edx, r13d      ; edx = r13d
+    mov esi, ebp       ; edi = ebp
+    mov edi, r12d      ; edi = r12d
+    call  callee       ; callee()
+    mov r12d, eax      ; r12d = eax
+    sub ebx, 1         ; ebx -= 1
+    jmp .L4            ; goto L4
 .L1:
     mov eax, r12d       ; eax = r12d
     add rsp, 8          ; rsp += 8

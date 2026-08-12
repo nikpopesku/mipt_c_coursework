@@ -8,20 +8,21 @@ int caller(int x, int y, int z) {
     int r12d;
     int r13d;
     int rbp;
-        r12d = 1;
+    r12d = 1;
 
-        if (y == 0) {
-            return 1;
-        }
+    if (y == 0) {
+        return 1;
+    }
 
-        eax = x;
-        ebx = y;
-        r13d = z;
-        z = 0;
-        z = eax % r13d; eax = eax / r13d;
-        rbp = z;
-        r12d = 1;
-        goto L5;
+    eax = x;
+    ebx = y;
+    r13d = z;
+    z = 0;
+    z = eax % r13d; eax = eax / r13d;
+    rbp = z;
+    r12d = 1;
+    goto L5;
+
     L3:
         x = rbp;
         z = r13d;
@@ -43,4 +44,5 @@ int caller(int x, int y, int z) {
         if (ebx == 0) {
             return r12d;
         }
+        goto L5;
 }

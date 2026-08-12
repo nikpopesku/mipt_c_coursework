@@ -26,15 +26,18 @@ int caller(int x, int y, int z) {
         x = rbp;
         z = r13d;
         y = rbp;
-        callee(x, y, z);
+        eax = callee(x, y, z);
         rbp = eax;
         ebx = ebx >> 1;
+        if (ebx == 0) {
+            return r12d;
+        }
     L5:
         if (ebx % 2 == 0) goto L3;
         z = r13d;
         y = rbp;
         x = r12d;
-        callee(x, y, z);
+        eax = callee(x, y, z);
         r12d = eax;
         ebx -= 1;
         if (ebx == 0) {

@@ -1,5 +1,5 @@
 int callee(int a, int b, int c) {
-  return 0;
+    return 0;
 }
 
 int caller(int x, int y, int z) {
@@ -18,31 +18,32 @@ int caller(int x, int y, int z) {
     ebx = y;
     r13d = z;
     z = 0;
-    z = eax % r13d; eax = eax / r13d;
+    z = eax % r13d;
+    eax = eax / r13d;
     rbp = z;
     r12d = 1;
     goto L5;
 
-    L3:
-        x = rbp;
-        z = r13d;
-        y = rbp;
-        eax = callee(x, y, z);
-        rbp = eax;
-        ebx = ebx >> 1;
-        if (ebx == 0) {
-            return r12d;
-        }
-    L5:
-        if (ebx % 2 == 0) goto L3;
-        z = r13d;
-        y = rbp;
-        x = r12d;
-        eax = callee(x, y, z);
-        r12d = eax;
-        ebx -= 1;
-        if (ebx == 0) {
-            return r12d;
-        }
-        goto L5;
+L3:
+    x = rbp;
+    z = r13d;
+    y = rbp;
+    eax = callee(x, y, z);
+    rbp = eax;
+    ebx = ebx >> 1;
+    if (ebx == 0) {
+        return r12d;
+    }
+L5:
+    if (ebx % 2 == 0) goto L3;
+    z = r13d;
+    y = rbp;
+    x = r12d;
+    eax = callee(x, y, z);
+    r12d = eax;
+    ebx -= 1;
+    if (ebx == 0) {
+        return r12d;
+    }
+    goto L5;
 }

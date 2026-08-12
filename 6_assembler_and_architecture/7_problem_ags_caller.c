@@ -28,7 +28,9 @@ int caller(int x, int y, int z) {
         rbp = eax;
         ebx = ebx >> 1;
     L4:
-        if (ebx == 0) goto L1;
+        if (ebx == 0) {
+            return r12d;
+        }
     L5:
         if (ebx % 2 == 0) goto L3;
         z = r13d;
@@ -38,7 +40,4 @@ int caller(int x, int y, int z) {
         r12d = eax;
         ebx -= 1;
         goto L4;
-    L1:
-        eax = r12d;
-        return eax;
 }

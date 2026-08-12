@@ -8,15 +8,15 @@ int caller() {
         ebx = esi;
         r13d = edx;
         edx = 0;
-        eax = eax / r13d; edx = eax % r13d;
+        edx = eax % r13d; eax = eax / r13d;
         rbp = rdx;
         r12d = 1;
         goto L5;
     L3:
-        edi = ebp
-        edx = r13d
-        esi = ebp
-        callee()
+        edi = ebp;
+        edx = r13d;
+        esi = ebp;
+        callee(edi, esi, edx);
         ebp = eax
         ebx = ebx >> 1
     L4:
@@ -26,7 +26,7 @@ int caller() {
         edx = r13d;
         esi = ebp;
         edi = r12d;
-        callee();
+        callee(edi, esi, edx);
         r12d = eax;
         ebx -= 1;
         goto L4

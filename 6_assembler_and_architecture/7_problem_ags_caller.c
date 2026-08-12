@@ -1,6 +1,5 @@
 int caller(int x, int y, int z) {
     int eax;
-    int rsp;
     int ebx;
     int r12d;
     int r13d;

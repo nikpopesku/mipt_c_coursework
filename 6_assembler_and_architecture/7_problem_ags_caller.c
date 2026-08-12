@@ -23,12 +23,12 @@ int caller() {
         if (ebx == 0) goto L1;
     L5:
         if (bl % 2 == 0) goto L3;
-        mov edx, r13d      ; edx = r13d
-        mov esi, ebp       ; esi = ebp
-        mov edi, r12d      ; edi = r12d
-        call  callee       ; callee()
-        mov r12d, eax      ; r12d = eax
-        sub ebx, 1         ; ebx -= 1
+        edx = r13d;
+        esi = ebp;
+        edi = r12d;
+        callee();
+        r12d = eax;
+        ebx -= 1;
         goto L4
     L1:
         eax = r12d;

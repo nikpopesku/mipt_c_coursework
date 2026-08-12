@@ -10,7 +10,9 @@ int caller(int x, int y, int z) {
     int rbp;
         r12d = 1;
 
-        if (y == 0) goto L1;
+        if (y == 0) {
+            return 1;
+        }
 
         eax = x;
         ebx = y;

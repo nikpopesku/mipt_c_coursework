@@ -14,7 +14,7 @@ caller:
     mov ebx, esi       ;ebx = esi
     mov r13d, edx      ;r13d = edx
     mov edx, 0         ;edx = 0
-    div r13d           ; ???
+    div r13d           ; eax = eax / r13d
     mov rbp, rdx       ; rbp = rdx
     mov r12d, 1        ; r12d = 1
     jmp .L5            ; goto L5
@@ -23,8 +23,8 @@ caller:
     mov edx, r13d      ;edx = r13d
     mov esi, ebp       ;edi = ebp
     call  callee       ;callee
-    mov ebp, eax
-    shr ebx
+    mov ebp, eax       ;ebp = eax
+    shr ebx            ; ???
 .L4:
     test  ebx, ebx     ;ebx & ebx
     je  .L1            ; if (ebx == 0) goto L1
@@ -45,4 +45,4 @@ caller:
     pop rbp             ; pop from stack probably
     pop r12             ; pop from stack probably
     pop r13             ; pop from stack probably
-    ret
+    ret                 ; return eax (probably)

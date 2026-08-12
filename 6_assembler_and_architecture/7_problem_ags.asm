@@ -30,7 +30,7 @@ caller:
     je  .L1            ; if (ebx == 0) goto L1
 .L5:
     test  bl, 1        ; bl & 1
-    je  .L3            ; if (bl % 2 == 1) goto L3
+    je  .L3            ; if (bl % 2 == 0) goto L3
     mov edx, r13d      ; edx = r13d
     mov esi, ebp       ; esi = ebp
     mov edi, r12d      ; edi = r12d
@@ -41,8 +41,8 @@ caller:
 .L1:
     mov eax, r12d       ; eax = r12d
     add rsp, 8          ; rsp += 8
-    pop rbx             ; pop from stack probably
-    pop rbp             ; pop from stack probably
-    pop r12             ; pop from stack probably
-    pop r13             ; pop from stack probably
+    pop rbx             ; pop from stack
+    pop rbp             ; pop from stack
+    pop r12             ; pop from stack
+    pop r13             ; pop from stack
     ret                 ; return eax

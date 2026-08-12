@@ -2,10 +2,10 @@
 .globl  caller
 .type caller, @function
 caller:
-    push  r13
-    push  r12
-    push  rbp
-    push  rbx
+    push  r13          ; push to stack for callee func
+    push  r12          ; push to stack for callee func
+    push  rbp          ; push to stack for callee func
+    push  rbx          ; push to stack for callee func
     sub rsp, 8         ;rsp = rsp - 8
     mov r12d, 1        ;r12d = 1
     test  esi, esi     ; esi & esi

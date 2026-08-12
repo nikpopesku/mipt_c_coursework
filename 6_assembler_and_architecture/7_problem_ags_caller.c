@@ -1,4 +1,11 @@
 int caller(int x, int y, int z) {
+    int eax;
+    int rsp;
+    int ebx;
+    int r12d;
+    int r13d;
+    int rbp;
+    int bl;
         rsp = rsp - 8;
         r12d = 1;
 
@@ -32,6 +39,5 @@ int caller(int x, int y, int z) {
         goto L4;
     L1:
         eax = r12d;
-        rsp += 8;
         return eax;
 }

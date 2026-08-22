@@ -28,5 +28,4 @@ int main() {
     } else {
         printf("%x", as_uint(f_down));
     }
-
 }

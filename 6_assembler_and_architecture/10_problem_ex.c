@@ -25,10 +25,12 @@ int main() {
     u = as_uint(num);
     e = 1;
 
-    for (i = 1; i < 23; i += 2) {
-        e <<= i;
-        u = u ^ e;
+    for (i = 1; i < 23; i += 1) {
+        e <<= 1;
+        if (i % 2 == 1) {
+            u = u ^ e;
+        }
     }
 
-    printf("%f\n", as_float(u));
+    printf("%.5f\n", as_float(u));
 }

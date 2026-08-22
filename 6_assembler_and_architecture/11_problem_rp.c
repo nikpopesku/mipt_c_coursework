@@ -11,6 +11,7 @@ static unsigned as_uint(const float f) {
 
 int main() {
     unsigned numerator, denominator;
+    unsigned frac = (1U << 23) - 1;
     float f_down, f_up;
     int res = scanf("%u", &numerator);
     assert(res == 1);
@@ -24,8 +25,8 @@ int main() {
     f_up = (float) numerator / denominator;
 
     if (f_down != f_up) {
-        printf("%x %x", as_uint(f_down), as_uint(f_up));
+        printf("0x%x 0x%x 0x%x 0x%x", as_uint(f_down) & frac, as_uint(f_down) & frac, as_uint(f_up) & frac, as_uint(f_up) & frac);
     } else {
-        printf("%x", as_uint(f_down));
+        printf("0x%x 0x%x", as_uint(f_down) & frac, as_uint(f_down) & frac);
     }
 }

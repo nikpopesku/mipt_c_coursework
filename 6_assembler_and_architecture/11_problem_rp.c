@@ -25,8 +25,8 @@ int main() {
     f_up = (float) numerator / denominator;
 
     if (f_down != f_up) {
-        printf("0x%x 0x%x 0x%x 0x%x", as_uint(f_down) & frac, as_uint(f_down) & frac, as_uint(f_up) & frac, as_uint(f_up) & frac);
+        printf("0x%x 0x%x 0x%x 0x%x", (as_uint(f_down) >> 23) & ((1U << 10) - 1), as_uint(f_down) & frac, (as_uint(f_up) >> 23) & ((1U << 10) - 1), as_uint(f_up) & frac);
     } else {
-        printf("0x%x 0x%x", as_uint(f_down) & frac, as_uint(f_down) & frac);
+        printf("0x%x 0x%x", as_uint(f_down) & frac, (as_uint(f_down) >> 23) & ((1U << 10) - 1));
     }
 }

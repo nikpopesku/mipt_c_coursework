@@ -19,7 +19,7 @@ static float as_float(const unsigned u) {
 int main() {
     float num;
     unsigned u, i, e;
-    int res = scanf("%f", &num);
+    const int res = scanf("%f", &num);
     assert(res == 1);
 
     u = as_uint(num);

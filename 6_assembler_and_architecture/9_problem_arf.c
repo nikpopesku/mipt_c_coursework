@@ -1,7 +1,11 @@
+#include <tgmath.h>
+
+
 int foo(float rdi) {
-    float xmm1 = 0
-    int * rsp -= 24;
-    float xmm1 = static_cast<float>(rdi);
+    float xmm1 = 0;
+    float xmm0;
+    int * rsp;
+    xmm1 = rdi;
     xmm0 = xmm1;
     *(double*)rsp = xmm1;
     xmm0 = log(xmm0);

@@ -1,12 +1,12 @@
 #include <math.h>
 
 
-int foo(double rdi) {
+int foo(int rdi) {
     double xmm1 = 0;
     double xmm0;
     int rax;
     int *rsp;
-    xmm1 = rdi;
+    xmm1 = (double) rdi;
     xmm0 = xmm1;
     *rsp = xmm1;
     xmm0 = log(xmm0);

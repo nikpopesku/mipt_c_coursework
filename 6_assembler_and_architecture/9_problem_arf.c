@@ -1,9 +1,10 @@
-#include <tgmath.h>
+#include <math.h>
 
 
-int foo(float rdi) {
-    float xmm1 = 0;
-    float xmm0;
+int foo(double rdi) {
+    double xmm1 = 0;
+    double xmm0;
+    int rax;
     int * rsp;
     xmm1 = rdi;
     xmm0 = xmm1;
@@ -17,6 +18,6 @@ int foo(float rdi) {
     xmm0 *= *rsp;
     xmm0 = round(xmm0);
     rsp += 24;
-    rax = static_cast<int>(xmm0);
+    rax = (int) xmm0;
     return rax;
 }

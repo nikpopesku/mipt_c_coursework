@@ -4,5 +4,5 @@
 int main() {
     printf("%d\n", foo(10));
     printf("%d\n", foo(20));
-    printf("%d\n", foo(139));
+    printf("%d\n", foo(30));
 }

@@ -1,3 +1,6 @@
+#include <assert.h>
+#include <stdlib.h>
+
 int foo() {
     a5 = a1 << 32;
     srlit4 = a5 >> 30;
@@ -9,7 +12,7 @@ int foo() {
     t1 = a7 << 2;
     a5 = a0 + t1;
     a4 = a7;
-.L6:
+L6:
     a3 = *a5;
     a2 = a6 + t1;
     a4 = a4 - 1;
@@ -19,7 +22,7 @@ int foo() {
     *a2 = a3;
     *a5 = a0;
     t1 = a7 << 2;
-.L5:
+L5:
     a5 = a5 - 4;
     if (a1 < a4) goto L6;
     t3 = *t4;
@@ -28,14 +31,28 @@ int foo() {
     *a6 = t3;
     a0 = (int32_t) a7;
     *t4 = a5;
-    return a0;
-.L7:
-    t1 = a7 << 2
-    a6 = a6 + t1
-    a5 = *a6
-    *a6 = t3
-    a0 = a2
-    *t4 = a5
-    return a0
 
+    return a0;
+L7:
+    t1 = a7 << 2;
+    a6 = a6 + t1;
+    a5 = *a6;
+    *a6 = t3;
+    a0 = a2;
+    *t4 = a5;
+
+    return a0;
+}
+
+main() {
+    unsigned sz, i;
+    int ret = scanf("%u", &sz);
+    int *v = calloc(sz, sizeof(int));
+
+    assert(ret == 1);
+
+
+    for (i = 0; i < sz; ++i) {
+        ret = scanf("%d", &v[i]);
+    }
 }

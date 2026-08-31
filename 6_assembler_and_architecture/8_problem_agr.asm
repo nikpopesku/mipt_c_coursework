@@ -4,7 +4,7 @@ foo:
         add     t4,a0,t4  ; t4 = a0 + t4
         lw      t3,0(t4)  ; t3 = t4
         mv      a6,a0     ; a6 = a0
-        sext.w  a7,a2     ; asm pseudoinstruction
+        sext.w  a7,a2     ; a7 = (int32_t) a2
         bgeu    a1,a2,.L7 ; if (a1 >= a2) goto L7
         slli    t1,a7,2   ; t1 = a7 << 2
         add     a5,a0,t1  ; a5 = a0 + t1
@@ -26,7 +26,7 @@ foo:
         add     a6,a6,t1  ; a6 = a6 + t1
         lw      a5,0(a6)  ; a5 = a6
         sw      t3,0(a6)  ; t3 = a6
-        sext.w  a0,a7     ; asm pseudoinstruction
+        sext.w  a0,a7     ; a0 = (int32_t) a7
         sw      a5,0(t4)  ; a0 = t4
         ret               ; return a0
 .L7:

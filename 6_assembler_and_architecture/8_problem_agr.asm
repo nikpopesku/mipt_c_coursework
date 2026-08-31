@@ -1,11 +1,11 @@
 foo:
-        slli    a5,a1,32  ; a5 = a1 << 32 i.e. a5 = 0 probably
+        slli    a5,a1,32  ; a5 = a1 << 32
         srli    t4,a5,30  ; t4 = a5 >> 30
         add     t4,a0,t4  ; t4 = a0 + t4
         lw      t3,0(t4)  ; t3 = t4
         mv      a6,a0     ; a6 = a0
         sext.w  a7,a2     ; asm pseudoinstruction
-        bgeu    a1,a2,.L7 ; if (a1 == a2) goto L7
+        bgeu    a1,a2,.L7 ; if (a1 >= a2) goto L7
         slli    t1,a7,2   ; t1 = a7 << 2
         add     a5,a0,t1  ; a5 = a0 + t1
         mv      a4,a7     ; a4 = a7

@@ -1,13 +1,14 @@
 #include <assert.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 int foo(int *a0, int a1, int a2) {
     int a3, a4, a7, t1, t3, off, swp;
-    int64_t tmp;
+    long long tmp;
     int *a5, *a6, *pa2, *t4;
 
-    tmp = (int64_t) a1 << 32;
+    tmp = (long long) a1 << 32;
     off = tmp >> 30;
     t4 = (int *) ((char *) a0 + off);
     t3 = *t4;
@@ -47,7 +48,7 @@ L7:
     return a2;
 }
 
-main() {
+int main() {
     unsigned sz, i;
     int ret = scanf("%u", &sz);
     int *v = calloc(sz, sizeof(int));
@@ -59,5 +60,5 @@ main() {
         ret = scanf("%d", &v[i]);
     }
 
-    foo(v, sz);
+    printf("%d\n", foo(v, 0, sz - 1));
 }

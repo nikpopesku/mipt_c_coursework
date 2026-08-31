@@ -20,20 +20,20 @@ foo:
         sw      a0,0(a5)  ; a0 = a5
         slli    t1,a7,2   ; t1 = a7 >> 2
 .L5:
-        addi    a5,a5,-4
-        bltu    a1,a4,.L6
-        lw      t3,0(t4)
-        add     a6,a6,t1
-        lw      a5,0(a6)
-        sw      t3,0(a6)
-        sext.w  a0,a7
-        sw      a5,0(t4)
-        ret
+        addi    a5,a5,-4  ; a5 = a5 - 4
+        bltu    a1,a4,.L6 ; if (a1 < a4) goto L6
+        lw      t3,0(t4)  ; t3 = a4
+        add     a6,a6,t1  ; a6 = a6 + t1
+        lw      a5,0(a6)  ; a5 = a6
+        sw      t3,0(a6)  ; t3 = a6
+        sext.w  a0,a7     ; asm pseudoinstruction
+        sw      a5,0(t4)  ; a0 = t4
+        ret               ; return a0
 .L7:
         slli    t1,a7,2   ; t1 = a7 >> 2
-        add     a6,a6,t1
-        lw      a5,0(a6)
-        sw      t3,0(a6)
+        add     a6,a6,t1  ; a6 = a6 + t1
+        lw      a5,0(a6)  ; a5 = a6
+        sw      t3,0(a6)  ; t3 = a6
         mv      a0,a2     ; a0 = a2
-        sw      a5,0(t4)
-        ret
+        sw      a5,0(t4)  ; a0 = t4
+        ret               ; return a0

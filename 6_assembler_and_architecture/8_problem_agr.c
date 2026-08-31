@@ -6,9 +6,8 @@ int foo(int *a0, int a1, int a2) {
     int a3, a4, a5, a6, a7, t1, t3;
     int *t4;
     int64_t tmp = (int64_t) a1 << 32;
-    a5 = tmp >> 30;
-    t4 = a5 >> 30;
-    t4 = a0 + t4;
+    int off = tmp >> 30;
+    t4 = a0 + off;
     t3 = *t4;
     a6 = a0;
     a7 = (int) a2;
@@ -59,4 +58,6 @@ main() {
     for (i = 0; i < sz; ++i) {
         ret = scanf("%d", &v[i]);
     }
+
+    foo(v, sz);
 }

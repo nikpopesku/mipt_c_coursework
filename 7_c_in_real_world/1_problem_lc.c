@@ -8,10 +8,9 @@
 
 // Node for the doubly linked list
 typedef struct Node {
-    int key;
     int value;
-    struct Node* prev;
-    struct Node* next;
+    struct Node* prev = NULL;
+    struct Node* next = NULL;
 } Node;
 
 // The LRU Cache structure
@@ -35,8 +34,16 @@ void lru_cache_put(LRUCache* cache, int key, int value) {}
 
 int main() {
     unsigned cell_count, queries_count, i;
-    int number;
-    int res = scanf("%u", &cell_count);
+    int number, res;
+    Node head, tail;
+    LRUCache lru_cache;
+
+    head.value = -1;
+    tail.value = -1;
+    lru_cache.head = &head;
+    lru_cache.tail = &tail;
+
+    res = scanf("%u", &cell_count);
     assert(res == 1);
 
     res = scanf("%u", &queries_count);
